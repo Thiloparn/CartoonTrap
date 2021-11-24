@@ -7,7 +7,7 @@ public class Health
     public int maxHealth;
     public int currentHealth;
 
-    Health(int maxHealth, int currentHealth = -1)
+    public Health(int maxHealth, int currentHealth = -1)
     {
         this.maxHealth = maxHealth;
 
