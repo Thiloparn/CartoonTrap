@@ -6,6 +6,6 @@ public class Jump : IAction
 {
     public void ExecuteAction(PlayerController player)
     {
-        MonoBehaviour.print("Jump");
+        player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse); ;
     }
 }
