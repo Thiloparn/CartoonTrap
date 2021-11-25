@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
         //Habrá que editar esto para que se cargue con una partida específica
+
     }
 
     public void OptionsEnter()
