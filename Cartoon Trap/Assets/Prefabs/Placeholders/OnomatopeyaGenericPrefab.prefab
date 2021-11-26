@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2167419308519132463}
   m_Layer: 0
   m_Name: OnomatopeyaGenericPrefab
-  m_TagString: Untagged
+  m_TagString: Onomatopeya
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,9 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e509375fc7be1b4a98ce310ba385493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 0
-  timeAlive: 0
-  effect: {fileID: 0}
+  lifeTime: 10
 --- !u!212 &1230027375091196130
 SpriteRenderer:
   m_ObjectHideFlags: 0

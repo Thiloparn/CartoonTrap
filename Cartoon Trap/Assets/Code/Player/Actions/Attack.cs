@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Attack : IAction
 {
+    private Transform transform;
+
+    public Attack(Transform transform)
+    {
+        this.transform = transform;
+    }
+
     public void ExecuteAction(PlayerController player)
     {
-        MonoBehaviour.print("Attack");
+        MonoBehaviour.Instantiate<GameObject>(player.attackOnomatopeya, transform.position, Quaternion.identity);
     }
 }

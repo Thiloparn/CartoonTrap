@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(OnomatopeyaCollider), typeof(OnomaopeyaEffect))]
 public class Onomatopeya : MonoBehaviour
 {
 
@@ -12,10 +13,14 @@ public class Onomatopeya : MonoBehaviour
 
     private OnomaopeyaEffect effect;
 
+    private int onoMaxUpgrades = 2;
+    private int currentUpgrades;
+
     public bool Active { get => active; set => active = value; }
 
     private void Awake()
     {
+        currentUpgrades = 0;
         timeAlive = 0;
         Active = false;
         effect = GetComponent<OnomaopeyaEffect>();
@@ -35,9 +40,18 @@ public class Onomatopeya : MonoBehaviour
         }
     }
 
-    private void DestroyOnomatopeya() //Metodo que podrian heredar los hijos en caso de que al destruirse las onomatopeyas hagan algo
+    protected void DestroyOnomatopeya() //Metodo que podrian heredar los hijos en caso de que al destruirse las onomatopeyas hagan algo
     {
         Destroy(gameObject);
+    }
+
+    public void Upgrade()
+    {
+        if (currentUpgrades < onoMaxUpgrades)
+        {
+            transform.localScale *= 2f;
+            ++currentUpgrades;
+        }
     }
 
 }
