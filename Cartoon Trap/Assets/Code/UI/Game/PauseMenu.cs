@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     public Button botonOpciones;
     public Button botonSalir;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] PlayerInput playerInput;
     bool gameIsPaused;
 
     private void Awake()
@@ -20,9 +22,10 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = false;
         pauseMenu.SetActive(false);
     }
-    private void Update()
+
+    public void onPause(InputAction.CallbackContext value)
     {
-        if (Input.GetButtonDown("Pause"))
+        if (value.started)
         {
             if (gameIsPaused)
             {

@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class PlayerController : MonoBehaviour
 {
+
     //Health
     public int maxHealth = 0;
     public int currentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
     private IAction pum = new Pum();
 
     private Rigidbody2D rigidBody;
+    [SerializeField] PlayerInput playerInput;
+    public string activeActionMap;
 
     private void Awake()
     {
@@ -43,13 +47,10 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        ManageInputs();
-    }
-
     private void FixedUpdate()
     {
+        activeActionMap = playerInput.currentActionMap.name;
+
         if (playerHealth.currentHealth == 0)
         {
             Die();
@@ -121,47 +122,88 @@ public class PlayerController : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    private void ManageInputs()
+    public void onMovement(InputAction.CallbackContext value)
     {
-        movingDirection = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Dash"))
-        {
-            dashing = true;
-        }
+        movingDirection = value.ReadValue<Vector2>().x;
+    }
 
-        if (Input.GetButtonDown("BasicAttack"))
+    public void onPunch(InputAction.CallbackContext value)
+    {
+        if (value.started)
         {
             attacking = true;
         }
+    }
 
-        if (Input.GetButtonDown("Grap"))
+    public void onGrap(InputAction.CallbackContext value)
+    {
+        if (value.started)
         {
             grapping = true;
         }
+    }
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (jumpAbble)
-            {
-                jumping = true;
-            }
-        }
-
-        if (Input.GetButtonDown("Heal"))
-        {
-            healing = true;
-        }
-
-        if (Input.GetButtonDown("Slash"))
+    public void onSlash(InputAction.CallbackContext value)
+    {
+        if (value.started)
         {
             usingBlade = true;
         }
+    }
 
-        if (Input.GetButtonDown("Pum"))
+    public void onPum(InputAction.CallbackContext value)
+    {
+        if (value.started)
         {
             usingHammer = true;
         }
     }
+
+    public void onHeal(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            healing = true;
+        }
+    }
+
+    public void onJump(InputAction.CallbackContext value)
+    {
+        if (value.started && jumpAbble)
+        {
+            jumping = true;
+        }
+    }
+
+    public void onDash(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            dashing = true;
+        }
+    }
+
+    public void onChangeInputs(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            if(playerInput.currentActionMap.name == "WASD without Mouse")
+            {
+                playerInput.SwitchCurrentActionMap("WASD with Mouse");
+            }
+            else if (playerInput.currentActionMap.name == "WASD with Mouse")
+            {
+                playerInput.SwitchCurrentActionMap("Arrows");
+            }
+            else
+            {
+                playerInput.SwitchCurrentActionMap("WASD without Mouse");
+            }
+        }
+
+        Debug.Log("Cambiado mapeado de inputs");
+    }
+
 
     private void Move()
     {
