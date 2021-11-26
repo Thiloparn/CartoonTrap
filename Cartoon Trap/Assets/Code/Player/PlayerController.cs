@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     //Flags
     private bool dashing = false;
-    private bool attacking = false;
+    public bool attacking = false;
     private bool grapping = false;
     private bool jumping = false;
     private bool jumpAbble = false;
@@ -30,16 +30,20 @@ public class PlayerController : MonoBehaviour
 
     //Actions
     private IAction dash = new Dash();
-    private IAction attack = new Attack();
     private IAction grap = new Grap();
     private IAction jump = new Jump();
     private IAction heal = new Heal();
     private IAction slash = new Slash();
     private IAction pum = new Pum();
 
+    //Onos ¡¡TEMPORAL!!
+    public GameObject attackOnomatopeya;
+
     private Rigidbody2D rigidBody;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
+
+    public bool Attacking { get => attacking; set => attacking = value; }
 
     private void Awake()
     {
@@ -76,12 +80,6 @@ public class PlayerController : MonoBehaviour
         {
             dash.ExecuteAction(this);
             dashing = false;
-        }
-
-        if (attacking)
-        {
-            attack.ExecuteAction(this);
-            attacking = false;
         }
 
         if (grapping)
@@ -131,7 +129,7 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            attacking = true;
+            Attacking = true;
         }
     }
 
