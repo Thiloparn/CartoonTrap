@@ -98,23 +98,4 @@ public class SavesSystem : MonoBehaviour
             Debug.LogError("Save file not found in " + path);
         }
     }
-
-    //Para poder testear el funcionamiento, descomentar el update y todos los Debug.Logs de los métodos, y poner el script en algún lugar de la escena
-    /*public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            saveGame("test");
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            loadGame("test");
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            deleteGame("test");
-        }
-    }*/
 }
