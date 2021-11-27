@@ -735,12 +735,20 @@ PrefabInstance:
       objectReference: {fileID: 1008157692}
     - target: {fileID: 3677637967611149992, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
       propertyPath: currentHealth
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3677637967611149992, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
+      propertyPath: phiuOnomatopeya
+      value: 
+      objectReference: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
     - target: {fileID: 3677637967611149992, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
       propertyPath: attackOnomatopeya
       value: 
       objectReference: {fileID: 8867750755915686930, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+    - target: {fileID: 3677637967611149992, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
+      propertyPath: initialCurrentHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3677637967611149993, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -1550,6 +1558,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1932743634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1932743636}
+  - component: {fileID: 1932743635}
+  m_Layer: 0
+  m_Name: DataManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1932743635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932743634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c88ba2832a8df74d8a4f48ed202432a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1008157696}
+--- !u!4 &1932743636
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932743634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4319642, y: -0.7576132, z: -247.67062}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1952282380
 GameObject:
   m_ObjectHideFlags: 0

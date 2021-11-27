@@ -10,8 +10,9 @@ public class PlayerController : MonoBehaviour
 
     //Health
     public int maxHealth = 0;
-    public int currentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
-    public Health playerHealth;
+    public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
+    private Health playerHealth;
+    public int numberOfHealings = 3;
 
     //Movement
     private float movingDirection = 0f;
@@ -32,12 +33,13 @@ public class PlayerController : MonoBehaviour
     private IAction dash = new Dash();
     private IAction grap = new Grap();
     private IAction jump = new Jump();
-    private IAction heal = new Heal();
+    private IAction heal;
     private IAction slash = new Slash();
     private IAction pum = new Pum();
 
     //Onos ¡¡TEMPORAL!!
     public GameObject attackOnomatopeya;
+    public GameObject phiuOnomatopeya;
 
     private Rigidbody2D rigidBody;
     [SerializeField] PlayerInput playerInput;
@@ -47,15 +49,21 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        playerHealth = new Health(maxHealth, currentHealth);
+        playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
+        heal = new Heal(numberOfHealings);
+    }
+
+    private void Update()
+    {
+        print(playerHealth.CurrentHealth);
     }
 
     private void FixedUpdate()
     {
         activeActionMap = playerInput.currentActionMap.name;
 
-        if (playerHealth.currentHealth == 0)
+        if (playerHealth.CurrentHealth == 0)
         {
             Die();
         }
@@ -218,5 +226,10 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void Heal()
+    {
+        playerHealth.IncreaseHealth(1);
     }
 }
