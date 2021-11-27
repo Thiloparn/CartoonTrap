@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnomaopeyaEffect : MonoBehaviour
 {
-    public void ExecuteEffect()
+    public virtual void ExecuteEffect()
     {
         print("Efect");
         Destroy(gameObject);

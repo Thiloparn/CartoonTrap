@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Health
 {
-    public int maxHealth;
-    public int currentHealth;
+    private int maxHealth;
+    private int currentHealth;
+
+    public int CurrentHealth { get => currentHealth;}
 
     public Health(int maxHealth, int currentHealth = -1)
     {

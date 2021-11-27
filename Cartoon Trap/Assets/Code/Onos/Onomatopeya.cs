@@ -11,14 +11,14 @@ public class Onomatopeya : MonoBehaviour
     private float timeAlive;
     private bool active;
 
-    private OnomaopeyaEffect effect;
+    protected OnomaopeyaEffect effect;
 
-    private int onoMaxUpgrades = 2;
-    private int currentUpgrades;
+    protected int onoMaxUpgrades = 2;
+    protected int currentUpgrades;
 
     public bool Active { get => active; set => active = value; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         currentUpgrades = 0;
         timeAlive = 0;
@@ -45,7 +45,7 @@ public class Onomatopeya : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Upgrade()
+    public virtual void Upgrade()
     {
         if (currentUpgrades < onoMaxUpgrades)
         {
