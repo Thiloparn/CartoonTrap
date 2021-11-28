@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public int numberOfHealings = 3;
 
     //Movement
-    private float movingDirection = 0f;
+    private float movingDirectionX = 0f;
     public float speed = 5f;
     public float jumpForce = 5f;
 
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     private IAction dash = new Dash();
     private IAction grap = new Grap();
     private IAction jump = new Jump();
-    private IAction heal;
+    private Heal heal;
     private IAction slash = new Slash();
     private IAction pum = new Pum();
 
@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     public void onMovement(InputAction.CallbackContext value)
     {
-        movingDirection = value.ReadValue<Vector2>().x;
+        movingDirectionX = value.ReadValue<Vector2>().x;
     }
 
     public void onPunch(InputAction.CallbackContext value)
@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        transform.position += Vector3.right * movingDirection * speed * Time.fixedDeltaTime;
+        transform.position += Vector3.right * movingDirectionX * speed * Time.fixedDeltaTime;
     }
 
     public bool isGrounded()
@@ -231,5 +231,11 @@ public class PlayerController : MonoBehaviour
     public void Heal()
     {
         playerHealth.IncreaseHealth(1);
+    }
+
+    public void Rest()
+    {
+        playerHealth.ResetHealth();
+        heal.resetHealings();
     }
 }
