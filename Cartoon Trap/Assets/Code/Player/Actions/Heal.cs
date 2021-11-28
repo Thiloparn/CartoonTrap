@@ -21,4 +21,9 @@ public class Heal : IAction
             --currentHealings;
         }
     }
+
+    public void resetHealings()
+    {
+        currentHealings = maxHealings;
+    }
 }

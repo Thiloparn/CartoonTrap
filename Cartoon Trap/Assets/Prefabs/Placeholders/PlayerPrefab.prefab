@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 4353769014367737987}
   m_Layer: 0
   m_Name: PlayerPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,11 +163,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: -1
+  initialCurrentHealth: -1
+  numberOfHealings: 3
   speed: 5
   jumpForce: 5
   attacking: 0
   attackOnomatopeya: {fileID: 8867750755915686930, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+  phiuOnomatopeya: {fileID: 0}
+  playerInput: {fileID: 0}
+  activeActionMap: 
 --- !u!212 &3862231640987445958
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -239,7 +243,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &4353769014367737987
 BoxCollider2D:
   m_ObjectHideFlags: 0
