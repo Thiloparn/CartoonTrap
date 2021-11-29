@@ -117,7 +117,8 @@ MonoBehaviour:
   jumpForce: 5
   attacking: 0
   attackOnomatopeya: {fileID: 8867750755915686930, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
-  phiuOnomatopeya: {fileID: 0}
+  phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
+  pumOnomatopeya: {fileID: 5896842734998594493, guid: 7c3819faf1d521b44bc578efa9a1b1e2, type: 3}
   playerInput: {fileID: 0}
   activeActionMap: 
 --- !u!212 &3862231640987445958
