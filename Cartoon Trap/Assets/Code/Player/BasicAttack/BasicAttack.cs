@@ -24,8 +24,6 @@ public class BasicAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        SetColliderOffset();
-
         if (player.Attacking)
         {
 
@@ -42,6 +40,10 @@ public class BasicAttack : MonoBehaviour
                 FinishAttack();
             }
 
+        }
+        else
+        {
+            SetColliderOffset();
         }
     }
 

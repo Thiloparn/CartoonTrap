@@ -6,9 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(OnomatopeyaCollider), typeof(OnomaopeyaEffect))]
 public class Onomatopeya : MonoBehaviour
 {
-
-    public float lifeTime;
-    private float timeAlive;
     private bool active;
 
     protected OnomaopeyaEffect effect;
@@ -21,20 +18,13 @@ public class Onomatopeya : MonoBehaviour
     protected virtual void Awake()
     {
         currentUpgrades = 0;
-        timeAlive = 0;
         Active = false;
         effect = GetComponent<OnomaopeyaEffect>();
     }
 
     private void FixedUpdate()
     {
-        timeAlive += Time.fixedDeltaTime;
-
-        if (timeAlive >= lifeTime)
-        {
-            DestroyOnomatopeya();
-        }
-        else if(Active)
+        if(Active)
         {
             effect.ExecuteEffect();
         }

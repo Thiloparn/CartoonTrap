@@ -36,11 +36,12 @@ public class PlayerController : MonoBehaviour
     private IAction jump = new Jump();
     private Heal heal;
     private IAction slash = new Slash();
-    private IAction pum = new Pum();
+    private IAction pum = new ABCD();
 
     //Onos ¡¡TEMPORAL!!
     public GameObject attackOnomatopeya;
     public GameObject phiuOnomatopeya;
+    public GameObject pumOnomatopeya;
 
     private Rigidbody2D rigidBody;
     [SerializeField] PlayerInput playerInput;
@@ -55,11 +56,6 @@ public class PlayerController : MonoBehaviour
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
         heal = new Heal(numberOfHealings);
-    }
-
-    private void Update()
-    {
-        print(playerHealth.CurrentHealth);
     }
 
     private void FixedUpdate()

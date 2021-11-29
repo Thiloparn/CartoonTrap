@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Punch
   - Onomatopeya
+  - PumEffectArea
   layers:
   - Default
   - TransparentFX

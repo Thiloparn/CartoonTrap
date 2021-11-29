@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pum : IAction
+public class ABCD : IAction
 {
     public void ExecuteAction(PlayerController player)
     {
-        MonoBehaviour.print("Pum");
+        MonoBehaviour.Instantiate(player.pumOnomatopeya, player.transform.position, Quaternion.identity);
     }
 }
