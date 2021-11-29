@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     //Movement
     private float movingDirectionX = 0f;
+    private float movingDirectionY = 0f;
     public float speed = 5f;
     public float jumpForce = 5f;
 
@@ -46,6 +47,8 @@ public class PlayerController : MonoBehaviour
     public string activeActionMap;
 
     public bool Attacking { get => attacking; set => attacking = value; }
+    public float MovingDirectionX { get => movingDirectionX;}
+    public float MovingDirectionY { get => movingDirectionY;}
 
     private void Awake()
     {
@@ -131,6 +134,7 @@ public class PlayerController : MonoBehaviour
     public void onMovement(InputAction.CallbackContext value)
     {
         movingDirectionX = value.ReadValue<Vector2>().x;
+        movingDirectionY = value.ReadValue<Vector2>().y;
     }
 
     public void onPunch(InputAction.CallbackContext value)
