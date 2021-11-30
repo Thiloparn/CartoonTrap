@@ -15,9 +15,4 @@ public class PumOnomatopeya : Onomatopeya
     {
         Instantiate(areaEffectCollider, transform.position, Quaternion.identity);
     }
-
-    public override void Upgrade()
-    {
-        Active = true;
-    }
 }

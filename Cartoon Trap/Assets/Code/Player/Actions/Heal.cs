@@ -13,11 +13,12 @@ public class Heal : IAction
         currentHealings = this.maxHealings;
     }
 
-    public void ExecuteAction(PlayerController player)
+    public override void ExecuteAction(PlayerController player)
     {
         if (currentHealings > 0)
         {
-            MonoBehaviour.Instantiate<GameObject>(player.phiuOnomatopeya, player.transform.position, Quaternion.identity);
+            positionOfInstanciation = player.transform.position;
+            InstantiateOnomatopeya(player.phiuOnomatopeya);
             --currentHealings;
         }
     }

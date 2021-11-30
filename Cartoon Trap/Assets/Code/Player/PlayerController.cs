@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 5f;
 
+    //Combat
+    public float attackPower = 0;
+
     //Flags
     private bool dashing = false;
     public bool attacking = false;
@@ -36,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private IAction jump = new Jump();
     private Heal heal;
     private IAction slash = new Slash();
-    private IAction pum = new ABCD();
+    private IAction pum = new Pum();
 
     //Onos ¡¡TEMPORAL!!
     public GameObject attackOnomatopeya;
