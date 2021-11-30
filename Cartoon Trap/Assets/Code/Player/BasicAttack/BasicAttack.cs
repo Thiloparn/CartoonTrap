@@ -17,13 +17,11 @@ public class BasicAttack : MonoBehaviour
     public float maxTimeBetweenAttacks = 0.2f;
     public float timeElapsedBetweenAttacks = 0f;
 
-    private bool touchingOno = false;
-
     private void Awake()
     {
         attackCollider = GetComponent<Collider2D>();
         attackCollider.enabled = false;
-        attack = new Attack(attackCollider.transform);
+        attack = new Attack();
     }
 
     private void FixedUpdate()
@@ -102,7 +100,6 @@ public class BasicAttack : MonoBehaviour
 
     private void StartAttack()
     {
-        touchingOno = false;
         attackCollider.enabled = true;
         attackElapsed += Time.fixedDeltaTime;
         ++numAttacksInCurrentCombo;
@@ -111,9 +108,6 @@ public class BasicAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Onomatopeya")
-        {
-            touchingOno = true;
-        }
+        
     }
 }

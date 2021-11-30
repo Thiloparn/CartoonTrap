@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ABCD : IAction
+public class Pum : IAction
 {
-    public void ExecuteAction(PlayerController player)
+    public override void ExecuteAction(PlayerController player)
     {
-        MonoBehaviour.Instantiate(player.pumOnomatopeya, player.transform.position, Quaternion.identity);
+        positionOfInstanciation = player.transform.position;
+        InstantiateOnomatopeya(player.pumOnomatopeya);
     }
 }

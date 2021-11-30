@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jump : IAction
 {
-    public void ExecuteAction(PlayerController player)
+    public override void ExecuteAction(PlayerController player)
     {
         player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse); ;
     }

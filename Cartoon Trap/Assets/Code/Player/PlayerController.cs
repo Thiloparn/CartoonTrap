@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private IAction jump = new Jump();
     private Heal heal;
     private IAction slash = new Slash();
-    private IAction pum = new ABCD();
+    private IAction pum = new Pum();
 
     //Onos ¡¡TEMPORAL!!
     public GameObject attackOnomatopeya;
