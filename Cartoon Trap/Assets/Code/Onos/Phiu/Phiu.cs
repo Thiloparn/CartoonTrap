@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class Phiu : Onomatopeya
 {
-    public override void Upgrade()
-    {
-        Active = true;
-    }
+
 }
