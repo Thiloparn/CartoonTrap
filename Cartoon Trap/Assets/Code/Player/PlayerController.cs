@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 5f;
 
+    //Combat
+    public float attackPower = 0;
+
     //Flags
     private bool dashing = false;
     public bool attacking = false;
