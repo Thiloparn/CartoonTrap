@@ -16,8 +16,12 @@ public class PlayerController : MonoBehaviour
 
     //Movement
     private float movingDirectionX = 0f;
+    private float movingDirectionY = 0f;
     public float speed = 5f;
     public float jumpForce = 5f;
+
+    //Combat
+    public float attackPower = 0;
 
     //Flags
     private bool dashing = false;
@@ -37,26 +41,24 @@ public class PlayerController : MonoBehaviour
     private IAction slash = new Slash();
     private IAction pum = new Pum();
 
-    //Onos ¡¡TEMPORAL!!
+    //Onos Â¡Â¡TEMPORAL!!
     public GameObject attackOnomatopeya;
     public GameObject phiuOnomatopeya;
+    public GameObject pumOnomatopeya;
 
     private Rigidbody2D rigidBody;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
 
     public bool Attacking { get => attacking; set => attacking = value; }
+    public float MovingDirectionX { get => movingDirectionX;}
+    public float MovingDirectionY { get => movingDirectionY;}
 
     private void Awake()
     {
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
         heal = new Heal(numberOfHealings);
-    }
-
-    private void Update()
-    {
-        //print(playerHealth.CurrentHealth);
     }
 
     private void FixedUpdate()
@@ -131,6 +133,7 @@ public class PlayerController : MonoBehaviour
     public void onMovement(InputAction.CallbackContext value)
     {
         movingDirectionX = value.ReadValue<Vector2>().x;
+        movingDirectionY = value.ReadValue<Vector2>().y;
     }
 
     public void onPunch(InputAction.CallbackContext value)

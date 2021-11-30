@@ -6,18 +6,22 @@ public class BasicAttack : MonoBehaviour
 {
     public PlayerController player;
     private IAction attack;
+
     private Collider2D attackCollider;
+    private const float ATTACK_COLLIDER_OFFSET = 0.055f;
 
     public float attackDuration = 0.5f;
-    public float attackElapsed = 0f;
-
-    private bool touchingOno = false;
+    private float attackElapsed = 0f;
+    private const int MAX_ATTACK_COMBO = 3;
+    public int numAttacksInCurrentCombo = 0;
+    public float maxTimeBetweenAttacks = 0.2f;
+    public float timeElapsedBetweenAttacks = 0f;
 
     private void Awake()
     {
         attackCollider = GetComponent<Collider2D>();
         attackCollider.enabled = false;
-        attack = new Attack(attackCollider.transform);
+        attack = new Attack();
     }
 
     private void FixedUpdate()
@@ -37,33 +41,71 @@ public class BasicAttack : MonoBehaviour
                 FinishAttack();
             }
         }
+        else
+        {
+            SetColliderOffset();
+            timeElapsedBetweenAttacks += Time.deltaTime;
+            if (timeElapsedBetweenAttacks >= maxTimeBetweenAttacks)
+            {
+                numAttacksInCurrentCombo = 0;
+                timeElapsedBetweenAttacks = 0;
+            }
+        }
+    }
+
+    private void SetColliderOffset()
+    {
+        Vector2 newOffset = new Vector2(0, 0);
+
+        if (player.MovingDirectionY != 0)
+        {
+            if (player.MovingDirectionY < 0)
+            {
+                newOffset.y -= 1;
+            }
+            else
+            {
+                newOffset.y += 1;
+            }
+        }
+        else
+        {
+            if (player.MovingDirectionX < 0)
+            {
+                newOffset.x -= 1;
+            }
+            else
+            {
+                newOffset.x += 1;
+            }
+        }
+
+        attackCollider.offset = newOffset * ATTACK_COLLIDER_OFFSET;
     }
 
     private void FinishAttack()
     {
         attackCollider.enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
         attackElapsed = 0;
         player.Attacking = false;
-        if (touchingOno == false)
+        if (numAttacksInCurrentCombo == MAX_ATTACK_COMBO)
         {
+            print("3 ataque");
             attack.ExecuteAction(player);
+            numAttacksInCurrentCombo = 0;
         }
     }
 
     private void StartAttack()
     {
-        touchingOno = false;
         attackCollider.enabled = true;
-        GetComponent<SpriteRenderer>().enabled = true;
         attackElapsed += Time.fixedDeltaTime;
+        ++numAttacksInCurrentCombo;
+        timeElapsedBetweenAttacks = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Onomatopeya")
-        {
-            touchingOno = true;
-        }
+        
     }
 }

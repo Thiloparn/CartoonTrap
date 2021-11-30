@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Attack : IAction
 {
-    private Transform transform;
 
-    public Attack(Transform transform)
+    public override void ExecuteAction(PlayerController player)
     {
-        this.transform = transform;
-    }
-
-    public void ExecuteAction(PlayerController player)
-    {
-        MonoBehaviour.Instantiate<GameObject>(player.attackOnomatopeya, transform.position, Quaternion.identity);
+        positionOfInstanciation = player.transform.position;
+        InstantiateOnomatopeya(player.attackOnomatopeya);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Dash : IAction
 {
-    public void ExecuteAction(PlayerController player)
+    public override void ExecuteAction(PlayerController player)
     {
         MonoBehaviour.print("Dash");
     }
