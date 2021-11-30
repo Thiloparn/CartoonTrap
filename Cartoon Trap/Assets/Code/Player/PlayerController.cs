@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private IAction slash = new Slash();
     private IAction pum = new Pum();
 
-    //Onos ¡¡TEMPORAL!!
+    //Onos Â¡Â¡TEMPORAL!!
     public GameObject attackOnomatopeya;
     public GameObject phiuOnomatopeya;
     public GameObject pumOnomatopeya;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Punch
   - Onomatopeya
+  - Floor
   - PumEffectArea
   layers:
   - Default
@@ -14,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Floor
   - 
   - 
   - 
