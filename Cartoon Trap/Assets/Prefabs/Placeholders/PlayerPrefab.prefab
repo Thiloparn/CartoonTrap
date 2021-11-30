@@ -62,7 +62,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3677637967611149992}
   attackDuration: 0.5
+  numAttacksInCurrentCombo: 0
   maxTimeBetweenAttacks: 1
+  timeElapsedBetweenAttacks: 0
 --- !u!1 &3677637967611149993
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,13 +117,13 @@ MonoBehaviour:
   initialCurrentHealth: 2
   numberOfHealings: 3
   speed: 10
-  jumpForce: 5
+  jumpForce: 10
   attackPower: 10
   attacking: 0
   attackOnomatopeya: {fileID: 8867750755915686930, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
   phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
   pumOnomatopeya: {fileID: 5896842734998594493, guid: 7c3819faf1d521b44bc578efa9a1b1e2, type: 3}
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 1008157692}
   activeActionMap: 
 --- !u!212 &3862231640987445958
 SpriteRenderer:
