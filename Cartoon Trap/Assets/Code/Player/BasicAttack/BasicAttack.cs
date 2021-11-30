@@ -24,7 +24,6 @@ public class BasicAttack : MonoBehaviour
     {
         if (player.Attacking)
         {
-            
             if (attackElapsed == 0)
             {
                 StartAttack();
@@ -37,7 +36,6 @@ public class BasicAttack : MonoBehaviour
             {
                 FinishAttack();
             }
-
         }
     }
 

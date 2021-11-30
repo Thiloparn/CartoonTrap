@@ -725,6 +725,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3677637967611149992, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3677637967611149993, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -1034,18 +1038,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 95403267981269471, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
-      propertyPath: maxHealth
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 95403267981269471, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
-      propertyPath: initialCurrentHealth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6914125180317747960, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -1094,8 +1086,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2962918832988100373, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
 --- !u!1 &1932743634
 GameObject:

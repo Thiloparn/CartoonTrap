@@ -14,29 +14,25 @@ public class BasicEnemy : MonoBehaviour
     public float movingDirectionX = 0f;
     public float speed = 3f;
 
+    //Detection
+    public float detectionRadius = 5f;
+
     //Flags
-    public bool attacking = false;
+    public bool playerDetected = false;
 
     private Rigidbody2D rigidBody;
-
-    public bool Attacking { get => attacking; set => attacking = value; }
+    private PlayerController player;
+    [SerializeField] CircleCollider2D detectionCollider;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
+        detectionCollider.radius = detectionRadius;
 
         int[] direction = { -1, 1 };
         movingDirectionX = direction[UnityEngine.Random.Range(0, direction.Length)];
-        if(movingDirectionX == -1)
-        {
-            TurnSprite();
-        }
-    }
-
-    private void Update()
-    {
-        //print(enemyHealth.CurrentHealth);
+        SpriteDirection(movingDirectionX);
     }
 
     private void FixedUpdate()
@@ -48,36 +44,72 @@ public class BasicEnemy : MonoBehaviour
         }
         else
         {
-
-            if (!CheckFloorAhead())
+            if (playerDetected)
             {
-                movingDirectionX *= -1;
-                TurnSprite();
+                detectionCollider.radius = detectionRadius * 2;
+                MoveToPlayer();
             }
+            else
+            {
+                detectionCollider.radius = detectionRadius / 2;
 
-            Move();
+                if (!CheckFloorAhead())
+                {
+                    movingDirectionX *= -1;
+                }
+
+                Move();
+            }
         }
     }
 
-    private void TurnSprite()
+    private void SpriteDirection(float direction)
     {
         Vector3 scale = transform.localScale;
-        scale.x *= -1;
+        scale.x = direction;
         transform.localScale = scale;
-    }
-
-    private void Die()
-    {
-        throw new NotImplementedException();
     }
 
     private void Move()
     {
         transform.position += Vector3.right * movingDirectionX * speed * Time.fixedDeltaTime;
+        SpriteDirection(movingDirectionX);
+    }
+
+    private void MoveToPlayer()
+    {
+        float directionOfPlayer = player.transform.position.x > transform.position.x ? 1f : -1f;
+
+        transform.position += Vector3.right * directionOfPlayer * speed * Time.fixedDeltaTime;
+
+        SpriteDirection(directionOfPlayer);
     }
 
     private bool CheckFloorAhead()
     {
         return Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(movingDirectionX, -1)), 2, LayerMask.GetMask("Floor"));
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerDetected = true;
+            player = GameObject.FindObjectOfType<PlayerController>();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            playerDetected = false;
+            player = null;
+        }
+    }
+
+    private void Die()
+    {
+        throw new NotImplementedException();
     }
 }
