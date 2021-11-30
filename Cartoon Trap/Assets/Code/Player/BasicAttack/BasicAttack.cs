@@ -11,7 +11,11 @@ public class BasicAttack : MonoBehaviour
     private const float ATTACK_COLLIDER_OFFSET = 0.055f;
 
     public float attackDuration = 0.5f;
-    public float attackElapsed = 0f;
+    private float attackElapsed = 0f;
+    private const int MAX_ATTACK_COMBO = 3;
+    public int numAttacksInCurrentCombo = 0;
+    public float maxTimeBetweenAttacks = 0.2f;
+    public float timeElapsedBetweenAttacks = 0f;
 
     private bool touchingOno = false;
 
@@ -44,6 +48,12 @@ public class BasicAttack : MonoBehaviour
         else
         {
             SetColliderOffset();
+            timeElapsedBetweenAttacks += Time.deltaTime;
+            if (timeElapsedBetweenAttacks >= maxTimeBetweenAttacks)
+            {
+                numAttacksInCurrentCombo = 0;
+                timeElapsedBetweenAttacks = 0;
+            }
         }
     }
 
@@ -82,9 +92,11 @@ public class BasicAttack : MonoBehaviour
         attackCollider.enabled = false;
         attackElapsed = 0;
         player.Attacking = false;
-        if (touchingOno == false)
+        if (numAttacksInCurrentCombo == MAX_ATTACK_COMBO)
         {
+            print("3 ataque");
             attack.ExecuteAction(player);
+            numAttacksInCurrentCombo = 0;
         }
     }
 
@@ -93,6 +105,8 @@ public class BasicAttack : MonoBehaviour
         touchingOno = false;
         attackCollider.enabled = true;
         attackElapsed += Time.fixedDeltaTime;
+        ++numAttacksInCurrentCombo;
+        timeElapsedBetweenAttacks = 0;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

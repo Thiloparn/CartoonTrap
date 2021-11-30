@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3677637967611149992}
   attackDuration: 0.5
-  attackElapsed: 0
+  maxTimeBetweenAttacks: 1
 --- !u!1 &3677637967611149993
 GameObject:
   m_ObjectHideFlags: 0
