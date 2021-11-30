@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        print(playerHealth.CurrentHealth);
+        //print(playerHealth.CurrentHealth);
     }
 
     private void FixedUpdate()
