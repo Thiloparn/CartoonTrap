@@ -7,6 +7,6 @@ public class OnomaopeyaEffect : MonoBehaviour
     public virtual void ExecuteEffect()
     {
         print("Efect");
-        Destroy(gameObject);
+        GetComponent<Onomatopeya>().DestroyOnomatopeya();
     }
 }
