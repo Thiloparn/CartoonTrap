@@ -106,6 +106,9 @@ public class BasicAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(player.MovingDirectionY < 0 && collision.gameObject.tag == "Enemy" && player.attacking)
+        {
+            player.rebound.ExecuteAction(player);
+        }
     }
 }
