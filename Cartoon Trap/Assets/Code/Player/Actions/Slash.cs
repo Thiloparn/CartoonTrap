@@ -6,6 +6,8 @@ public class Slash : IAction
 {
     public override void ExecuteAction(PlayerController player)
     {
-        MonoBehaviour.print("Slash");
+        positionOfInstanciation = player.transform.position;
+        InstantiateOnomatopeya(player.slashOnomatpeya);
+        onoInstanciated.GetComponent<SlashOnomatopeya>().slashDirection = player.MovingDirectionX;
     }
 }

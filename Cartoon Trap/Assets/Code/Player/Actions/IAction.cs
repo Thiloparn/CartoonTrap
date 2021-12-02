@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class IAction 
 {
-    private GameObject onoInstanciated = null;
+    protected GameObject onoInstanciated = null;
     protected Vector3 positionOfInstanciation = Vector3.zero;
 
     public virtual void ExecuteAction(PlayerController player) {}

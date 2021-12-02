@@ -26,7 +26,7 @@ public class Onomatopeya : MonoBehaviour
         }
     }
 
-    protected void DestroyOnomatopeya() //Metodo que podrian heredar los hijos en caso de que al destruirse las onomatopeyas hagan algo
+    public void DestroyOnomatopeya() //Metodo que podrian heredar los hijos en caso de que al destruirse las onomatopeyas hagan algo
     {
         Destroy(gameObject);
     }
