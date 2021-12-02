@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private float movingDirectionY = 0f;
     public float speed = 5f;
     public float jumpForce = 5f;
+    public float reboundForce = 2f;
 
     //Combat
     public float attackPower = 0;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private IAction dash = new Dash();
     private IAction grap = new Grap();
     private IAction jump = new Jump();
+    public IAction rebound = new Rebound();
     private Heal heal;
     private IAction slash = new Slash();
     private IAction pum = new Pum();
