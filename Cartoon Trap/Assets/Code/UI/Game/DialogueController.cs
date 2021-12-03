@@ -10,12 +10,23 @@ public class DialogueController : MonoBehaviour
     Texts texts;
     [SerializeField] Text screenText;
     [SerializeField] Image imageField;
+    [SerializeField] GameObject dialogueGUI;
     private bool active = false;
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+
+        dialogueQueue = new Queue<string>();
+
+        anim.SetBool("Bocadillo", false);
+        anim.SetBool("Pesonaje_Hablador", false);
+    }
     public void ActivateDialogue(Texts textsObject, Sprite image)
     {
         active = true;
+        dialogueGUI.SetActive(true);
         anim.SetBool("Bocadillo", true);
-        anim.SetBool("Pesonaje_Hablador", true);
         texts = textsObject;
         imageField.sprite = image;
     }
@@ -54,7 +65,7 @@ public class DialogueController : MonoBehaviour
     void CloseDialogue()
     {
         anim.SetBool("Bocadillo", false);
-        anim.SetBool("Pesonaje_Hablador", false);
+        dialogueGUI.SetActive(false);
     }
     private void FixedUpdate()
     {

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +7,9 @@ public class InteractableObject : MonoBehaviour
     public Texts texts;
     public Sprite image;
 
-    private void OnMouseDown()
+    public void callDialogue()
     {
+        Console.WriteLine("ButtonPressed");
         FindObjectOfType<DialogueController>().ActivateDialogue(texts, image);
     }
 }
