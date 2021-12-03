@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
     public GameObject phiuOnomatopeya;
     public GameObject pumOnomatopeya;
     public GameObject slashOnomatpeya;
+    public GameObject hopOnomatopeya;
 
     private Rigidbody2D rigidBody;
     [SerializeField] PlayerInput playerInput;

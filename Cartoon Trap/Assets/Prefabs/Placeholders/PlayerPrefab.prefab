@@ -118,12 +118,14 @@ MonoBehaviour:
   numberOfHealings: 3
   speed: 10
   jumpForce: 10
+  reboundForce: 2
   attackPower: 10
   attacking: 0
   attackOnomatopeya: {fileID: 5678207302567928215, guid: 9553c53b97eb1144196f7ac3a27cfb6b, type: 3}
   phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
   pumOnomatopeya: {fileID: 5896842734998594493, guid: 7c3819faf1d521b44bc578efa9a1b1e2, type: 3}
   slashOnomatpeya: {fileID: 7491151816777940469, guid: caa8cebcb78c34b46ab8752ff1c49570, type: 3}
+  hopOnomatopeya: {fileID: 3881120773100089795, guid: e867ea78db8a01d42aea1f4f8baa2ee5, type: 3}
   playerInput: {fileID: 1008157692}
   activeActionMap: 
 --- !u!212 &3862231640987445958
