@@ -18,9 +18,6 @@ public class DialogueController : MonoBehaviour
         anim = GetComponent<Animator>();
 
         dialogueQueue = new Queue<string>();
-
-        anim.SetBool("Bocadillo", false);
-        anim.SetBool("Pesonaje_Hablador", false);
     }
     public void ActivateDialogue(Texts textsObject, Sprite image)
     {

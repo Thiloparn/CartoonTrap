@@ -7,9 +7,9 @@ public class InteractableObject : MonoBehaviour
     public Texts texts;
     public Sprite image;
 
-    public void callDialogue()
+    public void OnMouseDown()
     {
-        Console.WriteLine("ButtonPressed");
+        print("ButtonPressed");
         FindObjectOfType<DialogueController>().ActivateDialogue(texts, image);
     }
 }
