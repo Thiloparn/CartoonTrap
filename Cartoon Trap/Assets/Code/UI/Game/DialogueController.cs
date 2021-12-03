@@ -41,7 +41,8 @@ public class DialogueController : MonoBehaviour
     {
         if (dialogueQueue.Count == 0)
         {
-            CloseDialogue();
+            screenText.text = "";
+            anim.SetBool("Bocadillo", false);
             return;
         }
         string dialogue = dialogueQueue.Dequeue();
@@ -61,10 +62,9 @@ public class DialogueController : MonoBehaviour
 
     void CloseDialogue()
     {
-        anim.SetBool("Bocadillo", false);
         dialogueGUI.SetActive(false);
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (active)
         {
