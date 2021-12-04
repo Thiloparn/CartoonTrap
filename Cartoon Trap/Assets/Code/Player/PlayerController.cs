@@ -21,11 +21,17 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public float reboundForce = 2f;
 
+    //Dash
+    private float timeDashing = 0;
+    public float dashDuration;
+    public float dashSpeed;
+
     //Combat
     public float attackPower = 0;
 
     //Flags
-    private bool dashing = false;
+    public bool dashing = false;
+    public bool dashAbble = false;
     public bool attacking = false;
     private bool grapping = false;
     private bool jumping = false;
@@ -35,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private bool usingHammer = false;
 
     //Actions
-    private IAction dash = new Dash();
+    private Dash dash = new Dash(0);
     private IAction grap = new Grap();
     private IAction jump = new Jump();
     public IAction rebound = new Rebound();
@@ -57,6 +63,7 @@ public class PlayerController : MonoBehaviour
     public bool Attacking { get => attacking; set => attacking = value; }
     public float MovingDirectionX { get => movingDirectionX;}
     public float MovingDirectionY { get => movingDirectionY;}
+    public Rigidbody2D RigidBody { get => rigidBody;}
 
     private void Awake()
     {
@@ -78,6 +85,7 @@ public class PlayerController : MonoBehaviour
             if (isGrounded())
             {
                 jumpAbble = true;
+                dashAbble = true;
             }
             else
             {
@@ -90,43 +98,58 @@ public class PlayerController : MonoBehaviour
 
     private void ExecuteActions()
     {
+
         if (dashing)
         {
-            dash.ExecuteAction(this);
-            dashing = false;
-        }
+            timeDashing += Time.fixedDeltaTime;
 
-        if (grapping)
+            if (timeDashing >= dashDuration)
+            {
+                dashing = false;
+                timeDashing = 0;
+                dash.EndExecuteAction(this);
+            }
+            else
+            {
+                dash.ExecuteAction(this);
+            }
+
+        }
+        else
         {
-            grap.ExecuteAction(this);
-            grapping = false;
+            if (grapping)
+            {
+                grap.ExecuteAction(this);
+                grapping = false;
+            }
+
+            if (healing)
+            {
+                heal.ExecuteAction(this);
+                healing = false;
+            }
+
+            if (jumping)
+            {
+                jump.ExecuteAction(this);
+                jumping = false;
+            }
+
+            if (usingBlade)
+            {
+                slash.ExecuteAction(this);
+                usingBlade = false;
+            }
+
+            if (usingHammer)
+            {
+                pum.ExecuteAction(this);
+                usingHammer = false;
+            }
+
+            Move();
         }
 
-        if (jumping)
-        {
-            jump.ExecuteAction(this);
-            jumping = false;
-        }
-
-        if (healing)
-        {
-            heal.ExecuteAction(this);
-            healing = false;
-        }
-
-        if (usingBlade)
-        {
-            slash.ExecuteAction(this);
-            usingBlade = false;
-        }
-
-        if (usingHammer)
-        {
-            pum.ExecuteAction(this);
-            usingHammer = false;
-        }
-
-        Move();
     }
 
     private void Die()
@@ -190,9 +213,11 @@ public class PlayerController : MonoBehaviour
 
     public void onDash(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (value.started && dashAbble)
         {
             dashing = true;
+            dashAbble = false;
+            dash = new Dash(LookingAtDirection());
         }
     }
 
@@ -244,5 +269,17 @@ public class PlayerController : MonoBehaviour
     {
         playerHealth.ResetHealth();
         heal.resetHealings();
+    }
+
+    public float LookingAtDirection()
+    {
+        if (movingDirectionX < 0 )
+        {
+            return -1f;
+        }
+        else
+        {
+            return 1f;
+        }
     }
 }
