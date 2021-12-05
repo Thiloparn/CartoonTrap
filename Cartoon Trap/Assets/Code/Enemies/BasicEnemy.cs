@@ -56,8 +56,6 @@ public class BasicEnemy : MonoBehaviour
 
     private void Move()
     {
-        print(CheckObstacle());
-
         if (Vector2.Distance(transform.position, initialPostion) >= distance || CheckObstacle())
         {
             initialPostion = transform.position;
