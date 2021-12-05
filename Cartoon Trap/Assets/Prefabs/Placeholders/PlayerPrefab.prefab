@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8378979632271557876}
   - component: {fileID: 5425475741227896385}
   - component: {fileID: 3712681726702617049}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AttackCollider
   m_TagString: Punch
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 386234894422521500}
   - component: {fileID: 4353769014367737987}
   - component: {fileID: 1008157692}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ MonoBehaviour:
   numberOfHealings: 3
   speed: 10
   jumpForce: 10
-  reboundForce: 2
+  reboundForce: 5
   dashDuration: 0.2
   dashSpeed: 17
   attackPower: 10
