@@ -16,6 +16,11 @@ public class BasicEnemy : MonoBehaviour
     public float distance = 0f;
     public float speed = 3f;
 
+    //Flags
+    public bool moves = false;
+    public bool followPlayer = false;
+    public bool attackPlayer = false;
+
     private Rigidbody2D rigidBody;
     public PlayerController player;
     [SerializeField] EnemyDetection enemyDetection;
@@ -34,9 +39,9 @@ public class BasicEnemy : MonoBehaviour
         {
             Die();
         }
-        else
+        else if (moves)
         {
-            if (enemyDetection.playerDetected)
+            if (enemyDetection.playerDetected && followPlayer)
             {
                 MoveToPlayer();
             }
