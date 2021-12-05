@@ -11,28 +11,20 @@ public class BasicEnemy : MonoBehaviour
     private Health enemyHealth;
 
     //Movement
-    public float movingDirectionX = 0f;
+    private Vector2 initialPostion = new Vector2(0f, 0f);
+    public float movingDirectionX = 1f;
+    public float distance = 0f;
     public float speed = 3f;
 
-    //Detection
-    public float detectionRadius = 5f;
-
-    //Flags
-    public bool playerDetected = false;
-
     private Rigidbody2D rigidBody;
-    private PlayerController player;
-    [SerializeField] CircleCollider2D detectionCollider;
+    public PlayerController player;
+    [SerializeField] EnemyDetection enemyDetection;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
-        detectionCollider.radius = detectionRadius;
-
-        int[] direction = { -1, 1 };
-        movingDirectionX = direction[UnityEngine.Random.Range(0, direction.Length)];
-        SpriteDirection(movingDirectionX);
+        initialPostion = transform.position;
     }
 
     private void FixedUpdate()
@@ -44,20 +36,12 @@ public class BasicEnemy : MonoBehaviour
         }
         else
         {
-            if (playerDetected)
+            if (enemyDetection.playerDetected)
             {
-                detectionCollider.radius = detectionRadius * 2;
                 MoveToPlayer();
             }
             else
             {
-                detectionCollider.radius = detectionRadius / 2;
-
-                if (!CheckFloorAhead())
-                {
-                    movingDirectionX *= -1;
-                }
-
                 Move();
             }
         }
@@ -72,40 +56,53 @@ public class BasicEnemy : MonoBehaviour
 
     private void Move()
     {
+        print(CheckObstacle());
+
+        if (Vector2.Distance(transform.position, initialPostion) >= distance || CheckObstacle())
+        {
+            initialPostion = transform.position;
+            movingDirectionX *= -1;
+        }
+
         transform.position += Vector3.right * movingDirectionX * speed * Time.fixedDeltaTime;
         SpriteDirection(movingDirectionX);
     }
 
     private void MoveToPlayer()
     {
-        float directionOfPlayer = player.transform.position.x > transform.position.x ? 1f : -1f;
+        float directionOfPlayer = 1f;
 
-        transform.position += Vector3.right * directionOfPlayer * speed * Time.fixedDeltaTime;
+        if(player.transform.position.x - 0.5f > transform.position.x)
+        {
+            directionOfPlayer = 1f;
+            transform.position += Vector3.right * directionOfPlayer * speed * Time.fixedDeltaTime;
+        }
+        else if (player.transform.position.x + 0.5f < transform.position.x)
+        {
+            directionOfPlayer = -1f;
+            transform.position += Vector3.right * directionOfPlayer * speed * Time.fixedDeltaTime;
+        }
 
         SpriteDirection(directionOfPlayer);
     }
 
-    private bool CheckFloorAhead()
+    private bool CheckObstacle()
     {
-        return Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(movingDirectionX, -1)), 2, LayerMask.GetMask("Floor"));
-    }
+        bool res = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            playerDetected = true;
-            player = GameObject.FindObjectOfType<PlayerController>();
-        }
-    }
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.TransformDirection(new Vector2(movingDirectionX, 0)), 1, LayerMask.GetMask("InGame"));
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        foreach(RaycastHit2D hit in hits)
         {
-            playerDetected = false;
-            player = null;
+            if(hit.collider.gameObject.tag != "Player" && !hit.collider.gameObject.Equals(this.gameObject) && !hit.collider.isTrigger)
+            {
+                res = true;
+                break;
+            }
         }
+
+
+        return res;
     }
 
     private void Die()
