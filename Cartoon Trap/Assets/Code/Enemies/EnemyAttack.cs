@@ -15,6 +15,7 @@ public class EnemyAttack : MonoBehaviour
 
     private PlayerController player;
     private CircleCollider2D attackCollider;
+    [SerializeField] BasicEnemy basicEnemy;
 
     private void Awake()
     {
@@ -24,7 +25,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(timeElapsed == 0)
+        if(timeElapsed == 0 && basicEnemy.attackPlayer)
         {
             if (onRange)
             {

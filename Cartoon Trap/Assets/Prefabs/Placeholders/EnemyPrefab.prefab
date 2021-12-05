@@ -128,6 +128,7 @@ MonoBehaviour:
   attackOn: 2.5
   damage: 1
   range: 0.05
+  basicEnemy: {fileID: 95403267981269471}
 --- !u!1 &7581817621045827375
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +182,9 @@ MonoBehaviour:
   movingDirectionX: 1
   distance: 5
   speed: 3
+  moves: 1
+  followPlayer: 1
+  attackPlayer: 1
   player: {fileID: 0}
   enemyDetection: {fileID: 217279389}
 --- !u!212 &3895898827879803602
