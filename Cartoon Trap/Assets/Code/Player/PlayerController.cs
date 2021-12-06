@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
 
@@ -20,25 +21,34 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 5f;
     public float reboundForce = 2f;
+    public float doubleJumpForce = 2f;
 
     //Dash
     private float timeDashing = 0;
     public float dashDuration;
     public float dashSpeed;
 
+    //Rest
+    private float restingTime = 2f;
+    private float standingUpTime = 0.5f;
+    private float restingTimeElapsed = 0;
+
     //Combat
     public float attackPower = 0;
 
     //Flags
-    public bool dashing = false;
-    public bool dashAbble = false;
+    private bool dashing = false;
+    private bool dashAbble = false;
     public bool attacking = false;
     private bool grapping = false;
     private bool jumping = false;
     private bool jumpAbble = false;
+    private bool doubleJumping = false;
+    private bool doubleJumpAbble = false;
     private bool healing = false;
     private bool usingBlade = false;
     private bool usingHammer = false;
+    public bool resting = false;
 
     //Actions
     private Dash dash = new Dash(0);
@@ -48,6 +58,7 @@ public class PlayerController : MonoBehaviour
     private Heal heal;
     private IAction slash = new Slash();
     private IAction pum = new Pum();
+    private IAction doubleJump = new DoubleJump();
 
     //Onos ¡¡TEMPORAL!!
     public GameObject attackOnomatopeya;
@@ -56,6 +67,7 @@ public class PlayerController : MonoBehaviour
     public GameObject slashOnomatpeya;
     public GameObject hopOnomatopeya;
 
+    public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
@@ -70,6 +82,21 @@ public class PlayerController : MonoBehaviour
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
         heal = new Heal(numberOfHealings);
+        playerAnimator = new PlayerAnimator();
+    }
+
+    private void Update()
+    {
+        playerAnimator.UpdateLookingDirection(this);
+
+        if (Math.Abs(movingDirectionX) >= 0.01f) //Fuente de bugs
+        {
+            playerAnimator.StartWalkingAnimation(this);
+        }
+        else
+        {
+            playerAnimator.EndWalkingAnimation(this);
+        }
     }
 
     private void FixedUpdate()
@@ -86,13 +113,30 @@ public class PlayerController : MonoBehaviour
             {
                 jumpAbble = true;
                 dashAbble = true;
+                doubleJumpAbble = true;
             }
             else
             {
                 jumpAbble = false;
             }
 
-            ExecuteActions();
+            if (!resting)
+            {
+                ExecuteActions();
+            }
+            else
+            {
+                restingTimeElapsed += Time.fixedDeltaTime;
+
+                if(restingTimeElapsed >= restingTime)
+                {
+                    restingTimeElapsed = 0;
+                    resting = false;
+                }else if (restingTimeElapsed >= restingTime - standingUpTime)
+                {
+                    playerAnimator.EndRestingAnimation(this);
+                }
+            }
         }
     }
 
@@ -101,6 +145,11 @@ public class PlayerController : MonoBehaviour
 
         if (dashing)
         {
+            if (timeDashing == 0)
+            {
+                playerAnimator.StartDashingAnimation(this);
+            }
+
             timeDashing += Time.fixedDeltaTime;
 
             if (timeDashing >= dashDuration)
@@ -133,6 +182,11 @@ public class PlayerController : MonoBehaviour
             {
                 jump.ExecuteAction(this);
                 jumping = false;
+            }else if (doubleJumping)
+            {
+                doubleJump.ExecuteAction(this);
+                doubleJumpAbble = false;
+                doubleJumping = false;
             }
 
             if (usingBlade)
@@ -208,6 +262,11 @@ public class PlayerController : MonoBehaviour
         if (value.started && jumpAbble)
         {
             jumping = true;
+            doubleJumpAbble = true;
+        }
+        else if(value.started && !isGrounded() && doubleJumpAbble)
+        {
+            doubleJumping = true;
         }
     }
 
@@ -265,10 +324,16 @@ public class PlayerController : MonoBehaviour
         playerHealth.IncreaseHealth(1);
     }
 
+    public void TakeDamage(int damageAmount)
+    {
+        playerHealth.DecreaseHealth(damageAmount);
+    }
+
     public void Rest()
     {
         playerHealth.ResetHealth();
         heal.resetHealings();
+        resting = true;
     }
 
     public float LookingAtDirection()
