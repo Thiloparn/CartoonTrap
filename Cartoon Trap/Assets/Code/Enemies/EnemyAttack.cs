@@ -59,7 +59,8 @@ public class EnemyAttack : MonoBehaviour
     {
         if (onRange)
         {
-            player.initialCurrentHealth -= damage;
+            player.TakeDamage(damage);
+            player.playerAnimator.StartHurtingAnimation(player);
         }
     }
 

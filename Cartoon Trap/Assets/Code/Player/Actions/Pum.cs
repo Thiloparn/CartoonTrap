@@ -8,5 +8,6 @@ public class Pum : IAction
     {
         positionOfInstanciation = player.transform.position;
         InstantiateOnomatopeya(player.pumOnomatopeya);
+        player.playerAnimator.StartUsingHammerAnimation(player);
     }
 }

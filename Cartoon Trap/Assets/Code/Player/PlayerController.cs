@@ -28,6 +28,11 @@ public class PlayerController : MonoBehaviour
     public float dashDuration;
     public float dashSpeed;
 
+    //Rest
+    private float restingTime = 2f;
+    private float standingUpTime = 0.5f;
+    private float restingTimeElapsed = 0;
+
     //Combat
     public float attackPower = 0;
 
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
     private bool healing = false;
     private bool usingBlade = false;
     private bool usingHammer = false;
+    public bool resting = false;
 
     //Actions
     private Dash dash = new Dash(0);
@@ -114,7 +120,23 @@ public class PlayerController : MonoBehaviour
                 jumpAbble = false;
             }
 
-            ExecuteActions();
+            if (!resting)
+            {
+                ExecuteActions();
+            }
+            else
+            {
+                restingTimeElapsed += Time.fixedDeltaTime;
+
+                if(restingTimeElapsed >= restingTime)
+                {
+                    restingTimeElapsed = 0;
+                    resting = false;
+                }else if (restingTimeElapsed >= restingTime - standingUpTime)
+                {
+                    playerAnimator.EndRestingAnimation(this);
+                }
+            }
         }
     }
 
@@ -123,6 +145,11 @@ public class PlayerController : MonoBehaviour
 
         if (dashing)
         {
+            if (timeDashing == 0)
+            {
+                playerAnimator.StartDashingAnimation(this);
+            }
+
             timeDashing += Time.fixedDeltaTime;
 
             if (timeDashing >= dashDuration)
@@ -297,10 +324,16 @@ public class PlayerController : MonoBehaviour
         playerHealth.IncreaseHealth(1);
     }
 
+    public void TakeDamage(int damageAmount)
+    {
+        playerHealth.DecreaseHealth(damageAmount);
+    }
+
     public void Rest()
     {
         playerHealth.ResetHealth();
         heal.resetHealings();
+        resting = true;
     }
 
     public float LookingAtDirection()

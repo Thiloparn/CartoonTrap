@@ -11,6 +11,7 @@ public class RestZone : MonoBehaviour
         if (player != null)
         {
             player.Rest();
+            player.playerAnimator.StartRestingAnimation(player);
         }
     }
 }
