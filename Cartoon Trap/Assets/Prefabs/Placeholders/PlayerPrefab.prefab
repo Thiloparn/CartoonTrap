@@ -120,11 +120,10 @@ MonoBehaviour:
   speed: 10
   jumpForce: 10
   reboundForce: 5
+  doubleJumpForce: 2
   dashDuration: 0.2
-  dashSpeed: 17
+  dashSpeed: 4.25
   attackPower: 10
-  dashing: 0
-  dashAbble: 0
   attacking: 0
   attackOnomatopeya: {fileID: 5678207302567928215, guid: 9553c53b97eb1144196f7ac3a27cfb6b, type: 3}
   phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}

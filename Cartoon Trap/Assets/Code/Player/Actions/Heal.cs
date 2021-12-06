@@ -21,6 +21,8 @@ public class Heal : IAction
             InstantiateOnomatopeya(player.phiuOnomatopeya);
             --currentHealings;
         }
+
+        player.playerAnimator.StartHealingAnimation(player);
     }
 
     public void resetHealings()
