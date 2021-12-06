@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 386234894422521500}
   - component: {fileID: 4353769014367737987}
   - component: {fileID: 1008157692}
+  - component: {fileID: 3787674686720869322}
   m_Layer: 6
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -172,7 +173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3427114271967980436, guid: 71bd94be502a4c34c8ee39fc38cd52f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 567aab5643d06aa42877785c69e9466c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -217,18 +218,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.027695417, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 1.7}
+    oldSize: {x: 1.44, y: 1.61}
     newSize: {x: 0.12, y: 0.17}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2, y: 1.7}
+  m_Size: {x: 1.1446092, y: 1.7}
   m_EdgeRadius: 0
 --- !u!114 &1008157692
 MonoBehaviour:
@@ -728,3 +729,22 @@ MonoBehaviour:
   m_DefaultActionMap: WASD without Mouse
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!95 &3787674686720869322
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677637967611149993}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b57faae7ff226964cb86ac8693740d8c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

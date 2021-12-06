@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
 
@@ -60,6 +61,7 @@ public class PlayerController : MonoBehaviour
     public GameObject slashOnomatpeya;
     public GameObject hopOnomatopeya;
 
+    public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
@@ -74,6 +76,21 @@ public class PlayerController : MonoBehaviour
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
         heal = new Heal(numberOfHealings);
+        playerAnimator = new PlayerAnimator();
+    }
+
+    private void Update()
+    {
+        playerAnimator.UpdateLookingDirection(this);
+
+        if (Math.Abs(movingDirectionX) >= 0.01f) //Fuente de bugs
+        {
+            playerAnimator.StartWalkingAnimation(this);
+        }
+        else
+        {
+            playerAnimator.EndWalkingAnimation(this);
+        }
     }
 
     private void FixedUpdate()

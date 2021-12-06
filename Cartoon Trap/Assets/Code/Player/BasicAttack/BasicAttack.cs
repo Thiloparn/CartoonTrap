@@ -94,6 +94,8 @@ public class BasicAttack : MonoBehaviour
             attack.ExecuteAction(player);
             numAttacksInCurrentCombo = 0;
         }
+
+        player.playerAnimator.EndPunchingAnimation(player);
     }
 
     private void StartAttack()
@@ -102,6 +104,7 @@ public class BasicAttack : MonoBehaviour
         attackElapsed += Time.fixedDeltaTime;
         ++numAttacksInCurrentCombo;
         timeElapsedBetweenAttacks = 0;
+        player.playerAnimator.StartPunchingAnimation(player);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
