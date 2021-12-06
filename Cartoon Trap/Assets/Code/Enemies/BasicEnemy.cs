@@ -24,11 +24,13 @@ public class BasicEnemy : MonoBehaviour
     private Rigidbody2D rigidBody;
     public PlayerController player;
     [SerializeField] EnemyDetection enemyDetection;
+    private BoxCollider2D boxCollider;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         initialPostion = transform.position;
     }
 
@@ -41,6 +43,12 @@ public class BasicEnemy : MonoBehaviour
         }
         else if (moves)
         {
+            if (enemyDetection.playerDetected && TouchingPlayer())
+            {
+                player.TakeDamage(1);
+                player.playerAnimator.StartHurtingAnimation(player);
+            }
+
             if (enemyDetection.playerDetected && followPlayer)
             {
                 MoveToPlayer();
@@ -106,6 +114,11 @@ public class BasicEnemy : MonoBehaviour
 
 
         return res;
+    }
+
+    private bool TouchingPlayer()
+    {
+        return boxCollider.IsTouching(player.BoxCollider);
     }
 
     private void Die()
