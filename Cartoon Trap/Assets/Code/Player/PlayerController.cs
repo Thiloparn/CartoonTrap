@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float jumpForce = 5f;
     public float reboundForce = 2f;
+    public float doubleJumpForce = 2f;
 
     //Dash
     private float timeDashing = 0;
@@ -30,12 +31,14 @@ public class PlayerController : MonoBehaviour
     public float attackPower = 0;
 
     //Flags
-    public bool dashing = false;
-    public bool dashAbble = false;
+    private bool dashing = false;
+    private bool dashAbble = false;
     public bool attacking = false;
     private bool grapping = false;
     private bool jumping = false;
     private bool jumpAbble = false;
+    private bool doubleJumping = false;
+    private bool doubleJumpAbble = false;
     private bool healing = false;
     private bool usingBlade = false;
     private bool usingHammer = false;
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private Heal heal;
     private IAction slash = new Slash();
     private IAction pum = new Pum();
+    private IAction doubleJump = new DoubleJump();
 
     //Onos ¡¡TEMPORAL!!
     public GameObject attackOnomatopeya;
@@ -86,6 +90,7 @@ public class PlayerController : MonoBehaviour
             {
                 jumpAbble = true;
                 dashAbble = true;
+                doubleJumpAbble = true;
             }
             else
             {
@@ -133,6 +138,11 @@ public class PlayerController : MonoBehaviour
             {
                 jump.ExecuteAction(this);
                 jumping = false;
+            }else if (doubleJumping)
+            {
+                doubleJump.ExecuteAction(this);
+                doubleJumpAbble = false;
+                doubleJumping = false;
             }
 
             if (usingBlade)
@@ -208,6 +218,11 @@ public class PlayerController : MonoBehaviour
         if (value.started && jumpAbble)
         {
             jumping = true;
+            doubleJumpAbble = true;
+        }
+        else if(value.started && !isGrounded() && doubleJumpAbble)
+        {
+            doubleJumping = true;
         }
     }
 
