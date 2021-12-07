@@ -1146,6 +1146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 5
   playerDetected: 0
+  onoDetected: 0
   mole: {fileID: 130409983}
 --- !u!1 &1932743634
 GameObject:
@@ -1752,7 +1753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3562360025553885562, guid: 3ea435fa38243764099b62807cb308e5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3562360025553885563, guid: 3ea435fa38243764099b62807cb308e5, type: 3}
       propertyPath: m_RootOrder
