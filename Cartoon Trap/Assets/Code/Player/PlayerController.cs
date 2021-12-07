@@ -39,8 +39,9 @@ public class PlayerController : MonoBehaviour
     //Flags
     private bool dashing = false;
     private bool dashAbble = false;
-    public bool attacking = false;
-    private bool grapping = false;
+    private bool attacking = false;
+    public bool grapping = false;
+    public bool throwing = false;
     private bool jumping = false;
     private bool jumpAbble = false;
     private bool doubleJumping = false;
@@ -52,7 +53,6 @@ public class PlayerController : MonoBehaviour
 
     //Actions
     private Dash dash = new Dash(0);
-    private IAction grap = new Grap();
     private IAction jump = new Jump();
     public IAction rebound = new Rebound();
     private Heal heal;
@@ -72,13 +72,16 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D boxCollider;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
+    public PlayerPocket pocket;
 
     public bool Attacking { get => attacking; set => attacking = value; }
+    public bool Grapping { get => grapping; set => grapping = value; }
     public float MovingDirectionX { get => movingDirectionX;}
     public float MovingDirectionY { get => movingDirectionY;}
     public Rigidbody2D RigidBody { get => rigidBody;}
 
     public BoxCollider2D BoxCollider { get => boxCollider; }
+    public bool Throwing { get => throwing; set => throwing = value; }
 
     private void Awake()
     {
@@ -87,6 +90,7 @@ public class PlayerController : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
+        pocket = new PlayerPocket(this);
     }
 
     private void Update()
@@ -170,12 +174,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (grapping)
-            {
-                grap.ExecuteAction(this);
-                grapping = false;
-            }
-
             if (healing)
             {
                 heal.ExecuteAction(this);
@@ -212,7 +210,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        throw new NotImplementedException();
+        print("Player Dead");
     }
 
     public void onMovement(InputAction.CallbackContext value)
@@ -233,7 +231,15 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            grapping = true;
+            if (pocket.IsEmpty())
+            {
+                grapping = true;
+            }
+            else
+            {
+                throwing = true;
+            }
+            
         }
     }
 
