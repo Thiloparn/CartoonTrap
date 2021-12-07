@@ -20,6 +20,7 @@ public class BasicEnemy : MonoBehaviour
     public bool moves = false;
     public bool followPlayer = false;
     public bool attackPlayer = false;
+    private bool vulnerable = false;
 
     private Rigidbody2D rigidBody;
     public PlayerController player;
@@ -36,20 +37,27 @@ public class BasicEnemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         if (enemyHealth.CurrentHealth == 0)
         {
             Die();
         }
         else if (moves)
         {
-            if (enemyDetection.playerDetected && TouchingPlayer())
+
+            if (enemyDetection.playerDetected)
             {
-                player.TakeDamage(1);
-                player.playerAnimator.StartHurtingAnimation(player);
+                if (TouchingPlayer())
+                {
+                    player.TakeDamage(1);
+                    player.playerAnimator.StartHurtingAnimation(player);
+                }
             }
 
-            if (enemyDetection.playerDetected && followPlayer)
+            if (vulnerable && enemyDetection.playerDetected)
+            {
+                FleeFromPlayer();
+            }
+            else if (followPlayer && enemyDetection.playerDetected)
             {
                 MoveToPlayer();
             }
@@ -97,6 +105,15 @@ public class BasicEnemy : MonoBehaviour
         SpriteDirection(directionOfPlayer);
     }
 
+    private void FleeFromPlayer()
+    {
+        float fleeDirection = player.transform.position.x > transform.position.x ? -1f : 1f;
+
+        transform.position += Vector3.right * fleeDirection * speed * Time.fixedDeltaTime;
+
+        SpriteDirection(fleeDirection);
+    }
+
     private bool CheckObstacle()
     {
         bool res = false;
@@ -123,6 +140,6 @@ public class BasicEnemy : MonoBehaviour
 
     private void Die()
     {
-        throw new NotImplementedException();
+        Destroy(this.gameObject);
     }
 }

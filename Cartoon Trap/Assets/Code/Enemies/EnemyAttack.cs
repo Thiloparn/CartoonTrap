@@ -83,8 +83,8 @@ public class EnemyAttack : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player = null;
             onRange = false;
+            player = null;
         }
     }
 }
