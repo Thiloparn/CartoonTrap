@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3712681726702617049}
   m_Layer: 6
   m_Name: AttackCollider
-  m_TagString: Punch
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,9 +62,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3677637967611149992}
   attackDuration: 0.5
-  numAttacksInCurrentCombo: 0
-  maxTimeBetweenAttacks: 1
-  timeElapsedBetweenAttacks: 0
+  maxTimeBetweenAttacks: 0.4
+  grapDuration: 0.5
+  throwDuration: 0.5
 --- !u!1 &3677637967611149993
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +124,9 @@ MonoBehaviour:
   dashDuration: 0.2
   dashSpeed: 4.25
   attackPower: 10
-  attacking: 0
+  grapping: 0
+  throwing: 0
+  resting: 0
   attackOnomatopeya: {fileID: 5678207302567928215, guid: 9553c53b97eb1144196f7ac3a27cfb6b, type: 3}
   phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
   pumOnomatopeya: {fileID: 5896842734998594493, guid: 7c3819faf1d521b44bc578efa9a1b1e2, type: 3}

@@ -15,7 +15,6 @@ public class OnomatopeyaCollider : MonoBehaviour
     {
         if(collision.gameObject.tag == "Punch")
         {
-            print("Activación");
             ono.Active = true;
         }
     }
