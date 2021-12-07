@@ -9,12 +9,12 @@ public class Hud : MonoBehaviour
     public Image StatusVida2;
     public Image StatusVida3;
 
-    [SerializeField] GameObject playerHealth;
+    public Health playerHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerHealth = GameObject.FindGameObjectWithTag("PlayerPrefab").GetComponent<Health>();
     }
 
     // Update is called once per frame
