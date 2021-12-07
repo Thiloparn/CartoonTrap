@@ -7,7 +7,9 @@ using UnityEngine;
 public class Onomatopeya : MonoBehaviour
 {
     private bool active;
+    public int damage;
     protected OnomaopeyaEffect effect;
+    public GameObject onoAreaEffect;
 
     public bool Active { get => active; set => active = value; }
 
@@ -41,6 +43,15 @@ public class Onomatopeya : MonoBehaviour
         throwedOno.direction = direction;
         gameObject.transform.position = position;
         gameObject.SetActive(true);
+    }
+
+    public void TransformToBadOno()
+    {
+        Destroy(GetComponent<OnomatopeyaCollider>());
+        gameObject.AddComponent<NegativeOnomatopeyaCollider>();
+
+        onoAreaEffect.GetComponent<EffectAreaCollider>().enabled = false;
+        onoAreaEffect.AddComponent<NegativeEffectAreaCollider>();
     }
 
 }

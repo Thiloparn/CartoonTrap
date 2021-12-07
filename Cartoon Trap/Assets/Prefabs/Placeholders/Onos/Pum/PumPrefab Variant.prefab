@@ -88,7 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f432ccec7ed97e49b3fb31a456df962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  areaEffectCollider: {fileID: 991591527950004583, guid: a617d1e54a864b942ac02b84151c918b, type: 3}
+  damage: 0
+  onoAreaEffect: {fileID: 6437878032877002795, guid: 5bc98a993018bfb4c99aad846eaba08b, type: 3}
 --- !u!114 &1218669466
 MonoBehaviour:
   m_ObjectHideFlags: 0

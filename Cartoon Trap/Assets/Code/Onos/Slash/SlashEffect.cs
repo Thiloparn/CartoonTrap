@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class SlashEffect : OnomaopeyaEffect
 {
-    public GameObject slashAreaEffect;
 
-    public override void ExecuteEffect()
+    public override void InstantiateAreaEffect()
     {
-        GameObject slashArea = Instantiate(slashAreaEffect, transform.position, Quaternion.identity);
+        GameObject slashArea = Instantiate(ono.onoAreaEffect, transform.position, Quaternion.identity);
         if (GetComponent<SlashOnomatopeya>().slashDirection < 0)
         {
             slashArea.transform.Rotate(new Vector3(0, 180, 0));
@@ -17,6 +16,5 @@ public class SlashEffect : OnomaopeyaEffect
         {
             slashArea.transform.Rotate(new Vector3(0, 0, 0));
         }
-        base.ExecuteEffect();
     }
 }

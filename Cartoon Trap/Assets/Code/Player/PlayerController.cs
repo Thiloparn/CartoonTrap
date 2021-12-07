@@ -90,7 +90,8 @@ public class PlayerController : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
-        pocket = new PlayerPocket(this);
+        pocket = new PlayerPocket(this
+            );
     }
 
     private void Update()

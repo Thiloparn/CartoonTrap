@@ -13,7 +13,7 @@ public class Grap : IAction
 
     public override void ExecuteAction(PlayerController player)
     {
-        
+
         if (player.pocket.IsEmpty())
         {
             MonoBehaviour.print("Grap");
@@ -25,7 +25,8 @@ public class Grap : IAction
             player.pocket.TakeOutOfPocket();
             grappedOno = null;
         }
-        
+
+        grappedOno.GetComponent<Onomatopeya>().TransformToBadOno();
     }
 
     public void SetGrappedOno(GameObject grappedOno)

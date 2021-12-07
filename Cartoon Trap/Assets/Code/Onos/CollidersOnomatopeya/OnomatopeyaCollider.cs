@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OnomatopeyaCollider : MonoBehaviour
 {
-    private Onomatopeya ono;
+    protected Onomatopeya ono;
 
     private void Awake()
     {
