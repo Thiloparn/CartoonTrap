@@ -11,28 +11,27 @@ public class BasicEnemy : MonoBehaviour
     private Health enemyHealth;
 
     //Movement
-    public float movingDirectionX = 0f;
+    private Vector2 initialPostion = new Vector2(0f, 0f);
+    public float movingDirectionX = 1f;
+    public float distance = 0f;
     public float speed = 3f;
 
-    //Detection
-    public float detectionRadius = 5f;
-
     //Flags
-    public bool playerDetected = false;
+    public bool moves = false;
+    public bool followPlayer = false;
+    public bool attackPlayer = false;
 
     private Rigidbody2D rigidBody;
-    private PlayerController player;
-    [SerializeField] CircleCollider2D detectionCollider;
+    public PlayerController player;
+    [SerializeField] EnemyDetection enemyDetection;
+    private BoxCollider2D boxCollider;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
-        detectionCollider.radius = detectionRadius;
-
-        int[] direction = { -1, 1 };
-        movingDirectionX = direction[UnityEngine.Random.Range(0, direction.Length)];
-        SpriteDirection(movingDirectionX);
+        boxCollider = GetComponent<BoxCollider2D>();
+        initialPostion = transform.position;
     }
 
     private void FixedUpdate()
@@ -42,22 +41,20 @@ public class BasicEnemy : MonoBehaviour
         {
             Die();
         }
-        else
+        else if (moves)
         {
-            if (playerDetected)
+            if (enemyDetection.playerDetected && TouchingPlayer())
             {
-                detectionCollider.radius = detectionRadius * 2;
+                player.TakeDamage(1);
+                player.playerAnimator.StartHurtingAnimation(player);
+            }
+
+            if (enemyDetection.playerDetected && followPlayer)
+            {
                 MoveToPlayer();
             }
             else
             {
-                detectionCollider.radius = detectionRadius / 2;
-
-                if (!CheckFloorAhead())
-                {
-                    movingDirectionX *= -1;
-                }
-
                 Move();
             }
         }
@@ -72,40 +69,56 @@ public class BasicEnemy : MonoBehaviour
 
     private void Move()
     {
+        if (Vector2.Distance(transform.position, initialPostion) >= distance || CheckObstacle())
+        {
+            initialPostion = transform.position;
+            movingDirectionX *= -1;
+        }
+
         transform.position += Vector3.right * movingDirectionX * speed * Time.fixedDeltaTime;
         SpriteDirection(movingDirectionX);
     }
 
     private void MoveToPlayer()
     {
-        float directionOfPlayer = player.transform.position.x > transform.position.x ? 1f : -1f;
+        float directionOfPlayer = 1f;
 
-        transform.position += Vector3.right * directionOfPlayer * speed * Time.fixedDeltaTime;
+        if(player.transform.position.x - 0.5f > transform.position.x)
+        {
+            directionOfPlayer = 1f;
+            transform.position += Vector3.right * directionOfPlayer * speed * Time.fixedDeltaTime;
+        }
+        else if (player.transform.position.x + 0.5f < transform.position.x)
+        {
+            directionOfPlayer = -1f;
+            transform.position += Vector3.right * directionOfPlayer * speed * Time.fixedDeltaTime;
+        }
 
         SpriteDirection(directionOfPlayer);
     }
 
-    private bool CheckFloorAhead()
+    private bool CheckObstacle()
     {
-        return Physics2D.Raycast(transform.position, transform.TransformDirection(new Vector2(movingDirectionX, -1)), 2, LayerMask.GetMask("Floor"));
+        bool res = false;
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.TransformDirection(new Vector2(movingDirectionX, 0)), 1, LayerMask.GetMask("InGame"));
+
+        foreach(RaycastHit2D hit in hits)
+        {
+            if(hit.collider.gameObject.tag != "Player" && !hit.collider.gameObject.Equals(this.gameObject) && !hit.collider.isTrigger)
+            {
+                res = true;
+                break;
+            }
+        }
+
+
+        return res;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private bool TouchingPlayer()
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            playerDetected = true;
-            player = GameObject.FindObjectOfType<PlayerController>();
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            playerDetected = false;
-            player = null;
-        }
+        return boxCollider.IsTouching(player.BoxCollider);
     }
 
     private void Die()

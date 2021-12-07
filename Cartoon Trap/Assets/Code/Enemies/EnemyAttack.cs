@@ -4,28 +4,44 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public float attackDuration = 0.5f;
-    public float attackElapsed = 0f;
+    public float resetTimer = 0.5f;
+    public float timeElapsed = 0f;
+    public float attackOn = 0.25f;
     public int damage = 1;
+    public float range = 0.05f;
 
-    private bool attacking = false;
+    private bool onRange = false;
+    private bool attackDone = false;
 
     private PlayerController player;
+    private CircleCollider2D attackCollider;
+    [SerializeField] BasicEnemy basicEnemy;
+
+    private void Awake()
+    {
+        attackCollider = GetComponent<CircleCollider2D>();
+        attackCollider.radius = range;
+    }
 
     private void FixedUpdate()
     {
-        if(attackElapsed == 0)
+        if(timeElapsed == 0 && basicEnemy.attackPlayer)
         {
-            if (attacking)
+            if (onRange)
             {
                 StartAttack();
             }
         }
         else
         {
-            if (attackElapsed < attackDuration)
+            if (timeElapsed < resetTimer)
             {
-                attackElapsed += Time.fixedDeltaTime;
+                if(timeElapsed >= attackOn && !attackDone)
+                {
+                    attackDone = true;
+                    DoAttack();
+                }
+                timeElapsed += Time.fixedDeltaTime;
             }
             else
             {
@@ -36,20 +52,29 @@ public class EnemyAttack : MonoBehaviour
 
     private void StartAttack()
     {
-        attackElapsed += Time.fixedDeltaTime;
-        player.initialCurrentHealth -= damage;
+        timeElapsed += Time.fixedDeltaTime;
+    }
+
+    private void DoAttack()
+    {
+        if (onRange)
+        {
+            player.TakeDamage(damage);
+            player.playerAnimator.StartHurtingAnimation(player);
+        }
     }
 
     private void FinishAttack()
     {
-        attackElapsed = 0;
+        timeElapsed = 0;
+        attackDone = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            attacking = true;
+            onRange = true;
             player = GameObject.FindObjectOfType<PlayerController>();
         }
     }
@@ -59,7 +84,7 @@ public class EnemyAttack : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player = null;
-            attacking = false;
+            onRange = false;
         }
     }
 }
