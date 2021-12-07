@@ -63,6 +63,7 @@ PrefabInstance:
     - {fileID: 616117212, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
     - {fileID: 3726331904734408731, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
     - {fileID: 95403267981269471, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+    - {fileID: 217279389, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
 --- !u!1 &6416981416849262648 stripped
 GameObject:
@@ -74,17 +75,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6914125180317747960, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
   m_PrefabInstance: {fileID: 3473881069435920151}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3473881069229307018 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 217279389, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+--- !u!1 &3473881069618412889 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 891396686, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
   m_PrefabInstance: {fileID: 3473881069435920151}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &1374303881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3473881069618412889}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2a765f4e4404314085d4505df36a503, type: 3}
+  m_Script: {fileID: 11500000, guid: 7519ec5b56d259e4aa3a41265015b807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionRadius: 5
+  playerDetected: 0
+  onoDetected: 0
+  mole: {fileID: 130409983}
 --- !u!114 &130409983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,8 +116,9 @@ MonoBehaviour:
   moves: 1
   followPlayer: 0
   attackPlayer: 1
+  hidden: 0
   player: {fileID: 0}
-  enemyDetection: {fileID: 3473881069229307018}
+  moleDetection: {fileID: 1374303881}
 --- !u!61 &1469779641
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -120,7 +132,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2, y: 0}
+  m_Offset: {x: 0.5, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -131,7 +143,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.1}
+  m_Size: {x: 1, y: 0.1}
   m_EdgeRadius: 0
 --- !u!114 &1469779642
 MonoBehaviour:
@@ -148,9 +160,9 @@ MonoBehaviour:
   resetTimer: 3
   timeElapsed: 0
   attackOn: 0.5
-  range: 0.4
-  projectilRange: 5
+  range: 1
+  projectilRange: 10
   projectilDamage: 1
   projectilSpeed: 6
-  basicEnemy: {fileID: 0}
+  mole: {fileID: 130409983}
   projectil: {fileID: 902902079, guid: 2f6b64e4369f9434083cf9fa7206103d, type: 3}
