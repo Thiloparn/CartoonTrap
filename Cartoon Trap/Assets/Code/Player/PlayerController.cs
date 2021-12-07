@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     //Health
     public int maxHealth = 0;
     public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
-    private Health playerHealth;
+    public Health playerHealth;
     public int numberOfHealings = 3;
 
     //Movement
