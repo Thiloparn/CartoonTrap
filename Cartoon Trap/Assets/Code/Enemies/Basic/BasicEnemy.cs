@@ -22,7 +22,6 @@ public class BasicEnemy : MonoBehaviour
     public bool attackPlayer = false;
     private bool vulnerable = false;
 
-    private Rigidbody2D rigidBody;
     public PlayerController player;
     [SerializeField] EnemyDetection enemyDetection;
     private BoxCollider2D boxCollider;
@@ -30,7 +29,6 @@ public class BasicEnemy : MonoBehaviour
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
-        rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         initialPostion = transform.position;
     }

@@ -19,14 +19,14 @@ public class EnemyDetection : MonoBehaviour
 
     private void FixedUpdate()
     {
-            if (playerDetected)
-            {
-                detectionCollider.radius = detectionRadius * 2;
-            }
-            else
-            {
-                detectionCollider.radius = detectionRadius / 2;
-            }
+        if (playerDetected)
+        {
+            detectionCollider.radius = detectionRadius * 2;
+        }
+        else
+        {
+            detectionCollider.radius = detectionRadius;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
