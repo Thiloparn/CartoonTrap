@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class PunchEffect : OnomaopeyaEffect
 {
-    public GameObject punchAreaEffect;
 
     public override void ExecuteEffect()
     {
-        Instantiate(punchAreaEffect, transform.position, Quaternion.identity);
+        Instantiate(ono.onoAreaEffect, transform.position, Quaternion.identity);
         base.ExecuteEffect();
     }
 }
