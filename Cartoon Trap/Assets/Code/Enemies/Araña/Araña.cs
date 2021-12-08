@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mole : MonoBehaviour
+public class Ara√±a : MonoBehaviour
 {
     //Health
     public int maxHealth = 0;
     public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
     private Health enemyHealth;
+
+    public float damageReduction = 2;
 
     //Movement
     private Vector2 initialPostion = new Vector2(0f, 0f);
@@ -20,66 +22,47 @@ public class Mole : MonoBehaviour
     public bool followPlayer = false;
     public bool attackPlayer = false;
     private bool vulnerable = false;
-    public bool hidden = false;
 
     public PlayerController player;
-    [SerializeField] MoleDetection moleDetection;
+    [SerializeField] Ara√±aDetection aranaDetection;
     private BoxCollider2D boxCollider;
-    private Rigidbody2D rigidBody;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
-        rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         initialPostion = transform.position;
     }
 
     private void FixedUpdate()
     {
-        if (hidden)
+        if (enemyHealth.CurrentHealth == 0)
         {
-            if (!moleDetection.playerDetected && !moleDetection.onoDetected)
-            {
-                UnHide();
-            }
+            Die();
         }
-        else
+        else if (moves)
         {
-            if (enemyHealth.CurrentHealth == 0)
+
+            if (aranaDetection.playerDetected)
             {
-                Die();
+                if (TouchingPlayer())
+                {
+                    player.TakeDamage(1);
+                    player.playerAnimator.StartHurtingAnimation(player);
+                }
             }
-            else if (moves)
+
+            if (vulnerable && aranaDetection.playerDetected)
             {
-                if (moleDetection.playerDetected)
-                {
-                    Hide();
-
-                    if (TouchingPlayer())
-                    {
-                        player.TakeDamage(1);
-                        player.playerAnimator.StartHurtingAnimation(player);
-                    }
-                }
-
-                if (moleDetection.onoDetected)
-                {
-                    Hide();
-                }
-
-                if (vulnerable && moleDetection.playerDetected)
-                {
-                    FleeFromPlayer();
-                }
-                else if (followPlayer && moleDetection.playerDetected)
-                {
-                    MoveToPlayer();
-                }
-                else
-                {
-                    Move();
-                }
+                FleeFromPlayer();
+            }
+            else if (followPlayer && aranaDetection.playerDetected)
+            {
+                MoveToPlayer();
+            }
+            else
+            {
+                Move();
             }
         }
     }
@@ -154,29 +137,17 @@ public class Mole : MonoBehaviour
         return boxCollider.IsTouching(player.BoxCollider);
     }
 
-    private void Hide()
-    {
-        hidden = true;
-        boxCollider.enabled = false;
-        rigidBody.constraints = RigidbodyConstraints2D.FreezePositionY;
-
-        //Temporal hasta que se tenga la animaciÛn
-        transform.position = new Vector3(transform.position.x, transform.position.y - boxCollider.size.y/2, 0);
-    }
-
-    private void UnHide()
-    {
-        hidden = false;
-        boxCollider.enabled = true;
-        rigidBody.constraints = RigidbodyConstraints2D.None;
-
-        //Temporal hasta que se tenga la animaciÛn
-        transform.position = new Vector3(transform.position.x, transform.position.y + boxCollider.size.y/2, 0);
-    }
-
     public void TakeDamage(int damage, GameObject gameObject)
     {
-        enemyHealth.DecreaseHealth(damage);
+
+        if(gameObject.transform.position.y >= transform.position.y + boxCollider.size.y / 2)
+        {
+            enemyHealth.DecreaseHealth(damage);
+        }
+        else
+        {
+            enemyHealth.DecreaseHealth(Mathf.FloorToInt(damage / damageReduction));
+        }
     }
 
     private void Die()
