@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7581817621045827375, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_Name
-      value: "Ara\xF1a"
+      value: Arana
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95403267981269471, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
@@ -100,9 +100,10 @@ MonoBehaviour:
   maxHealth: 2
   initialCurrentHealth: 2
   damageReduction: 2
+  stunDuration: 20
   movingDirectionX: 1
   distance: 5
-  speed: 5
+  speed: 1
   moves: 1
   followPlayer: 1
   attackPlayer: 0

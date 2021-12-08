@@ -6,7 +6,7 @@ public class DestructibleObstacle : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.tag);
+        //print(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "PumEffectArea")
         {

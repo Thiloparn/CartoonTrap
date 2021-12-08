@@ -1811,9 +1811,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1135390003, guid: 6e96d36156ae32645bb3251a472c51c2, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2557725431411282896, guid: 6e96d36156ae32645bb3251a472c51c2, type: 3}
       propertyPath: m_Name
-      value: "Ara\xF1a"
+      value: Arana
       objectReference: {fileID: 0}
     - target: {fileID: 2899591383142383968, guid: 6e96d36156ae32645bb3251a472c51c2, type: 3}
       propertyPath: m_RootOrder

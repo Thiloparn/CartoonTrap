@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Araña : MonoBehaviour
+public class Arana : MonoBehaviour
 {
     //Health
     public int maxHealth = 0;
@@ -10,6 +10,8 @@ public class Araña : MonoBehaviour
     private Health enemyHealth;
 
     public float damageReduction = 2;
+    public float stunDuration = 1f;
+    private float stunTimer = 0f;
 
     //Movement
     private Vector2 initialPostion = new Vector2(0f, 0f);
@@ -24,7 +26,7 @@ public class Araña : MonoBehaviour
     private bool vulnerable = false;
 
     public PlayerController player;
-    [SerializeField] ArañaDetection aranaDetection;
+    [SerializeField] AranaDetection aranaDetection;
     private BoxCollider2D boxCollider;
 
     private void Awake()
@@ -42,16 +44,6 @@ public class Araña : MonoBehaviour
         }
         else if (moves)
         {
-
-            if (aranaDetection.playerDetected)
-            {
-                if (TouchingPlayer())
-                {
-                    player.TakeDamage(1);
-                    player.playerAnimator.StartHurtingAnimation(player);
-                }
-            }
-
             if (vulnerable && aranaDetection.playerDetected)
             {
                 FleeFromPlayer();
@@ -63,6 +55,25 @@ public class Araña : MonoBehaviour
             else
             {
                 Move();
+            }
+        }
+        else
+        {
+            stunTimer++;
+
+            if(stunTimer >= stunDuration)
+            {
+                stunTimer = 0f;
+                moves = true;
+            }
+        }
+
+        if (aranaDetection.playerDetected)
+        {
+            if (TouchingPlayer())
+            {
+                player.TakeDamage(1);
+                player.playerAnimator.StartHurtingAnimation(player);
             }
         }
     }
@@ -147,6 +158,8 @@ public class Araña : MonoBehaviour
         else
         {
             enemyHealth.DecreaseHealth(Mathf.FloorToInt(damage / damageReduction));
+            stunTimer = 0f;
+            moves = false;
         }
     }
 
