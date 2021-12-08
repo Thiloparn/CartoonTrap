@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArañaDetection : MonoBehaviour
+public class AranaDetection : MonoBehaviour
 {
     public float detectionRadius = 5f;
 
     public bool playerDetected = false;
 
-    [SerializeField] Araña arana;
+    [SerializeField] Arana arana;
     private CircleCollider2D detectionCollider;
 
     private void Awake()
