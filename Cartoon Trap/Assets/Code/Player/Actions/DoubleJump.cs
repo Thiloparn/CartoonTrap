@@ -9,7 +9,6 @@ public class DoubleJump : Jump
         player.RigidBody.velocity = Vector2.zero;
         player.RigidBody.AddForce(Vector2.up * player.doubleJumpForce, ForceMode2D.Impulse);
 
-        positionOfInstanciation = player.transform.position;
-        InstantiateOnomatopeya(player.hopOnomatopeya);
+        InstantiateOnomatopeya(player.hopOnomatopeya, player);
     }
 }
