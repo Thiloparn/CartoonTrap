@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e509375fc7be1b4a98ce310ba385493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  aparitionPositionOffset: {x: 0, y: 0}
+  onoAreaEffect: {fileID: 0}
 --- !u!212 &1230027375091196130
 SpriteRenderer:
   m_ObjectHideFlags: 0

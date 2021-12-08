@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  aparitionPositionOffset: {x: 1.5, y: 0}
   onoAreaEffect: {fileID: 6437878032877002795, guid: 5bc98a993018bfb4c99aad846eaba08b, type: 3}
 --- !u!114 &1218669466
 MonoBehaviour:

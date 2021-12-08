@@ -88,6 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 824ca0fc9884d1c449511b197cb32447, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  aparitionPositionOffset: {x: 0, y: -1.5}
+  onoAreaEffect: {fileID: 0}
   horizontalPunchImpulse: 5
   upPunchImpulse: 12
 --- !u!114 &5610959438627795663

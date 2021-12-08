@@ -17,8 +17,7 @@ public class Heal : IAction
     {
         if (currentHealings > 0)
         {
-            positionOfInstanciation = player.transform.position;
-            InstantiateOnomatopeya(player.phiuOnomatopeya);
+            InstantiateOnomatopeya(player.phiuOnomatopeya, player);
             --currentHealings;
         }
 
