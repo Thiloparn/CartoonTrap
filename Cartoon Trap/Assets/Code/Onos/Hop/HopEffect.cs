@@ -23,7 +23,8 @@ public class HopEffect : OnomaopeyaEffect
         {
             impulseDirection += Vector3.left * hopOno.horizontalPunchImpulse;
         }
-        
+
+        playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.AddForce(impulseDirection, ForceMode2D.Impulse);
         base.ExecuteEffect();
     }
