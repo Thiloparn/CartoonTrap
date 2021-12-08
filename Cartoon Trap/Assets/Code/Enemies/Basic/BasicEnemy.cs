@@ -11,7 +11,7 @@ public class BasicEnemy : MonoBehaviour
     private Health enemyHealth;
 
     //Movement
-    private Vector2 initialPostion = new Vector2(0f, 0f);
+    public Vector2 initialPostion = new Vector2(0f, 0f);
     public float movingDirectionX = 1f;
     public float distance = 0f;
     public float speed = 3f;
@@ -134,6 +134,11 @@ public class BasicEnemy : MonoBehaviour
     private bool TouchingPlayer()
     {
         return boxCollider.IsTouching(player.BoxCollider);
+    }
+
+    public void TakeDamage(int damage, GameObject gameObject)
+    {
+        enemyHealth.DecreaseHealth(damage);
     }
 
     private void Die()
