@@ -120,7 +120,7 @@ MonoBehaviour:
   speed: 10
   jumpForce: 10
   reboundForce: 5
-  doubleJumpForce: 2
+  doubleJumpForce: 10
   dashDuration: 0.2
   dashSpeed: 4.25
   attackPower: 10
