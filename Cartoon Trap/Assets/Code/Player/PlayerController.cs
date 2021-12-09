@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public float reboundForce = 2f;
     public float doubleJumpForce = 2f;
+    private float lookingDirection = 1f;
 
     //Dash
     private float timeDashing = 0;
@@ -90,8 +91,8 @@ public class PlayerController : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
-        pocket = new PlayerPocket(this
-            );
+        pocket = new PlayerPocket(this);
+        lookingDirection = 1f;
     }
 
     private void Update()
@@ -118,6 +119,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            UpdateLookingDirection();
+
             if (isGrounded())
             {
                 jumpAbble = true;
@@ -137,14 +140,27 @@ public class PlayerController : MonoBehaviour
             {
                 restingTimeElapsed += Time.fixedDeltaTime;
 
-                if(restingTimeElapsed >= restingTime)
+                if (restingTimeElapsed >= restingTime)
                 {
                     restingTimeElapsed = 0;
                     resting = false;
-                }else if (restingTimeElapsed >= restingTime - standingUpTime)
+                }
+                else if (restingTimeElapsed >= restingTime - standingUpTime)
                 {
                     playerAnimator.EndRestingAnimation(this);
                 }
+            }
+        }
+
+        void UpdateLookingDirection()
+        {
+            if (movingDirectionX < -0.01f)
+            {
+                lookingDirection = -1f;
+            }
+            else if (movingDirectionX > 0.01f)
+            {
+                lookingDirection = 1f;
             }
         }
     }
@@ -349,13 +365,6 @@ public class PlayerController : MonoBehaviour
 
     public float LookingAtDirection()
     {
-        if (movingDirectionX < 0 )
-        {
-            return -1f;
-        }
-        else
-        {
-            return 1f;
-        }
+        return lookingDirection;
     }
 }
