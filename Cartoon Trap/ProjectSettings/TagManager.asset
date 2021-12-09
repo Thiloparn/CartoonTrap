@@ -8,6 +8,10 @@ TagManager:
   - Onomatopeya
   - Floor
   - PumEffectArea
+  - Enemy
+  - NegativeOnomatopeya
+  - PunchEffectArea
+  - SlashEffectArea
   layers:
   - Default
   - TransparentFX
@@ -15,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Floor
+  - InGame
   - 
   - 
   - 

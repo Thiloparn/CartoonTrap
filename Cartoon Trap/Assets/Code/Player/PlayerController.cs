@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
 
@@ -19,47 +20,93 @@ public class PlayerController : MonoBehaviour
     private float movingDirectionY = 0f;
     public float speed = 5f;
     public float jumpForce = 5f;
+    public float reboundForce = 2f;
+    public float doubleJumpForce = 2f;
+    private float lookingDirection = 1f;
+
+    //Dash
+    private float timeDashing = 0;
+    public float dashDuration;
+    public float dashSpeed;
+
+    //Rest
+    private float restingTime = 2f;
+    private float standingUpTime = 0.5f;
+    private float restingTimeElapsed = 0;
 
     //Combat
     public float attackPower = 0;
 
     //Flags
     private bool dashing = false;
-    public bool attacking = false;
-    private bool grapping = false;
+    private bool dashAbble = false;
+    private bool attacking = false;
+    public bool grapping = false;
+    public bool throwing = false;
     private bool jumping = false;
     private bool jumpAbble = false;
+    private bool doubleJumping = false;
+    private bool doubleJumpAbble = false;
     private bool healing = false;
     private bool usingBlade = false;
     private bool usingHammer = false;
+    public bool resting = false;
 
     //Actions
-    private IAction dash = new Dash();
-    private IAction grap = new Grap();
+    private Dash dash = new Dash(0);
     private IAction jump = new Jump();
+    public IAction rebound = new Rebound();
     private Heal heal;
     private IAction slash = new Slash();
     private IAction pum = new Pum();
+    private IAction doubleJump = new DoubleJump();
 
     //Onos ¡¡TEMPORAL!!
     public GameObject attackOnomatopeya;
     public GameObject phiuOnomatopeya;
     public GameObject pumOnomatopeya;
     public GameObject slashOnomatpeya;
+    public GameObject hopOnomatopeya;
 
+    public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
+    private BoxCollider2D boxCollider;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
+    public PlayerPocket pocket;
 
     public bool Attacking { get => attacking; set => attacking = value; }
+    public bool Grapping { get => grapping; set => grapping = value; }
     public float MovingDirectionX { get => movingDirectionX;}
     public float MovingDirectionY { get => movingDirectionY;}
+    public Rigidbody2D RigidBody { get => rigidBody;}
+
+    public BoxCollider2D BoxCollider { get => boxCollider; }
+    public bool Throwing { get => throwing; set => throwing = value; }
 
     private void Awake()
     {
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         heal = new Heal(numberOfHealings);
+        playerAnimator = new PlayerAnimator();
+        pocket = new PlayerPocket(this);
+        lookingDirection = 1f;
+    }
+
+    private void Update()
+    {
+        playerAnimator.UpdateLookingDirection(this);
+
+        if (Math.Abs(movingDirectionX) >= 0.01f) //Fuente de bugs
+        {
+            playerAnimator.StartWalkingAnimation(this);
+        }
+        else
+        {
+            playerAnimator.EndWalkingAnimation(this);
+        }
     }
 
     private void FixedUpdate()
@@ -72,63 +119,115 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            UpdateLookingDirection();
+
             if (isGrounded())
             {
                 jumpAbble = true;
+                dashAbble = true;
+                doubleJumpAbble = true;
             }
             else
             {
                 jumpAbble = false;
             }
 
-            ExecuteActions();
+            if (!resting)
+            {
+                ExecuteActions();
+            }
+            else
+            {
+                restingTimeElapsed += Time.fixedDeltaTime;
+
+                if (restingTimeElapsed >= restingTime)
+                {
+                    restingTimeElapsed = 0;
+                    resting = false;
+                }
+                else if (restingTimeElapsed >= restingTime - standingUpTime)
+                {
+                    playerAnimator.EndRestingAnimation(this);
+                }
+            }
+        }
+
+        void UpdateLookingDirection()
+        {
+            if (movingDirectionX < -0.01f)
+            {
+                lookingDirection = -1f;
+            }
+            else if (movingDirectionX > 0.01f)
+            {
+                lookingDirection = 1f;
+            }
         }
     }
 
     private void ExecuteActions()
     {
+
         if (dashing)
         {
-            dash.ExecuteAction(this);
-            dashing = false;
-        }
+            if (timeDashing == 0)
+            {
+                playerAnimator.StartDashingAnimation(this);
+            }
 
-        if (grapping)
+            timeDashing += Time.fixedDeltaTime;
+
+            if (timeDashing >= dashDuration)
+            {
+                dashing = false;
+                timeDashing = 0;
+                dash.EndExecuteAction(this);
+            }
+            else
+            {
+                dash.ExecuteAction(this);
+            }
+
+        }
+        else
         {
-            grap.ExecuteAction(this);
-            grapping = false;
+            if (healing)
+            {
+                heal.ExecuteAction(this);
+                healing = false;
+            }
+
+            if (jumping)
+            {
+                jump.ExecuteAction(this);
+                jumping = false;
+            }else if (doubleJumping)
+            {
+                doubleJump.ExecuteAction(this);
+                doubleJumpAbble = false;
+                doubleJumping = false;
+            }
+
+            if (usingBlade)
+            {
+                slash.ExecuteAction(this);
+                usingBlade = false;
+            }
+
+            if (usingHammer)
+            {
+                pum.ExecuteAction(this);
+                usingHammer = false;
+            }
+
+            Move();
         }
 
-        if (jumping)
-        {
-            jump.ExecuteAction(this);
-            jumping = false;
-        }
-
-        if (healing)
-        {
-            heal.ExecuteAction(this);
-            healing = false;
-        }
-
-        if (usingBlade)
-        {
-            slash.ExecuteAction(this);
-            usingBlade = false;
-        }
-
-        if (usingHammer)
-        {
-            pum.ExecuteAction(this);
-            usingHammer = false;
-        }
-
-        Move();
     }
 
     private void Die()
     {
-        throw new NotImplementedException();
+        print("Player Dead");
     }
 
     public void onMovement(InputAction.CallbackContext value)
@@ -149,7 +248,15 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            grapping = true;
+            if (pocket.IsEmpty())
+            {
+                grapping = true;
+            }
+            else
+            {
+                throwing = true;
+            }
+            
         }
     }
 
@@ -182,14 +289,21 @@ public class PlayerController : MonoBehaviour
         if (value.started && jumpAbble)
         {
             jumping = true;
+            doubleJumpAbble = true;
+        }
+        else if(value.started && !isGrounded() && doubleJumpAbble)
+        {
+            doubleJumping = true;
         }
     }
 
     public void onDash(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (value.started && dashAbble)
         {
             dashing = true;
+            dashAbble = false;
+            dash = new Dash(LookingAtDirection());
         }
     }
 
@@ -237,9 +351,20 @@ public class PlayerController : MonoBehaviour
         playerHealth.IncreaseHealth(1);
     }
 
+    public void TakeDamage(int damageAmount)
+    {
+        playerHealth.DecreaseHealth(damageAmount);
+    }
+
     public void Rest()
     {
         playerHealth.ResetHealth();
         heal.resetHealings();
+        resting = true;
+    }
+
+    public float LookingAtDirection()
+    {
+        return lookingDirection;
     }
 }
