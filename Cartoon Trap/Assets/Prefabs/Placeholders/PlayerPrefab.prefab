@@ -75,6 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3677637967611149995}
   - component: {fileID: 3677637967611149992}
+  - component: {fileID: 5865478903588460304}
   - component: {fileID: 3862231640987445958}
   - component: {fileID: 386234894422521500}
   - component: {fileID: 4353769014367737987}
@@ -134,6 +135,26 @@ MonoBehaviour:
   hopOnomatopeya: {fileID: 3881120773100089795, guid: e867ea78db8a01d42aea1f4f8baa2ee5, type: 3}
   playerInput: {fileID: 1008157692}
   activeActionMap: 
+--- !u!114 &5865478903588460304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677637967611149993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 408567e6072c5d04aa19872d1d794e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOverride_Blue: {fileID: 22100000, guid: 03a616fa706cd6f458a6d92b49795c44, type: 2}
+  playerOverride_BR: {fileID: 22100000, guid: d6d36258d147df440a99ea4bf864c790, type: 2}
+  playerOverride_ByN: {fileID: 22100000, guid: 1cee8c051aff81e40bbe3a24815d5107, type: 2}
+  playerOverride_FullColor: {fileID: 22100000, guid: de2faa4a1fd90ae4fa3e9aeadbfdf2f3, type: 2}
+  playerOverride_GB: {fileID: 22100000, guid: 3a0638939483fbe4d800ace2f2e7eba8, type: 2}
+  playerOverride_Green: {fileID: 22100000, guid: d872a44a41dc3094791caf52eeb7fcb3, type: 2}
+  playerOverride_Red: {fileID: 22100000, guid: 047cc0a7aefea62448e7ceb910a8ab24, type: 2}
+  playerOverride_RG: {fileID: 22100000, guid: a81c624a405583a41894fe14bc2fe79a, type: 2}
 --- !u!212 &3862231640987445958
 SpriteRenderer:
   m_ObjectHideFlags: 0
