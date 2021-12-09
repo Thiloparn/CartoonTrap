@@ -24,8 +24,13 @@ public class Mapa : MonoBehaviour
             {
                 showMap();
             }
+        }else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (mapisShown)
+            {
+                hideMap();
+            }
         }
-    }
 
     public void showMap()
     {
