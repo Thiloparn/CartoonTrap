@@ -16,7 +16,7 @@ public class DialogueController : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
-
+        dialogueGUI.SetActive(false);
         dialogueQueue = new Queue<string>();
     }
     public void ActivateDialogue(Texts textsObject, Sprite image)
