@@ -8,7 +8,7 @@ public class EffectAreaCollider : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            print("EnenyDamaged");
+            print("EnemyDamaged");
         }
     }
 }
