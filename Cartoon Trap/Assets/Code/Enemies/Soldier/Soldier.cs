@@ -1,14 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicEnemy : MonoBehaviour
+public class Soldier : MonoBehaviour
 {
     //Health
     public int maxHealth = 0;
     public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
     private Health enemyHealth;
+
+    public float damageReduction = 2;
+    public float stunDuration = 1f;
+    private float stunTimer = 0f;
 
     //Movement
     private Vector2 initialPostion = new Vector2(0f, 0f);
@@ -21,9 +24,10 @@ public class BasicEnemy : MonoBehaviour
     public bool followPlayer = false;
     public bool attackPlayer = false;
     private bool vulnerable = false;
+    private bool shielded = true;
 
     public PlayerController player;
-    [SerializeField] EnemyDetection enemyDetection;
+    [SerializeField] SoldierDetection soldierDetection;
     private BoxCollider2D boxCollider;
 
     private void Awake()
@@ -41,27 +45,36 @@ public class BasicEnemy : MonoBehaviour
         }
         else if (moves)
         {
-
-            if (enemyDetection.playerDetected)
-            {
-                if (TouchingPlayer())
-                {
-                    player.TakeDamage(1);
-                    player.playerAnimator.StartHurtingAnimation(player);
-                }
-            }
-
-            if (vulnerable && enemyDetection.playerDetected)
+            if (vulnerable && soldierDetection.playerDetected)
             {
                 FleeFromPlayer();
             }
-            else if (followPlayer && enemyDetection.playerDetected)
+            else if (followPlayer && soldierDetection.playerDetected)
             {
                 MoveToPlayer();
             }
             else
             {
                 Move();
+            }
+        }
+        else
+        {
+            stunTimer++;
+
+            if (stunTimer >= stunDuration)
+            {
+                stunTimer = 0f;
+                moves = true;
+            }
+        }
+
+        if (soldierDetection.playerDetected)
+        {
+            if (TouchingPlayer())
+            {
+                player.TakeDamage(1);
+                player.playerAnimator.StartHurtingAnimation(player);
             }
         }
     }
@@ -89,7 +102,7 @@ public class BasicEnemy : MonoBehaviour
     {
         float directionOfPlayer = 1f;
 
-        if(player.transform.position.x - 0.5f > transform.position.x)
+        if (player.transform.position.x - 0.5f > transform.position.x)
         {
             directionOfPlayer = 1f;
             transform.position += Vector3.right * directionOfPlayer * speed * Time.fixedDeltaTime;
@@ -118,9 +131,9 @@ public class BasicEnemy : MonoBehaviour
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, transform.TransformDirection(new Vector2(movingDirectionX, 0)), 1, LayerMask.GetMask("InGame"));
 
-        foreach(RaycastHit2D hit in hits)
+        foreach (RaycastHit2D hit in hits)
         {
-            if(hit.collider.gameObject.tag != "Player" && !hit.collider.gameObject.Equals(this.gameObject) && !hit.collider.isTrigger)
+            if (hit.collider.gameObject.tag != "Player" && !hit.collider.gameObject.Equals(this.gameObject) && !hit.collider.isTrigger)
             {
                 res = true;
                 break;
@@ -138,7 +151,33 @@ public class BasicEnemy : MonoBehaviour
 
     public void TakeDamage(int damage, GameObject gameObject)
     {
-        enemyHealth.DecreaseHealth(damage);
+        bool b = false;
+
+        if(transform.localScale.x == 1)
+        {
+            b = gameObject.transform.position.x >= transform.position.x + boxCollider.size.x / 2;
+        }
+        else
+        {
+            b = gameObject.transform.position.x <= transform.position.x - boxCollider.size.x / 2;
+        }
+
+        if (b && shielded)
+        {
+            enemyHealth.DecreaseHealth(Mathf.FloorToInt(damage / damageReduction));
+            stunTimer = 0f;
+            moves = false;
+
+            if (gameObject.tag == "SlashEffectArea")
+            {
+                shielded = false;
+            }
+        }
+        else
+        {
+            enemyHealth.DecreaseHealth(damage);
+        }
+
     }
 
     private void Die()

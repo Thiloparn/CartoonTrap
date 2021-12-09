@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6243549886731487311
+--- !u!1001 &4815093365695712539
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,31 +9,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1385085730617018804, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_Size.x
-      value: 2.7551322
+      value: 3.7017527
       objectReference: {fileID: 0}
     - target: {fileID: 1385085730617018804, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_Size.y
-      value: 2.0596397
+      value: 1.2116249
       objectReference: {fileID: 0}
     - target: {fileID: 1385085730617018804, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: 0.03391218
       objectReference: {fileID: 0}
     - target: {fileID: 1385085730617018804, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_Offset.y
-      value: 0
+      value: -0.00000011920929
       objectReference: {fileID: 0}
     - target: {fileID: 1983072650994298160, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_Name
-      value: GenericAreaEffect Variant
+      value: PumAreaEffect Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983072650994298160, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
+      propertyPath: m_TagString
+      value: PumEffectArea
       objectReference: {fileID: 0}
     - target: {fileID: 2365863838610462287, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.60081357
       objectReference: {fileID: 0}
     - target: {fileID: 2365863838610462287, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_Color.g
-      value: 0.2586031
+      value: 0.8773585
       objectReference: {fileID: 0}
     - target: {fileID: 2365863838610462287, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_Color.r
@@ -45,11 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5255505270504460046, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.47
+      value: -5.55009
       objectReference: {fileID: 0}
     - target: {fileID: 5255505270504460046, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.68
+      value: 2.9566698
       objectReference: {fileID: 0}
     - target: {fileID: 5255505270504460046, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_LocalPosition.z
@@ -85,11 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5940939129279658298, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_LocalScale.x
-      value: 19.403484
+      value: 25.567314
       objectReference: {fileID: 0}
     - target: {fileID: 5940939129279658298, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_LocalScale.y
-      value: 14.155131
+      value: 7.4997587
       objectReference: {fileID: 0}
     - target: {fileID: 5940939129279658298, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
       propertyPath: m_LocalPosition.x
@@ -105,18 +109,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
---- !u!1 &5557654813489046911 stripped
+--- !u!1 &6437878032877002795 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1983072650994298160, guid: ff89577061c26dd409f59949b4a81d46, type: 3}
-  m_PrefabInstance: {fileID: 6243549886731487311}
+  m_PrefabInstance: {fileID: 4815093365695712539}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1464262738598678088
+--- !u!114 &-8367363643431772439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5557654813489046911}
+  m_GameObject: {fileID: 6437878032877002795}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ff5354c8f579a44d896a20b25b7b7b3, type: 3}
