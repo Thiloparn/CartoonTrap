@@ -24,7 +24,8 @@ public class Mapa : MonoBehaviour
             {
                 showMap();
             }
-        }else if (Input.GetKeyDown(KeyCode.Escape))
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (mapisShown)
             {
@@ -32,17 +33,18 @@ public class Mapa : MonoBehaviour
             }
         }
 
-    public void showMap()
-    {
-        map.SetActive(true);
-        Time.timeScale = 0f;
-        mapisShown = true;
-    }
-    public void hideMap()
-    {
-        map.SetActive(false);
-        mapisShown = false;
-        Time.timeScale = 1f;
+        void showMap()
+        {
+            map.SetActive(true);
+            Time.timeScale = 0f;
+            mapisShown = true;
+        }
+        void hideMap()
+        {
+            map.SetActive(false);
+            mapisShown = false;
+            Time.timeScale = 1f;
 
+        }
     }
 }
