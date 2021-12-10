@@ -13,7 +13,6 @@ public class OnomaopeyaEffect : MonoBehaviour
 
     public virtual void ExecuteEffect()
     {
-        print("Efect");
         if (ono.onoAreaEffect != null)
         {
             InstantiateAreaEffect();

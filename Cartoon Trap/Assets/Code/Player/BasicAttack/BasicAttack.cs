@@ -188,7 +188,6 @@ public class BasicAttack : MonoBehaviour
         player.Attacking = false;
         if (numAttacksInCurrentCombo == MAX_ATTACK_COMBO)
         {
-            print("3 ataque");
             attack.ExecuteAction(player);
             numAttacksInCurrentCombo = 0;
         }
