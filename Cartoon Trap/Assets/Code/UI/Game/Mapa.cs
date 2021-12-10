@@ -1,50 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Mapa : MonoBehaviour
 {
     [SerializeField] GameObject map;
     bool mapisShown;
 
+    [SerializeField] PlayerInput playerInput;
+
     private void Awake()
     {
         mapisShown = false;
         map.SetActive(false);
     }
-    private void Update()
+
+    public void showMap()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            if (mapisShown)
-            {
-                hideMap();
-            }
-            else
-            {
-                showMap();
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (mapisShown)
-            {
-                hideMap();
-            }
-        }
+        map.SetActive(true);
+        Time.timeScale = 0f;
+        mapisShown = true;
+    }
+    public void hideMap()
+    {
+        map.SetActive(false);
+        mapisShown = false;
+        Time.timeScale = 1f;
 
-        void showMap()
+    }
+    public void onPause(InputAction.CallbackContext value)
+    {
+        if (mapisShown)
         {
-            map.SetActive(true);
-            Time.timeScale = 0f;
-            mapisShown = true;
+            hideMap();
         }
-        void hideMap()
+    }
+    public void onMenu(InputAction.CallbackContext value)
+    {
+        if (mapisShown)
         {
-            map.SetActive(false);
-            mapisShown = false;
-            Time.timeScale = 1f;
-
+            hideMap();
+        }
+        else
+        {
+            showMap();
         }
     }
 }
