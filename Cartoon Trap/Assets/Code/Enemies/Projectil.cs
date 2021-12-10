@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectil : MonoBehaviour
 {
-    private float direction = 1f;
+    private Vector2 direction = new Vector2(1, 0);
     private float speed = 4f;
     private float range = 5f;
     private int damage = 1;
@@ -14,7 +14,7 @@ public class Projectil : MonoBehaviour
 
     private PlayerController player;
 
-    public void createProjectile(float _direction, float _speed, float _range, int _damage)
+    public void createProjectile(Vector2 _direction, float _speed, float _range, int _damage)
     {
         direction = _direction;
         speed = _speed;
@@ -49,7 +49,7 @@ public class Projectil : MonoBehaviour
 
     private void Move()
     {
-        transform.position += Vector3.right * direction * speed * Time.fixedDeltaTime;
+        transform.position += new Vector3(direction.x, direction.y, 0) * speed * Time.fixedDeltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
