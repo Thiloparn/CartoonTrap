@@ -8,7 +8,8 @@ public class SlashEffect : OnomaopeyaEffect
     public override void InstantiateAreaEffect()
     {
         GameObject slashArea = Instantiate(ono.onoAreaEffect, transform.position, Quaternion.identity);
-        if (GetComponent<SlashOnomatopeya>().slashDirection < 0)
+        PlayerController player = GameData.player;
+        if (player.LookingAtDirection() < 0)
         {
             slashArea.transform.Rotate(new Vector3(0, 180, 0));
         }
