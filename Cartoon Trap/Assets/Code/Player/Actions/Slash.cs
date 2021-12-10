@@ -6,8 +6,7 @@ public class Slash : IAction
 {
     public override void ExecuteAction(PlayerController player)
     {
-        positionOfInstanciation = player.transform.position;
-        InstantiateOnomatopeya(player.slashOnomatpeya);
+        InstantiateOnomatopeya(player.slashOnomatpeya, player);
         onoInstanciated.GetComponent<SlashOnomatopeya>().slashDirection = player.MovingDirectionX;
         player.playerAnimator.StartUsingBladeAnimation(player);
     }

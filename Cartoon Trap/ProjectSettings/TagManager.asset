@@ -9,6 +9,9 @@ TagManager:
   - Floor
   - PumEffectArea
   - Enemy
+  - NegativeOnomatopeya
+  - PunchEffectArea
+  - SlashEffectArea
   layers:
   - Default
   - TransparentFX

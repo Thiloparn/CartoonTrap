@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 5f;
     public float reboundForce = 2f;
     public float doubleJumpForce = 2f;
+    private float lookingDirection = 1f;
 
     //Dash
     private float timeDashing = 0;
@@ -39,8 +40,9 @@ public class PlayerController : MonoBehaviour
     //Flags
     private bool dashing = false;
     private bool dashAbble = false;
-    public bool attacking = false;
-    private bool grapping = false;
+    private bool attacking = false;
+    public bool grapping = false;
+    public bool throwing = false;
     private bool jumping = false;
     private bool jumpAbble = false;
     private bool doubleJumping = false;
@@ -52,7 +54,6 @@ public class PlayerController : MonoBehaviour
 
     //Actions
     private Dash dash = new Dash(0);
-    private IAction grap = new Grap();
     private IAction jump = new Jump();
     public IAction rebound = new Rebound();
     private Heal heal;
@@ -69,20 +70,29 @@ public class PlayerController : MonoBehaviour
 
     public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
+    private BoxCollider2D boxCollider;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
+    public PlayerPocket pocket;
 
     public bool Attacking { get => attacking; set => attacking = value; }
+    public bool Grapping { get => grapping; set => grapping = value; }
     public float MovingDirectionX { get => movingDirectionX;}
     public float MovingDirectionY { get => movingDirectionY;}
     public Rigidbody2D RigidBody { get => rigidBody;}
+
+    public BoxCollider2D BoxCollider { get => boxCollider; }
+    public bool Throwing { get => throwing; set => throwing = value; }
 
     private void Awake()
     {
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
+        pocket = new PlayerPocket(this);
+        lookingDirection = 1f;
     }
 
     private void Update()
@@ -109,6 +119,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            UpdateLookingDirection();
+
             if (isGrounded())
             {
                 jumpAbble = true;
@@ -128,14 +140,27 @@ public class PlayerController : MonoBehaviour
             {
                 restingTimeElapsed += Time.fixedDeltaTime;
 
-                if(restingTimeElapsed >= restingTime)
+                if (restingTimeElapsed >= restingTime)
                 {
                     restingTimeElapsed = 0;
                     resting = false;
-                }else if (restingTimeElapsed >= restingTime - standingUpTime)
+                }
+                else if (restingTimeElapsed >= restingTime - standingUpTime)
                 {
                     playerAnimator.EndRestingAnimation(this);
                 }
+            }
+        }
+
+        void UpdateLookingDirection()
+        {
+            if (movingDirectionX < -0.01f)
+            {
+                lookingDirection = -1f;
+            }
+            else if (movingDirectionX > 0.01f)
+            {
+                lookingDirection = 1f;
             }
         }
     }
@@ -166,12 +191,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (grapping)
-            {
-                grap.ExecuteAction(this);
-                grapping = false;
-            }
-
             if (healing)
             {
                 heal.ExecuteAction(this);
@@ -208,7 +227,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        throw new NotImplementedException();
+        print("Player Dead");
     }
 
     public void onMovement(InputAction.CallbackContext value)
@@ -229,7 +248,15 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            grapping = true;
+            if (pocket.IsEmpty())
+            {
+                grapping = true;
+            }
+            else
+            {
+                throwing = true;
+            }
+            
         }
     }
 
@@ -338,13 +365,6 @@ public class PlayerController : MonoBehaviour
 
     public float LookingAtDirection()
     {
-        if (movingDirectionX < 0 )
-        {
-            return -1f;
-        }
-        else
-        {
-            return 1f;
-        }
+        return lookingDirection;
     }
 }

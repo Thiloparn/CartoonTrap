@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6577250028146890611
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7581817621045827375, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Name
+      value: Soldier
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 95403267981269471, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+    - {fileID: 217279389, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+    - {fileID: 616117212, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+--- !u!1 &3638645686656057436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7581817621045827375, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+  m_PrefabInstance: {fileID: 6577250028146890611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &339175377961475467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6914125180317747960, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+  m_PrefabInstance: {fileID: 6577250028146890611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6577250028903871805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 891396686, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+  m_PrefabInstance: {fileID: 6577250028146890611}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &501145679184418854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339175377961475467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2deff163af0c3d74b8592b40c29e8e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetTimer: 0.5
+  timeElapsed: 0
+  attackOn: 0.25
+  damage: 1
+  range: 0.05
+  soldier: {fileID: 4749873538318484680}
+--- !u!114 &4749873538318484680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3638645686656057436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5f9e70637db9942b78cc5b7c1a0831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 2
+  initialCurrentHealth: 2
+  damageReduction: 2
+  stunDuration: 20
+  movingDirectionX: 1
+  distance: 5
+  speed: 3
+  moves: 1
+  followPlayer: 1
+  attackPlayer: 1
+  player: {fileID: 0}
+  soldierDetection: {fileID: 1943388035478449292}
+--- !u!114 &1943388035478449292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577250028903871805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba91805815cca884e900e67af961737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRadius: 5
+  playerDetected: 0
+  soldier: {fileID: 4749873538318484680}
