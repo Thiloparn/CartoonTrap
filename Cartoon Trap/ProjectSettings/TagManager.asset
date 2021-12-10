@@ -12,6 +12,7 @@ TagManager:
   - NegativeOnomatopeya
   - PunchEffectArea
   - SlashEffectArea
+  - Ice_Floor_Platform
   layers:
   - Default
   - TransparentFX
