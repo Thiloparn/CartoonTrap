@@ -15,13 +15,17 @@ public class PlayerPocket
 
     public void SafeInPocket(GameObject ono)
     {
-        Onomatopeya onoController = ono.GetComponent<Onomatopeya>();
-
-        if(onoController != null && IsEmpty())
+        if(ono != null)
         {
-            onoInPocket = ono;
-            onoController.EnterPocket();
+            Onomatopeya onoController = ono.GetComponent<Onomatopeya>();
+
+            if (onoController != null && IsEmpty())
+            {
+                onoInPocket = ono;
+                onoController.EnterPocket();
+            }
         }
+        
     }
 
     public void TakeOutOfPocket()

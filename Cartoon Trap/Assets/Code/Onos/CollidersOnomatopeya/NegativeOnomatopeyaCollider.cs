@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class NegativeOnomatopeyaCollider : OnomatopeyaCollider
 {
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            ono.Active = true;
+            if(ono != null)
+            {
+                ono.Active = true;
+            }
         }
     }
 }
