@@ -260,6 +260,7 @@ MonoBehaviour:
   StatusVida: {fileID: 875330893}
   StatusVida2: {fileID: 324972889}
   StatusVida3: {fileID: 613587086}
+  player: {fileID: 1008157696}
 --- !u!1 &299329793
 GameObject:
   m_ObjectHideFlags: 0
