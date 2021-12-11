@@ -228,6 +228,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         print("Player Dead");
+        playerAnimator.StartDyingAnimation(this);
     }
 
     public void onMovement(InputAction.CallbackContext value)

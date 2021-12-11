@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: dashDuration
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 3677637967611149992, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
+      propertyPath: initialCurrentHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3677637967611149993, guid: 6cad311aaae2a1a459c18e3ea30a295b, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab

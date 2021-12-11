@@ -52,6 +52,26 @@ public class PlayerAnimator
         PlayerAnimatorSetBool(player, "Punching", false);
     }
 
+    public void StartPunchingUpAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "PunchingUp", true);
+    }
+
+    public void EndPunchingUpAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "PunchingUp", false);
+    }
+
+    public void StartPunchingDownAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "PunchingDown", true);
+    }
+
+    public void EndPunchingDownAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "PunchingDown", false);
+    }
+
     public void StartHealingAnimation(PlayerController player)
     {
         PlayerAnimatorSetBool(player, "Healing", true);
@@ -110,5 +130,25 @@ public class PlayerAnimator
     public void EndHurtingAnimation(PlayerController player)
     {
         PlayerAnimatorSetBool(player, "Hurting", false);
+    }
+
+    public void StartDyingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Dead", true);
+    }
+
+    public void EndDyingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Dead", false);
+    }
+
+    public void StartGrappingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Grapping", true);
+    }
+
+    public void EndGrappingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Grapping", false);
     }
 }
