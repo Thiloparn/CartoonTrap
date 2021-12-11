@@ -55,20 +55,40 @@ public class TurtleAttack : MonoBehaviour
 
     private void DoAttack()
     {
-        Projectil proj1 = Instantiate(projectil, transform.position, Quaternion.identity);
-        proj1.createProjectile(new Vector2(transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage);
+        Projectil proj1; 
+        Projectil proj2;
+        Projectil proj3;
+        Projectil proj4;
+        Projectil proj5;
 
-        Projectil proj2 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 45));
-        proj2.createProjectile(new Vector2(transform.localScale.x, Mathf.Abs(transform.localScale.x)), projectilSpeed, projectilRange, projectilDamage);
+        if (turtle.transform.localScale.x == 1f)
+        {
+            
 
-        Projectil proj3 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 90));
-        proj3.createProjectile(new Vector2(0, Mathf.Abs(transform.localScale.x)), projectilSpeed, projectilRange, projectilDamage);
+            proj1 = Instantiate(projectil, transform.position, Quaternion.identity);
+            proj2 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 45));
+            proj3 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 90));
+            proj4 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 135));
+            proj5 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 180));
+        }
+        else
+        {
+            proj1 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 180));
+            proj2 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 135));
+            proj3 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 90));
+            proj4 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 45));
+            proj5 = Instantiate(projectil, transform.position, Quaternion.identity);
+        }
 
-        Projectil proj4 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 135));
-        proj4.createProjectile(new Vector2(-transform.localScale.x, Mathf.Abs(transform.localScale.x)), projectilSpeed, projectilRange, projectilDamage);
+        proj1.createProjectile(new Vector2(turtle.transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage, turtle.gameObject);
 
-        Projectil proj5 = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 180));
-        proj5.createProjectile(new Vector2(-transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage);
+        proj2.createProjectile(new Vector2(turtle.transform.localScale.x, Mathf.Abs(turtle.transform.localScale.x)), projectilSpeed, projectilRange, projectilDamage, turtle.gameObject);
+
+        proj3.createProjectile(new Vector2(0, Mathf.Abs(turtle.transform.localScale.x)), projectilSpeed, projectilRange, projectilDamage, turtle.gameObject);
+
+        proj4.createProjectile(new Vector2(-turtle.transform.localScale.x, Mathf.Abs(turtle.transform.localScale.x)), projectilSpeed, projectilRange, projectilDamage, turtle.gameObject);
+
+        proj5.createProjectile(new Vector2(-turtle.transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage, turtle.gameObject);
     }
 
     private void FinishAttack()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoleAttack : MonoBehaviour
+public class BushAttack : MonoBehaviour
 {
     public float resetTimer = 0.5f;
     public float timeElapsed = 0f;
@@ -17,8 +17,8 @@ public class MoleAttack : MonoBehaviour
 
     private PlayerController player;
     private BoxCollider2D attackCollider;
-    [SerializeField] Mole mole;
-    [SerializeField] Projectil projectil;
+    [SerializeField] Bush bush;
+    [SerializeField] BushProjectil projectil;
 
     private void Awake()
     {
@@ -29,32 +29,29 @@ public class MoleAttack : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!mole.hidden)
+        if (timeElapsed == 0 && bush.attackPlayer)
         {
-            if (timeElapsed == 0 && mole.attackPlayer)
+            if (onRange)
             {
-                if (onRange)
+                StartAttack();
+            }
+        }
+        else if (timeElapsed > 0)
+        {
+            if (timeElapsed < resetTimer)
+            {
+                if (timeElapsed >= attackOn && !attackDone && onRange)
                 {
-                    StartAttack();
+                    attackDone = true;
+                    DoAttack();
                 }
+                timeElapsed += Time.fixedDeltaTime;
             }
             else
             {
-                if (timeElapsed < resetTimer)
-                {
-                    if (timeElapsed >= attackOn && !attackDone)
-                    {
-                        attackDone = true;
-                        DoAttack();
-                    }
-                    timeElapsed += Time.fixedDeltaTime;
-                }
-                else
-                {
-                    FinishAttack();
-                }
+                FinishAttack();
             }
-        } 
+        }
     }
 
     private void StartAttack()
@@ -64,18 +61,18 @@ public class MoleAttack : MonoBehaviour
 
     private void DoAttack()
     {
-        Projectil proj;
+        BushProjectil proj;
 
-        if (mole.transform.localScale.x == 1f)
+        if (bush.transform.localScale.x == 1f)
         {
-            proj = Instantiate(projectil, transform.position, Quaternion.identity);
+            proj = Instantiate(projectil, bush.transform.position, Quaternion.identity);
         }
         else
         {
-            proj = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 180));
+            proj = Instantiate(projectil, bush.transform.position, Quaternion.Inverse(Quaternion.identity));
         }
 
-        proj.createProjectile(new Vector2(mole.transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage, mole.gameObject);
+        proj.createProjectile(player.transform.position, projectilSpeed, projectilRange, projectilDamage, bush.gameObject);
     }
 
     private void FinishAttack()
