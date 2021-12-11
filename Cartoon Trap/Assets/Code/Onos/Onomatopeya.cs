@@ -51,7 +51,6 @@ public class Onomatopeya : MonoBehaviour
     {
         Destroy(GetComponent<OnomatopeyaCollider>());
         gameObject.AddComponent<NegativeOnomatopeyaCollider>();
-
         onoAreaEffect = negativeOnoAreaEffect;
     }
 
