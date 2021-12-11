@@ -58,16 +58,16 @@ public class HedgehogAttack : MonoBehaviour
     {
         Projectil proj;
 
-        if(transform.localScale.x == -1f)
+        if(hedgehog.transform.localScale.x == -1f)
         {
             proj = Instantiate(projectil, transform.position, Quaternion.identity);
         }
         else
         {
-            proj = Instantiate(projectil, transform.position, Quaternion.Inverse(Quaternion.identity));
+            proj = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 180));
         }
 
-        proj.createProjectile(new Vector2(-transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage);
+        proj.createProjectile(new Vector2(-hedgehog.transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage, hedgehog.gameObject);
     }
 
     private void FinishAttack()

@@ -108,7 +108,7 @@ MonoBehaviour:
   attackOn: 0.5
   projectilRange: 5
   projectilDamage: 1
-  projectilSpeed: 1
+  projectilSpeed: 6
   turtle: {fileID: 396259575}
   projectil: {fileID: 4870253171526053989, guid: 900c7ac10e57013439747a6ceb79ff70, type: 3}
 --- !u!114 &396259575
