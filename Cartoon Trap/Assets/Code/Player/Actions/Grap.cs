@@ -25,8 +25,6 @@ public class Grap : IAction
             player.pocket.TakeOutOfPocket();
             grappedOno = null;
         }
-
-        grappedOno.GetComponent<Onomatopeya>().TransformToBadOno();
     }
 
     public void SetGrappedOno(GameObject grappedOno)
