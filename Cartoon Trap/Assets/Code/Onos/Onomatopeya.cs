@@ -17,6 +17,7 @@ public class Onomatopeya : MonoBehaviour
     {
         Active = false;
         effect = GetComponent<OnomaopeyaEffect>();
+        TransformToGoodOno();
     }
 
     private void FixedUpdate()
@@ -50,8 +51,25 @@ public class Onomatopeya : MonoBehaviour
         Destroy(GetComponent<OnomatopeyaCollider>());
         gameObject.AddComponent<NegativeOnomatopeyaCollider>();
 
-        onoAreaEffect.GetComponent<EffectAreaCollider>().enabled = false;
         onoAreaEffect.AddComponent<NegativeEffectAreaCollider>();
+        Destroy(GetComponent<EffectAreaCollider>());
     }
 
+    /*
+     * Medida de seguridad para TransformToBadOno
+     */
+    private void TransformToGoodOno()
+    {
+        if (GetComponent<OnomatopeyaCollider>() == null)
+        {
+            gameObject.AddComponent<OnomatopeyaCollider>();
+        }
+        Destroy(GetComponent<NegativeOnomatopeyaCollider>());
+
+        if(onoAreaEffect.GetComponent<EffectAreaCollider>() == null)
+        {
+            onoAreaEffect.AddComponent<EffectAreaCollider>();
+        }
+        Destroy(GetComponent<NegativeEffectAreaCollider>());
+    }
 }
