@@ -11,6 +11,7 @@ public class Onomatopeya : MonoBehaviour
     public Vector2 aparitionPositionOffset;
     protected OnomaopeyaEffect effect;
     public GameObject onoAreaEffect;
+    public GameObject negativeOnoAreaEffect;
 
     public bool Active { get => active; set => active = value; }
 
@@ -50,9 +51,7 @@ public class Onomatopeya : MonoBehaviour
     {
         Destroy(GetComponent<OnomatopeyaCollider>());
         gameObject.AddComponent<NegativeOnomatopeyaCollider>();
-
-        onoAreaEffect.GetComponent<EffectAreaCollider>().enabled = false;
-        onoAreaEffect.AddComponent<NegativeEffectAreaCollider>();
+        onoAreaEffect = negativeOnoAreaEffect;
     }
 
 }
