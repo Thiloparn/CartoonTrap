@@ -10,6 +10,11 @@ public class PlayerAnimator
         player.GetComponent<Animator>().SetBool(var, value);
     }
 
+    private void PlayerAnimatorSetFloat(PlayerController player, string var, float value)
+    {
+        player.GetComponent<Animator>().SetFloat(var, value);
+    }
+
     public void UpdateLookingDirection(PlayerController player)
     {
         if (player.MovingDirectionX < 0)
@@ -150,5 +155,20 @@ public class PlayerAnimator
     public void EndGrappingAnimation(PlayerController player)
     {
         PlayerAnimatorSetBool(player, "Grapping", false);
+    }
+
+    public void StartJumpingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Jumping", true);
+    }
+
+    public void EndJumpingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Jumping", false);
+    }
+
+    public void UpdateVelocityY(PlayerController player)
+    {
+        PlayerAnimatorSetFloat(player, "VelocityY", player.RigidBody.velocity.y);
     }
 }
