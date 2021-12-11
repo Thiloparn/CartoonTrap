@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
+    private DialogueController dialogueController;
     private BoxCollider2D boxCollider;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
@@ -132,7 +133,7 @@ public class PlayerController : MonoBehaviour
                 jumpAbble = false;
             }
 
-            if (!resting)
+            if (!resting && Time.timeScale == 1f)
             {
                 ExecuteActions();
             }
@@ -232,15 +233,25 @@ public class PlayerController : MonoBehaviour
 
     public void onMovement(InputAction.CallbackContext value)
     {
-        movingDirectionX = value.ReadValue<Vector2>().x;
-        movingDirectionY = value.ReadValue<Vector2>().y;
+        if(Time.timeScale == 1f)
+        {
+            movingDirectionX = value.ReadValue<Vector2>().x;
+            movingDirectionY = value.ReadValue<Vector2>().y;
+        }
     }
 
     public void onPunch(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (Time.timeScale == 1f)
         {
-            Attacking = true;
+            if (value.started)
+            {
+                Attacking = true;
+            }
+        }
+        else
+        {
+            dialogueController.NextDialogue();
         }
     }
 
