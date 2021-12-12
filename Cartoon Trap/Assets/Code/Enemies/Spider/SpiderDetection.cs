@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AranaDetection : MonoBehaviour
+public class SpiderDetection : MonoBehaviour
 {
     public float detectionRadius = 5f;
 
     public bool playerDetected = false;
 
-    [SerializeField] Arana arana;
+    [SerializeField] Spider spider;
     private CircleCollider2D detectionCollider;
 
     private void Awake()
@@ -34,7 +34,7 @@ public class AranaDetection : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerDetected = true;
-            arana.player = GameObject.FindObjectOfType<PlayerController>();
+            spider.player = GameObject.FindObjectOfType<PlayerController>();
         }
     }
 
@@ -43,7 +43,7 @@ public class AranaDetection : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerDetected = false;
-            arana.player = null;
+            spider.player = null;
         }
     }
 }

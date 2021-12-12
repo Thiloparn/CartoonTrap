@@ -21,9 +21,34 @@ public class ThrowedOno : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(gameObject.tag == "Enemy")
+        if(collision.tag == "Enemy")
         {
-            owner.Active = true;
+            Bush bush = collision.gameObject.GetComponent<Bush>();
+            SlashOnomatopeya slash = this.gameObject.GetComponent<SlashOnomatopeya>();
+
+            if (bush != null)
+            {
+                if (!bush.vulnerable)
+                {
+                    if (slash == null)
+                    {
+                        direction = -direction;
+                        owner.TransformToBadOno();
+                    }
+                    else
+                    {
+                        owner.Active = true;
+                    }
+                }
+                else
+                {
+                    owner.Active = true;
+                }
+            }
+            else
+            {
+                owner.Active = true;
+            }
         }
     }
 }

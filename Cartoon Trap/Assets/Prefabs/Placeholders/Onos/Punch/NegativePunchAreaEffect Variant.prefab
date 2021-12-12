@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5557654813489046911, guid: 9be6b91081444cb4099e80963302e095, type: 3}
       propertyPath: m_Name
-      value: NegativePunchAreaEffect
+      value: NegativePunchAreaEffect Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4385670566894050483, guid: 9be6b91081444cb4099e80963302e095, type: 3}
@@ -63,7 +63,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5557654813489046911, guid: 9be6b91081444cb4099e80963302e095, type: 3}
   m_PrefabInstance: {fileID: 4116674478796584788}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8885066706457548520
+--- !u!114 &2325580371779692171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,6 +72,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8359134164667535915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42308dc6da3c59848a067f773887ca43, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ff5354c8f579a44d896a20b25b7b7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
