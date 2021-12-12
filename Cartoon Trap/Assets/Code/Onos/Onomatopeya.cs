@@ -42,7 +42,7 @@ public class Onomatopeya : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ExitPocket(float direction, Vector3 position)
+    public virtual void ExitPocket(float direction, Vector3 position)
     {
         ThrowedOno throwedOno = gameObject.AddComponent<ThrowedOno>();
         throwedOno.direction = direction;
