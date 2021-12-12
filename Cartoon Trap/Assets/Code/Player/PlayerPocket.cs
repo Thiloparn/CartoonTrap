@@ -6,6 +6,7 @@ public class PlayerPocket
 {
     private GameObject onoInPocket;
     private PlayerController player;
+    private Vector3 EXIT_POCKET_POSITION_OFFSET = new Vector3(0, 0.5f, 0);
 
     public PlayerPocket(PlayerController player)
     {
@@ -32,7 +33,7 @@ public class PlayerPocket
     {
         if (!IsEmpty())
         {
-            onoInPocket.GetComponent<Onomatopeya>().ExitPocket(player.LookingAtDirection(), player.transform.position);
+            onoInPocket.GetComponent<Onomatopeya>().ExitPocket(player.LookingAtDirection(), player.transform.position + EXIT_POCKET_POSITION_OFFSET);
             onoInPocket = null;
         }
     }
