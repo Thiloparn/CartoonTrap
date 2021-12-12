@@ -25,11 +25,13 @@ public class BasicEnemy : MonoBehaviour
     public PlayerController player;
     [SerializeField] EnemyDetection enemyDetection;
     private BoxCollider2D boxCollider;
+    private Animator anim;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
         initialPostion = transform.position;
     }
 
@@ -143,6 +145,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        anim.SetTrigger("Dead");
+        Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
     }
 }
