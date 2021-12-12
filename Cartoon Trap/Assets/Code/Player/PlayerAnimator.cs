@@ -167,6 +167,16 @@ public class PlayerAnimator
         PlayerAnimatorSetBool(player, "Jumping", false);
     }
 
+    public void StartDoubleJumpingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "DoubleJumping", true);
+    }
+
+    public void EndDoubleJumpingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "DoubleJumping", false);
+    }
+
     public void UpdateVelocityY(PlayerController player)
     {
         PlayerAnimatorSetFloat(player, "VelocityY", player.RigidBody.velocity.y);
