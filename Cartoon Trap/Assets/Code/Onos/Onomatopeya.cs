@@ -7,6 +7,7 @@ using UnityEngine;
 public class Onomatopeya : MonoBehaviour
 {
     private bool active;
+    private bool throwed;
     public int damage;
     public Vector2 aparitionPositionOffset;
     protected OnomaopeyaEffect effect;
@@ -14,10 +15,12 @@ public class Onomatopeya : MonoBehaviour
     public GameObject negativeOnoAreaEffect;
 
     public bool Active { get => active; set => active = value; }
+    public bool Throwed { get => throwed;}
 
     protected virtual void Awake()
     {
         Active = false;
+        throwed = false;
         effect = GetComponent<OnomaopeyaEffect>();
     }
 
@@ -43,6 +46,7 @@ public class Onomatopeya : MonoBehaviour
     {
         ThrowedOno throwedOno = gameObject.AddComponent<ThrowedOno>();
         throwedOno.direction = direction;
+        throwed = true;
         gameObject.transform.position = position;
         gameObject.SetActive(true);
     }
