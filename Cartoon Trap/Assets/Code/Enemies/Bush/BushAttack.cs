@@ -6,11 +6,13 @@ public class BushAttack : MonoBehaviour
 {
     public float resetTimer = 0.5f;
     public float timeElapsed = 0f;
-    public float attackOn = 0.25f;
+    public int attackOnFrame = 1;
+    private float attackOn = 0;
     public float range = 0.4f;
     public float projectilRange = 5f;
     public int projectilDamage = 1;
     public float projectilSpeed = 4f;
+    private Vector3 playerLastPosition;
 
     private bool onRange = false;
     private bool attackDone = false;
@@ -19,17 +21,19 @@ public class BushAttack : MonoBehaviour
     private BoxCollider2D attackCollider;
     [SerializeField] Bush bush;
     [SerializeField] BushProjectil projectil;
+    [SerializeField] Animator anim;
 
     private void Awake()
     {
         attackCollider = GetComponent<BoxCollider2D>();
         attackCollider.size = new Vector2(range, attackCollider.size.y);
         attackCollider.offset = new Vector2(range / 2, 0);
+        attackOn = attackOnFrame / 60f;
     }
 
     private void FixedUpdate()
     {
-        if (timeElapsed == 0 && bush.attackPlayer)
+        if (timeElapsed == 0 && bush.attackPlayer && !bush.vulnerable)
         {
             if (onRange)
             {
@@ -40,7 +44,7 @@ public class BushAttack : MonoBehaviour
         {
             if (timeElapsed < resetTimer)
             {
-                if (timeElapsed >= attackOn && !attackDone && onRange)
+                if (timeElapsed >= attackOn && !attackDone)
                 {
                     attackDone = true;
                     DoAttack();
@@ -56,6 +60,7 @@ public class BushAttack : MonoBehaviour
 
     private void StartAttack()
     {
+        anim.SetTrigger("Attack");
         timeElapsed += Time.fixedDeltaTime;
     }
 
@@ -72,7 +77,17 @@ public class BushAttack : MonoBehaviour
             proj = Instantiate(projectil, bush.transform.position, Quaternion.Inverse(Quaternion.identity));
         }
 
-        proj.createProjectile(player.transform.position, projectilSpeed, projectilRange, projectilDamage, bush.gameObject);
+        Vector3 target;
+
+        if (player != null)
+        {
+            target = player.transform.position;
+        }
+        else
+        {
+            target = playerLastPosition;
+        }
+        proj.createProjectile(target, projectilSpeed, projectilRange, projectilDamage, bush.gameObject);
     }
 
     private void FinishAttack()
@@ -95,6 +110,7 @@ public class BushAttack : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             onRange = false;
+            playerLastPosition = player.transform.position;
             player = null;
         }
     }

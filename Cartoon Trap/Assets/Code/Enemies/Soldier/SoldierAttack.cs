@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class SoldierAttack : MonoBehaviour
 {
-    public float resetTimer = 0.5f;
-    public float timeElapsed = 0f;
-    public float attackOn = 0.25f;
+    public float resetTimer = 0;
+    private float animationLenght;
+    private float timeElapsed = 0;
+    public int attackOnFrame = 1;
+    public float attackOn = 0;
     public int damage = 1;
-    public float range = 0.05f;
 
     private bool onRange = false;
     private bool attackDone = false;
 
     private PlayerController player;
-    private CircleCollider2D attackCollider;
     [SerializeField] Soldier soldier;
+    [SerializeField] Animator anim;
 
     private void Awake()
     {
-        attackCollider = GetComponent<CircleCollider2D>();
-        attackCollider.radius = range;
+        attackOn = attackOnFrame / 60f;
     }
 
     private void FixedUpdate()
@@ -36,10 +36,13 @@ public class SoldierAttack : MonoBehaviour
         {
             if (timeElapsed < resetTimer)
             {
-                if (timeElapsed >= attackOn && !attackDone)
+                if (timeElapsed < animationLenght)
                 {
-                    attackDone = true;
-                    DoAttack();
+                    if (timeElapsed >= attackOn && !attackDone)
+                    {
+                        attackDone = true;
+                        DoAttack();
+                    }
                 }
                 timeElapsed += Time.fixedDeltaTime;
             }
@@ -52,6 +55,8 @@ public class SoldierAttack : MonoBehaviour
 
     private void StartAttack()
     {
+        anim.SetTrigger("Attack");
+        animationLenght = anim.GetCurrentAnimatorStateInfo(0).length;
         timeElapsed += Time.fixedDeltaTime;
     }
 

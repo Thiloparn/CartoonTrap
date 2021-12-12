@@ -32,6 +32,7 @@ public class ThrowedOno : MonoBehaviour
                 {
                     if (slash == null)
                     {
+                        bush.anim.SetTrigger("Attack");
                         direction = -direction;
                         owner.TransformToBadOno();
                     }

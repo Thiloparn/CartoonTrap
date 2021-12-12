@@ -9,14 +9,14 @@ public class Bush : MonoBehaviour
     public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
     private Health enemyHealth;
 
-    public float stunDuration = 1f;
-    private float stunTimer = 0f;
-
     //Movement
     private Vector2 initialPostion = new Vector2(0f, 0f);
     public float movingDirectionX = 1f;
     public float distance = 0f;
     public float speed = 3f;
+
+    private float stunDuration = 1f;
+    private float stunTimer = 0f;
 
     //Flags
     public bool moves = false;
@@ -27,12 +27,16 @@ public class Bush : MonoBehaviour
     public PlayerController player;
     [SerializeField] BushDetection bushDetection;
     private BoxCollider2D boxCollider;
+    public Animator anim;
+    [SerializeField] AnimationClip vulnerableAnimation;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
         initialPostion = transform.position;
+        stunDuration = vulnerableAnimation.length;
     }
 
     private void FixedUpdate()
@@ -58,7 +62,7 @@ public class Bush : MonoBehaviour
         }
         else
         {
-            stunTimer++;
+            stunTimer += Time.fixedDeltaTime;
 
             if (stunTimer >= stunDuration)
             {
@@ -157,21 +161,23 @@ public class Bush : MonoBehaviour
             if (gameObject.tag == "SlashEffectArea")
             {
                 vulnerable = true;
+                anim.SetTrigger("Vulnerable");
             }
             else
             {
                 attackPlayer = true;
+                anim.SetTrigger("Attack");
             }
         }
         else
         {
             enemyHealth.DecreaseHealth(damage);
         }
-
     }
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        anim.SetTrigger("Dead");
+        Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
     }
 }

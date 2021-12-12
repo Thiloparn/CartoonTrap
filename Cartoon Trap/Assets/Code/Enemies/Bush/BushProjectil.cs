@@ -128,7 +128,8 @@ public class BushProjectil : MonoBehaviour
 
     private void CreateThorns()
     {
-        BushThorns thr = Instantiate(thorns, transform.position, Quaternion.identity);
+        BushThorns thr = Instantiate(thorns, transform.position + Vector3.down * 0.5f, Quaternion.identity);
+        print(transform.position);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

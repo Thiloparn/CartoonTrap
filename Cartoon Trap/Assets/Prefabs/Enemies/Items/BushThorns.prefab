@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 992744210}
   - component: {fileID: 992744209}
   - component: {fileID: 480011568293387175}
+  - component: {fileID: 1240530985}
   m_Layer: 0
   m_Name: BushThorns
   m_TagString: Untagged
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6751597515445260605, guid: fab814214a025d74cb4ed015fd5657cd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a7bbc5e167cb0946a6b203601c11bd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!61 &992744209
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -97,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.086337745, y: 1.3270831}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.93333334, y: 1.4}
+    pivot: {x: 0.5, y: 0.042}
+    oldSize: {x: 2.13, y: 3.24}
     newSize: {x: 0.93333334, y: 1.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93333334, y: 1.4}
+  m_Size: {x: 1.1814884, y: 2.8314295}
   m_EdgeRadius: 0
 --- !u!114 &480011568293387175
 MonoBehaviour:
@@ -123,3 +124,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 5
+  damage: 1
+--- !u!95 &1240530985
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4064934384240626582}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 38037e1e1dd8dd84bbe8545628261d32, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

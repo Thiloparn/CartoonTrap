@@ -7,17 +7,49 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.0527196
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Size.y
+      value: 2.296211
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.05199504
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.013865352
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.41
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895898827879803602, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895898827879803602, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 987d02c48d836104aaaf8f727624b23f, type: 3}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.092331
+      value: 3.742
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.6970882
+      value: -3.53
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -116,13 +148,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetTimer: 3
   timeElapsed: 0
-  attackOn: 0.5
+  attackOnFrame: 15
   range: 1
   projectilRange: 10
   projectilDamage: 1
   projectilSpeed: 5
   bush: {fileID: 233750548}
   projectil: {fileID: 1433986392, guid: 1f40e050c366c324e9adf241f072ac14, type: 3}
+  anim: {fileID: 1665389343}
 --- !u!114 &233750548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +170,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   initialCurrentHealth: 2
-  stunDuration: 20
   movingDirectionX: 1
   distance: 5
   speed: 3
@@ -147,6 +179,27 @@ MonoBehaviour:
   vulnerable: 0
   player: {fileID: 0}
   bushDetection: {fileID: 233750552}
+  anim: {fileID: 0}
+  vulnerableAnimation: {fileID: 7400000, guid: 3d669db12db78dd4ea518c2e41569749, type: 2}
+--- !u!95 &1665389343
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4477144005100950283}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5002c5580b233c841bfd08fb1d5d650a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &233750552
 MonoBehaviour:
   m_ObjectHideFlags: 0
