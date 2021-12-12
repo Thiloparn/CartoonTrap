@@ -13,6 +13,7 @@ TagManager:
   - PunchEffectArea
   - SlashEffectArea
   - Ice_Floor_Platform
+  - FireWall
   layers:
   - Default
   - TransparentFX
