@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EffectAreaCollider : MonoBehaviour
 {
+    public int damage = 0;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
@@ -18,31 +20,31 @@ public class EffectAreaCollider : MonoBehaviour
 
             if(bats != null)
             {
-                bats.TakeDamage(1, this.gameObject);
+                bats.TakeDamage(damage, this.gameObject);
             }
             else if (bush != null)
             {
-                bush.TakeDamage(1, this.gameObject);
+                bush.TakeDamage(damage, this.gameObject);
             }
             else if (hedgehog != null)
             {
-                hedgehog.TakeDamage(1, this.gameObject);
+                hedgehog.TakeDamage(damage, this.gameObject);
             }
             else if (mole != null)
             {
-                mole.TakeDamage(1, this.gameObject);
+                mole.TakeDamage(damage, this.gameObject);
             }
             else if (soldier != null)
             {
-                soldier.TakeDamage(1, this.gameObject);
+                soldier.TakeDamage(damage, this.gameObject);
             }
             else if (spider != null)
             {
-                spider.TakeDamage(1, this.gameObject);
+                spider.TakeDamage(damage, this.gameObject);
             }
             else if(turtle != null)
             {
-                turtle.TakeDamage(1, this.gameObject);
+                turtle.TakeDamage(damage, this.gameObject);
             }
         }
     }

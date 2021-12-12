@@ -55,6 +55,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: NegativeSlashAreaEffect Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6970093127736857695, guid: 4bb1f20812144cd4f962ceaa3505e770, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970093127736857695, guid: 4bb1f20812144cd4f962ceaa3505e770, type: 3}
+      propertyPath: m_Color.g
+      value: 0.32371444
+      objectReference: {fileID: 0}
+    - target: {fileID: 6970093127736857695, guid: 4bb1f20812144cd4f962ceaa3505e770, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3301887
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3032894846334441196, guid: 4bb1f20812144cd4f962ceaa3505e770, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4bb1f20812144cd4f962ceaa3505e770, type: 3}
@@ -75,3 +87,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff5354c8f579a44d896a20b25b7b7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
