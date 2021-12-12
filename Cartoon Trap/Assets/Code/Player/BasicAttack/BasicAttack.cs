@@ -80,7 +80,8 @@ public class BasicAttack : MonoBehaviour
     private void StartThrow()
     {
         grap.ExecuteAction(player);
-        throwElapsed += Time.fixedDeltaTime;
+        throwElapsed += Time.fixedDeltaTime; 
+        player.playerAnimator.StartGrappingAnimation(player);
     }
     private void FinishThrow()
     {
@@ -108,6 +109,7 @@ public class BasicAttack : MonoBehaviour
     {
         attackCollider.enabled = true;
         grapElapsed += Time.fixedDeltaTime;
+        player.playerAnimator.StartGrappingAnimation(player);
     }
     private void FinisGrap()
     {
@@ -178,8 +180,35 @@ public class BasicAttack : MonoBehaviour
         attackElapsed += Time.fixedDeltaTime;
         ++numAttacksInCurrentCombo;
         timeElapsedBetweenAttacks = 0;
-        player.playerAnimator.StartPunchingAnimation(player);
         gameObject.tag = "Punch";
+
+        AnimatePunch();
+    }
+
+    private void AnimatePunch()
+    {
+        if (player.MovingDirectionY > 0)
+        {
+            player.playerAnimator.StartPunchingUpAnimation(player);
+        }
+        else
+        {
+            if (player.isGrounded())
+            {
+                player.playerAnimator.StartPunchingAnimation(player);
+            }
+            else
+            {
+                if (player.MovingDirectionY < 0)
+                {
+                    player.playerAnimator.StartPunchingDownAnimation(player);
+                }
+                else
+                {
+                    player.playerAnimator.EndPunchingDownAnimation(player);
+                }
+            }
+        }
     }
 
     private void FinishAttack()

@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         playerAnimator.UpdateLookingDirection(this);
+        playerAnimator.UpdateVelocityY(this);
 
         if (Math.Abs(movingDirectionX) >= 0.01f) //Fuente de bugs
         {
@@ -228,6 +229,7 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         print("Player Dead");
+        playerAnimator.StartDyingAnimation(this);
     }
 
     public void onMovement(InputAction.CallbackContext value)
