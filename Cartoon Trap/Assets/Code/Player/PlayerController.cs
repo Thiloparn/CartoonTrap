@@ -38,7 +38,9 @@ public class PlayerController : MonoBehaviour
     private float restingTimeElapsed = 0;
 
     //Combat
-    public float attackPower = 0;
+    public int attackPower = 0;
+    public int hammerPower = 0;
+    public int bladePower = 0;
 
     //Flags
     private bool dashing = false;
@@ -60,8 +62,6 @@ public class PlayerController : MonoBehaviour
     private IAction jump = new Jump();
     public IAction rebound = new Rebound();
     private Heal heal;
-    private IAction slash = new Slash();
-    private IAction pum = new Pum();
     private IAction doubleJump = new DoubleJump();
 
     //Onos ¡¡TEMPORAL!!
@@ -86,6 +86,8 @@ public class PlayerController : MonoBehaviour
 
     public BoxCollider2D BoxCollider { get => boxCollider; }
     public bool Throwing { get => throwing; set => throwing = value; }
+    public bool UsingBlade { get => usingBlade; set => usingBlade = value; }
+    public bool UsingHammer { get => usingHammer; set => usingHammer = value; }
 
     private void Awake()
     {
@@ -229,18 +231,6 @@ public class PlayerController : MonoBehaviour
                 doubleJump.ExecuteAction(this);
                 doubleJumpAbble = false;
                 doubleJumping = false;
-            }
-
-            if (usingBlade)
-            {
-                slash.ExecuteAction(this);
-                usingBlade = false;
-            }
-
-            if (usingHammer)
-            {
-                pum.ExecuteAction(this);
-                usingHammer = false;
             }
 
             Move();
