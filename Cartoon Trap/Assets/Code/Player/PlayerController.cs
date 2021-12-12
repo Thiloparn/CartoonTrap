@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
     private Health playerHealth;
     public int numberOfHealings = 3;
+    private bool invulneravility = false;
+    public float maxTimeInvulneravility = 1f;
+    private float currentTimeInvulneravility = 0f;
 
     //Movement
     private float movingDirectionX = 0f;
@@ -93,6 +96,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator = new PlayerAnimator();
         pocket = new PlayerPocket(this);
         lookingDirection = 1f;
+        invulneravility = false;
     }
 
     private void Update()
@@ -113,6 +117,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         activeActionMap = playerInput.currentActionMap.name;
+
+        UpdateInvulneravility();
 
         if (playerHealth.CurrentHealth == 0)
         {
@@ -153,15 +159,31 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        void UpdateLookingDirection()
+        
+    }
+
+    public void UpdateLookingDirection()
+    {
+        if (movingDirectionX < -0.01f)
         {
-            if (movingDirectionX < -0.01f)
+            lookingDirection = -1f;
+        }
+        else if (movingDirectionX > 0.01f)
+        {
+            lookingDirection = 1f;
+        }
+    }
+
+    private void UpdateInvulneravility()
+    {
+        if (invulneravility)
+        {
+            currentTimeInvulneravility += Time.fixedDeltaTime;
+
+            if (currentTimeInvulneravility >= maxTimeInvulneravility)
             {
-                lookingDirection = -1f;
-            }
-            else if (movingDirectionX > 0.01f)
-            {
-                lookingDirection = 1f;
+                currentTimeInvulneravility = 0;
+                invulneravility = false;
             }
         }
     }
@@ -355,7 +377,11 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        playerHealth.DecreaseHealth(damageAmount);
+        if(invulneravility == false)
+        {
+            playerHealth.DecreaseHealth(damageAmount);
+            invulneravility = true;
+        }
     }
 
     public void Rest()
