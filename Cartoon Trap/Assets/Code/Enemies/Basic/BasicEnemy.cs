@@ -11,7 +11,7 @@ public class BasicEnemy : MonoBehaviour
     private Health enemyHealth;
 
     //Movement
-    private Vector2 initialPostion = new Vector2(0f, 0f);
+    private Vector2 initialPostion = Vector2.zero;
     public float movingDirectionX = 1f;
     public float distance = 0f;
     public float speed = 3f;
