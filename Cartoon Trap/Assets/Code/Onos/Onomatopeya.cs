@@ -8,7 +8,6 @@ public class Onomatopeya : MonoBehaviour
 {
     private bool active;
     private bool throwed;
-    public int damage;
     public Vector2 aparitionPositionOffset;
     protected OnomaopeyaEffect effect;
     public GameObject onoAreaEffect;
