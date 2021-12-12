@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 5.092331
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.71
+      value: -3.6970882
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -144,6 +144,7 @@ MonoBehaviour:
   moves: 1
   followPlayer: 1
   attackPlayer: 1
+  vulnerable: 0
   player: {fileID: 0}
   bushDetection: {fileID: 233750552}
 --- !u!114 &233750552

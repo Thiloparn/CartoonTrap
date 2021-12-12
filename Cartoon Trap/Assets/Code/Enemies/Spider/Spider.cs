@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Arana : MonoBehaviour
+public class Spider : MonoBehaviour
 {
     //Health
     public int maxHealth = 0;
@@ -26,7 +26,7 @@ public class Arana : MonoBehaviour
     private bool vulnerable = false;
 
     public PlayerController player;
-    [SerializeField] AranaDetection aranaDetection;
+    [SerializeField] SpiderDetection spiderDetection;
     private BoxCollider2D boxCollider;
 
     private void Awake()
@@ -44,11 +44,11 @@ public class Arana : MonoBehaviour
         }
         else if (moves)
         {
-            if (vulnerable && aranaDetection.playerDetected)
+            if (vulnerable && spiderDetection.playerDetected)
             {
                 FleeFromPlayer();
             }
-            else if (followPlayer && aranaDetection.playerDetected)
+            else if (followPlayer && spiderDetection.playerDetected)
             {
                 MoveToPlayer();
             }
@@ -68,7 +68,7 @@ public class Arana : MonoBehaviour
             }
         }
 
-        if (aranaDetection.playerDetected)
+        if (spiderDetection.playerDetected)
         {
             if (TouchingPlayer())
             {

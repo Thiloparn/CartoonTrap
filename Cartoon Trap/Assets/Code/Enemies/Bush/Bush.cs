@@ -22,7 +22,7 @@ public class Bush : MonoBehaviour
     public bool moves = false;
     public bool followPlayer = false;
     public bool attackPlayer = false;
-    private bool vulnerable = false;
+    public bool vulnerable = false;
 
     public PlayerController player;
     [SerializeField] BushDetection bushDetection;

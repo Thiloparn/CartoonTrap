@@ -20,7 +20,7 @@ public class OnomatopeyaCollider : MonoBehaviour
             ono.Active = true;
         }
 
-        if (ono.Throwed && collidedGameObject.GetComponent<Collider2D>().isTrigger == false && collidedGameObject.tag != "Player")
+        if (ono.Throwed && collidedGameObject.GetComponent<Collider2D>().isTrigger == false && collidedGameObject.tag != "Player" && collidedGameObject.tag != "Enemy")
         {
             ono.Active = true;
         }

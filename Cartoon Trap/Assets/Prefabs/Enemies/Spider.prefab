@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7581817621045827375, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_Name
-      value: Arana
+      value: Spider
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95403267981269471, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
@@ -109,7 +109,7 @@ MonoBehaviour:
   followPlayer: 1
   attackPlayer: 0
   player: {fileID: 0}
-  aranaDetection: {fileID: 1038899389}
+  spiderDetection: {fileID: 1038899389}
 --- !u!114 &1038899389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,4 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 5
   playerDetected: 0
-  arana: {fileID: 1135390003}
+  spider: {fileID: 1135390003}
