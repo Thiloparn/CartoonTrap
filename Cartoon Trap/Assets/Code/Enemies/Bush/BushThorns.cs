@@ -25,7 +25,6 @@ public class BushThorns : MonoBehaviour
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
 
             player.TakeDamage(damage);
-            player.playerAnimator.StartHurtingAnimation(player);
         }
     }
 }
