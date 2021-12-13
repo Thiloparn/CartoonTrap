@@ -60,6 +60,13 @@ public class PlayerController : MonoBehaviour
     public bool resting = false;
     private bool dead = false;
 
+    //Metroidvania Flags
+    public bool punchLocked = true;
+    public bool slashLocked = true;
+    public bool pumLocked = true;
+    public bool phiuLocked = true;
+    public bool hopLocked = true;
+
     //Actions
     private Dash dash = new Dash(0);
     private IAction jump = new Jump();
@@ -312,7 +319,10 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            usingBlade = true;
+            if(slashLocked == false)
+            {
+                usingBlade = true;
+            }
         }
     }
 
@@ -320,7 +330,11 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            usingHammer = true;
+            if(pumLocked == false)
+            {
+                usingHammer = true;
+            }
+            
         }
     }
 
@@ -335,7 +349,11 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                healing = true;
+                if(phiuLocked == false)
+                {
+                    healing = true;
+                }
+                
             }
             
         }
@@ -351,7 +369,11 @@ public class PlayerController : MonoBehaviour
         }
         else if(value.started && !isGrounded() && doubleJumpAbble)
         {
-            doubleJumping = true;
+            if(hopLocked == false)
+            {
+                doubleJumping = true;
+            }
+            
         }
     }
 
