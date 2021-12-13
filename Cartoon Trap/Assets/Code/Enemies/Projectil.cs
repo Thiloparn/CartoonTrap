@@ -45,7 +45,6 @@ public class Projectil : MonoBehaviour
     private void DamagePlayer()
     {
         player.TakeDamage(damage);
-        player.playerAnimator.StartHurtingAnimation(player);
         Destroy(this.gameObject);
     }
 

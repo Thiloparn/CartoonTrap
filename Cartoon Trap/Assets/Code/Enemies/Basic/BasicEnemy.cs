@@ -47,7 +47,6 @@ public class BasicEnemy : MonoBehaviour
                 if (TouchingPlayer())
                 {
                     player.TakeDamage(1);
-                    player.playerAnimator.StartHurtingAnimation(player);
                 }
             }
 

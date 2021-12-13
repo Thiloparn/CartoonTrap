@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
@@ -14,9 +15,10 @@ public class PlayerController : MonoBehaviour
     public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
     private Health playerHealth;
     public int numberOfHealings = 3;
-    private bool invulneravility = false;
+    public bool invulneravility = false;
     public float maxTimeInvulneravility = 1f;
     private float currentTimeInvulneravility = 0f;
+    private bool reviveAbble = false;
 
     //Movement
     private float movingDirectionX = 0f;
@@ -56,6 +58,7 @@ public class PlayerController : MonoBehaviour
     private bool usingBlade = false;
     private bool usingHammer = false;
     public bool resting = false;
+    private bool dead = false;
 
     //Actions
     private Dash dash = new Dash(0);
@@ -77,6 +80,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
     public PlayerPocket pocket;
+    public GameObject deathCanvas;
 
     public bool Attacking { get => attacking; set => attacking = value; }
     public bool Grapping { get => grapping; set => grapping = value; }
@@ -124,7 +128,10 @@ public class PlayerController : MonoBehaviour
 
         if (playerHealth.CurrentHealth == 0)
         {
-            Die();
+            if (!dead)
+            {
+                StartCoroutine(Die());
+            }
         }
         else
         {
@@ -178,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInvulneravility()
     {
-        if (invulneravility)
+        if (invulneravility && !dead)
         {
             currentTimeInvulneravility += Time.fixedDeltaTime;
 
@@ -238,10 +245,37 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
-        print("Player Dead");
-        playerAnimator.StartDyingAnimation(this);
+        invulneravility = true;
+        dead = true;
+
+        yield return new WaitForSeconds(2.5f);
+        reviveAbble = true;
+        deathCanvas.SetActive(true);
+    }
+
+    private IEnumerator Revive()
+    {
+        Rest();
+        reviveAbble = false;
+        dead = false;
+        SetRevivePosition();
+
+        yield return new WaitForSeconds(0.5f);
+        deathCanvas.SetActive(false);
+    }
+
+    private void SetRevivePosition()
+    {
+        if (GameData.lastRestZone != null)
+        {
+            gameObject.transform.position = GameData.lastRestZone.position;
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
     }
 
     public void onMovement(InputAction.CallbackContext value)
@@ -294,8 +328,18 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            healing = true;
+            //Revive
+            if (reviveAbble)
+            {
+                StartCoroutine(Revive());
+            }
+            else
+            {
+                healing = true;
+            }
+            
         }
+        
     }
 
     public void onJump(InputAction.CallbackContext value)
@@ -370,6 +414,11 @@ public class PlayerController : MonoBehaviour
         if(invulneravility == false)
         {
             playerHealth.DecreaseHealth(damageAmount);
+            playerAnimator.StartHurtingAnimation(this);
+            if (playerHealth.CurrentHealth == 0)
+            {
+                playerAnimator.StartDyingAnimation(this);
+            }
             invulneravility = true;
         }
     }
@@ -379,6 +428,7 @@ public class PlayerController : MonoBehaviour
         playerHealth.ResetHealth();
         heal.resetHealings();
         resting = true;
+        playerAnimator.StartRestingAnimation(this);
     }
 
     public float LookingAtDirection()

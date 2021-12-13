@@ -5,4 +5,5 @@ using UnityEngine;
 public static class GameData
 {
     public static PlayerController player = null;
+    public static Transform lastRestZone;
 }

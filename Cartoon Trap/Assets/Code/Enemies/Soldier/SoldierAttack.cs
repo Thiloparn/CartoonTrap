@@ -60,7 +60,6 @@ public class SoldierAttack : MonoBehaviour
         if (onRange)
         {
             player.TakeDamage(damage);
-            player.playerAnimator.StartHurtingAnimation(player);
         }
     }
 

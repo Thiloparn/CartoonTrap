@@ -72,7 +72,6 @@ public class Bush : MonoBehaviour
             if (TouchingPlayer())
             {
                 player.TakeDamage(1);
-                player.playerAnimator.StartHurtingAnimation(player);
             }
         }
     }
