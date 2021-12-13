@@ -11,11 +11,7 @@ public class HopEffect : OnomaopeyaEffect
         HopOnomatopeya hopOno = GetComponent<HopOnomatopeya>();
         Rigidbody2D playerRigidbody = GameData.player.GetComponent<Rigidbody2D>();
 
-        Vector3 impulseDirection = Vector3.zero;
-        if (playerPosition.y > hopPosition.y + ono.GetComponent<Collider2D>().bounds.size.y/2)
-        {
-            impulseDirection += Vector3.up * hopOno.upPunchImpulse;
-        }
+        Vector3 impulseDirection = Vector3.up * hopOno.upPunchImpulse;
 
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.AddForce(impulseDirection, ForceMode2D.Impulse);
