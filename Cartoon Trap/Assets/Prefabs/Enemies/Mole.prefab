@@ -159,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetTimer: 3
   timeElapsed: 0
-  attackOn: 0.5
+  attackOn: 0
   range: 1
   projectilRange: 10
   projectilDamage: 1

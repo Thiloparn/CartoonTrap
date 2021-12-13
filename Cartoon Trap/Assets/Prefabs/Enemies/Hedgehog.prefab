@@ -115,7 +115,7 @@ MonoBehaviour:
   attackOn: 0.5
   projectilRange: 5
   projectilDamage: 1
-  projectilSpeed: 1
+  projectilSpeed: 6
   hedgehog: {fileID: 1793497473}
   projectil: {fileID: 6047313621669339732, guid: 5237ade3727954a4bb18c933d6376913, type: 3}
 --- !u!114 &1793497473
@@ -133,7 +133,7 @@ MonoBehaviour:
   maxHealth: 2
   initialCurrentHealth: 2
   damageReduction: 2
-  stunDuration: 1
+  stunDuration: 20
   movingDirectionX: 1
   distance: 5
   speed: 3

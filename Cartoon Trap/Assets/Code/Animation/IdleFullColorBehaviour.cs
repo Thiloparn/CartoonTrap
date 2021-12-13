@@ -12,7 +12,6 @@ public class IdleFullColorBehaviour : StateMachineBehaviour
         player.playerAnimator.EndUsingHammerAnimation(player);
         player.playerAnimator.EndUsingBladeAnimation(player);
         player.playerAnimator.EndDashingAnimation(player);
-        player.playerAnimator.EndHurtingAnimation(player);
         player.playerAnimator.EndGrappingAnimation(player);
     }
 

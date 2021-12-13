@@ -13,7 +13,14 @@ public class OnomatopeyaCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Punch")
+        GameObject collidedGameObject = collision.gameObject;
+
+        if (collidedGameObject.tag == "Punch")
+        {
+            ono.Active = true;
+        }
+
+        if (ono.Throwed && collidedGameObject.GetComponent<Collider2D>().isTrigger == false && collidedGameObject.tag != "Player" && collidedGameObject.tag != "Enemy")
         {
             ono.Active = true;
         }

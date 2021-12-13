@@ -7,6 +7,8 @@ public class BasicAttack : MonoBehaviour
     public PlayerController player;
     private IAction attack;
     private Grap grap;
+    private IAction slash = new Slash();
+    private IAction pum = new Pum();
 
     private Collider2D attackCollider;
     private const float ATTACK_COLLIDER_OFFSET = 0.055f;
@@ -26,6 +28,14 @@ public class BasicAttack : MonoBehaviour
     //Throw
     public float throwDuration = 0.5f;
     private float throwElapsed = 0f;
+
+    //Slash
+    public float slashDuration = 0.5f;
+    private float slashElapsed = 0f;
+
+    //Pum
+    public float pumDuration = 0.5f;
+    private float pumElapsed = 0f;
 
     private void Awake()
     {
@@ -51,6 +61,12 @@ public class BasicAttack : MonoBehaviour
             else if (player.Throwing)
             {
                 PerformThrow();
+            }else if (player.UsingBlade)
+            {
+                PerformSlash();
+            }else if (player.UsingHammer)
+            {
+                PerformPum();
             }
             else
             {
@@ -59,6 +75,72 @@ public class BasicAttack : MonoBehaviour
 
             ManageCombos();            
         }
+    }
+
+    private void PerformPum()
+    {
+        if (pumElapsed == 0)
+        {
+            StartPum();
+        }
+        else if (pumElapsed < pumDuration)
+        {
+            pumElapsed += Time.fixedDeltaTime;
+        }
+        else
+        {
+            FinishPum();
+        }
+    }
+
+    private void FinishPum()
+    {
+        attackCollider.enabled = false;
+        player.UsingHammer = false;
+        pum.ExecuteAction(player);
+        gameObject.tag = "Untagged";
+        pumElapsed = 0;
+    }
+
+    private void StartPum()
+    {
+        attackCollider.enabled = true;
+        pumElapsed += Time.fixedDeltaTime;
+        player.playerAnimator.StartUsingHammerAnimation(player);
+        gameObject.tag = "Hammer";
+    }
+
+    private void PerformSlash()
+    {
+        if (slashElapsed == 0)
+        {
+            StartSlash();
+        }
+        else if (slashElapsed < slashDuration)
+        {
+            slashElapsed += Time.fixedDeltaTime;
+        }
+        else
+        {
+            FinishSlash();
+        }
+    }
+
+    private void FinishSlash()
+    {
+        attackCollider.enabled = false;
+        player.UsingBlade = false;
+        slash.ExecuteAction(player);
+        gameObject.tag = "Untagged";
+        slashElapsed = 0;
+    }
+
+    private void StartSlash()
+    {
+        attackCollider.enabled = true;
+        slashElapsed += Time.fixedDeltaTime;
+        player.playerAnimator.StartUsingBladeAnimation(player);
+        gameObject.tag = "Blade";
     }
 
     private void PerformThrow()
@@ -242,13 +324,36 @@ public class BasicAttack : MonoBehaviour
     {
         GameObject collidedObject = collision.gameObject;
 
-        if (player.MovingDirectionY < 0 && collidedObject.tag == "Enemy" && player.Attacking)
+        if(collidedObject.tag == "Enemy")
         {
-            player.rebound.ExecuteAction(player);
-        }else if(player.Grapping && collidedObject.tag == "Onomatopeya" && player.Grapping)
+            if (player.MovingDirectionY < 0 && player.Attacking)
+            {
+                player.rebound.ExecuteAction(player);
+            }
+
+            BasicEnemy enemy = collidedObject.GetComponent<BasicEnemy>();
+            MakeDamage(enemy);
+
+        }
+        else if (player.Grapping && collidedObject.tag == "Onomatopeya" && player.Grapping)
         {
             grap.SetGrappedOno(collidedObject);
             grap.ExecuteAction(player);
+        }
+    }
+
+    private void MakeDamage(BasicEnemy enemy)
+    {
+        if (gameObject.tag == "Punch")
+        {
+            enemy.TakeDamage(player.attackPower, player.gameObject);
+        }
+        else if (gameObject.tag == "Blade")
+        {
+            enemy.TakeDamage(player.bladePower, player.gameObject);
+        }else if (gameObject.tag == "Hammer")
+        {
+            enemy.TakeDamage(player.hammerPower, player.gameObject);
         }
     }
 }

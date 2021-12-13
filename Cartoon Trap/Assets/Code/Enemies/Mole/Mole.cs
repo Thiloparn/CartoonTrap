@@ -59,7 +59,6 @@ public class Mole : MonoBehaviour
                     if (TouchingPlayer())
                     {
                         player.TakeDamage(1);
-                        player.playerAnimator.StartHurtingAnimation(player);
                     }
                 }
 

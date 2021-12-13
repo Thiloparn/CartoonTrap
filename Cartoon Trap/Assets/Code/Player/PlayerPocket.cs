@@ -6,6 +6,7 @@ public class PlayerPocket
 {
     private GameObject onoInPocket;
     private PlayerController player;
+    private Vector3 EXIT_POCKET_POSITION_OFFSET = new Vector3(0, 0.5f, 0);
 
     public PlayerPocket(PlayerController player)
     {
@@ -15,20 +16,24 @@ public class PlayerPocket
 
     public void SafeInPocket(GameObject ono)
     {
-        Onomatopeya onoController = ono.GetComponent<Onomatopeya>();
-
-        if(onoController != null && IsEmpty())
+        if(ono != null)
         {
-            onoInPocket = ono;
-            onoController.EnterPocket();
+            Onomatopeya onoController = ono.GetComponent<Onomatopeya>();
+
+            if (onoController != null && IsEmpty())
+            {
+                onoInPocket = ono;
+                onoController.EnterPocket();
+            }
         }
+        
     }
 
     public void TakeOutOfPocket()
     {
         if (!IsEmpty())
         {
-            onoInPocket.GetComponent<Onomatopeya>().ExitPocket(player.LookingAtDirection(), player.transform.position);
+            onoInPocket.GetComponent<Onomatopeya>().ExitPocket(player.LookingAtDirection(), player.transform.position + EXIT_POCKET_POSITION_OFFSET);
             onoInPocket = null;
         }
     }
