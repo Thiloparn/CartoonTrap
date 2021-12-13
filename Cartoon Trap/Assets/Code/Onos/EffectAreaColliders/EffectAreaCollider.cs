@@ -17,8 +17,9 @@ public class EffectAreaCollider : MonoBehaviour
             Soldier soldier = collision.gameObject.GetComponent<Soldier>();
             Spider spider = collision.gameObject.GetComponent<Spider>();
             Turtle turtle = collision.gameObject.GetComponent<Turtle>();
+            Boss boss = collision.gameObject.GetComponent<Boss>();
 
-            if(bats != null)
+            if (bats != null)
             {
                 bats.TakeDamage(damage, this.gameObject);
             }
@@ -45,6 +46,10 @@ public class EffectAreaCollider : MonoBehaviour
             else if(turtle != null)
             {
                 turtle.TakeDamage(damage, this.gameObject);
+            } 
+            else if (boss != null)
+            {
+                boss.TakeDamage(damage, this.gameObject);
             }
         }
     }
