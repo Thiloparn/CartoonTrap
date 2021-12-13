@@ -311,7 +311,7 @@ public class BasicAttack : MonoBehaviour
     {
         attackElapsed = 0;
         player.Attacking = false;
-        if (numAttacksInCurrentCombo == MAX_ATTACK_COMBO)
+        if (numAttacksInCurrentCombo == MAX_ATTACK_COMBO && player.punchLocked == false)
         {
             attack.ExecuteAction(player);
             numAttacksInCurrentCombo = 0;
