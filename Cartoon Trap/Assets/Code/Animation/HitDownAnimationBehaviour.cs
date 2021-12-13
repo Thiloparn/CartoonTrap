@@ -2,18 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleFullColorBehaviour : StateMachineBehaviour
+public class HitDownAnimationBehaviour : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         PlayerController player = animator.GetComponent<PlayerController>();
-        player.playerAnimator.EndHealingAnimation(player);
-        player.playerAnimator.EndUsingHammerAnimation(player);
-        player.playerAnimator.EndUsingBladeAnimation(player);
-        player.playerAnimator.EndDashingAnimation(player);
-        player.playerAnimator.EndHurtingAnimation(player);
-        player.playerAnimator.EndGrappingAnimation(player);
+        player.playerAnimator.EndPunchingDownAnimation(player);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

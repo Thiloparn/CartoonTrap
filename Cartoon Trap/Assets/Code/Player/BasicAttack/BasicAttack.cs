@@ -148,26 +148,40 @@ public class BasicAttack : MonoBehaviour
     {
         Vector2 newOffset = new Vector2(0, 0);
 
-        if (player.MovingDirectionY != 0)
+        if (player.MovingDirectionY > 0)
         {
-            if (player.MovingDirectionY < 0)
-            {
-                newOffset.y -= 1;
-            }
-            else
-            {
-                newOffset.y += 1;
-            }
+            newOffset.y += 1;
         }
         else
         {
-            if (player.MovingDirectionX < 0)
+            if (player.isGrounded())
             {
-                newOffset.x -= 1;
+                if (player.MovingDirectionX < 0)
+                {
+                    newOffset.x -= 1;
+                }
+                else
+                {
+                    newOffset.x += 1;
+                }
             }
             else
             {
-                newOffset.x += 1;
+                if (player.MovingDirectionY < 0)
+                {
+                    newOffset.y -= 1;
+                }
+                else
+                {
+                    if (player.MovingDirectionX < 0)
+                    {
+                        newOffset.x -= 1;
+                    }
+                    else
+                    {
+                        newOffset.x += 1;
+                    }
+                }
             }
         }
 
@@ -205,7 +219,7 @@ public class BasicAttack : MonoBehaviour
                 }
                 else
                 {
-                    player.playerAnimator.EndPunchingDownAnimation(player);
+                    player.playerAnimator.StartPunchingAnimation(player);
                 }
             }
         }
@@ -222,8 +236,6 @@ public class BasicAttack : MonoBehaviour
         }
         attackCollider.enabled = false;
         gameObject.tag = "Untagged";
-
-        player.playerAnimator.EndPunchingAnimation(player);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
