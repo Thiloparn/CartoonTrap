@@ -8,6 +8,7 @@ public class DoubleJump : Jump
     {
         player.RigidBody.velocity = Vector2.zero;
         player.RigidBody.AddForce(Vector2.up * player.doubleJumpForce, ForceMode2D.Impulse);
+        player.playerAnimator.StartDoubleJumpingAnimation(player);
 
         InstantiateOnomatopeya(player.hopOnomatopeya, player);
     }

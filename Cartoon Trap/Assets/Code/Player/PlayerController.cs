@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D), typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
@@ -14,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
     private Health playerHealth;
     public int numberOfHealings = 3;
+    public bool invulneravility = false;
+    public float maxTimeInvulneravility = 1f;
+    private float currentTimeInvulneravility = 0f;
+    private bool reviveAbble = false;
 
     //Movement
     private float movingDirectionX = 0f;
@@ -35,7 +40,9 @@ public class PlayerController : MonoBehaviour
     private float restingTimeElapsed = 0;
 
     //Combat
-    public float attackPower = 0;
+    public int attackPower = 0;
+    public int hammerPower = 0;
+    public int bladePower = 0;
 
     //Flags
     private bool dashing = false;
@@ -51,14 +58,20 @@ public class PlayerController : MonoBehaviour
     private bool usingBlade = false;
     private bool usingHammer = false;
     public bool resting = false;
+    private bool dead = false;
+
+    //Metroidvania Flags
+    public bool punchLocked = true;
+    public bool slashLocked = true;
+    public bool pumLocked = true;
+    public bool phiuLocked = true;
+    public bool hopLocked = true;
 
     //Actions
     private Dash dash = new Dash(0);
     private IAction jump = new Jump();
     public IAction rebound = new Rebound();
     private Heal heal;
-    private IAction slash = new Slash();
-    private IAction pum = new Pum();
     private IAction doubleJump = new DoubleJump();
 
     //Onos ¡¡TEMPORAL!!
@@ -74,6 +87,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
     public PlayerPocket pocket;
+    public GameObject deathCanvas;
 
     public bool Attacking { get => attacking; set => attacking = value; }
     public bool Grapping { get => grapping; set => grapping = value; }
@@ -83,6 +97,8 @@ public class PlayerController : MonoBehaviour
 
     public BoxCollider2D BoxCollider { get => boxCollider; }
     public bool Throwing { get => throwing; set => throwing = value; }
+    public bool UsingBlade { get => usingBlade; set => usingBlade = value; }
+    public bool UsingHammer { get => usingHammer; set => usingHammer = value; }
 
     private void Awake()
     {
@@ -93,11 +109,13 @@ public class PlayerController : MonoBehaviour
         playerAnimator = new PlayerAnimator();
         pocket = new PlayerPocket(this);
         lookingDirection = 1f;
+        invulneravility = false;
     }
 
     private void Update()
     {
         playerAnimator.UpdateLookingDirection(this);
+        playerAnimator.UpdateVelocityY(this);
 
         if (Math.Abs(movingDirectionX) >= 0.01f) //Fuente de bugs
         {
@@ -113,9 +131,14 @@ public class PlayerController : MonoBehaviour
     {
         activeActionMap = playerInput.currentActionMap.name;
 
+        UpdateInvulneravility();
+
         if (playerHealth.CurrentHealth == 0)
         {
-            Die();
+            if (!dead)
+            {
+                StartCoroutine(Die());
+            }
         }
         else
         {
@@ -152,15 +175,31 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        void UpdateLookingDirection()
+        
+    }
+
+    public void UpdateLookingDirection()
+    {
+        if (movingDirectionX < -0.01f)
         {
-            if (movingDirectionX < -0.01f)
+            lookingDirection = -1f;
+        }
+        else if (movingDirectionX > 0.01f)
+        {
+            lookingDirection = 1f;
+        }
+    }
+
+    private void UpdateInvulneravility()
+    {
+        if (invulneravility && !dead)
+        {
+            currentTimeInvulneravility += Time.fixedDeltaTime;
+
+            if (currentTimeInvulneravility >= maxTimeInvulneravility)
             {
-                lookingDirection = -1f;
-            }
-            else if (movingDirectionX > 0.01f)
-            {
-                lookingDirection = 1f;
+                currentTimeInvulneravility = 0;
+                invulneravility = false;
             }
         }
     }
@@ -208,26 +247,42 @@ public class PlayerController : MonoBehaviour
                 doubleJumping = false;
             }
 
-            if (usingBlade)
-            {
-                slash.ExecuteAction(this);
-                usingBlade = false;
-            }
-
-            if (usingHammer)
-            {
-                pum.ExecuteAction(this);
-                usingHammer = false;
-            }
-
             Move();
         }
 
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
-        print("Player Dead");
+        invulneravility = true;
+        dead = true;
+
+        yield return new WaitForSeconds(2.5f);
+        reviveAbble = true;
+        deathCanvas.SetActive(true);
+    }
+
+    private IEnumerator Revive()
+    {
+        Rest();
+        reviveAbble = false;
+        dead = false;
+        SetRevivePosition();
+
+        yield return new WaitForSeconds(0.5f);
+        deathCanvas.SetActive(false);
+    }
+
+    private void SetRevivePosition()
+    {
+        if (GameData.lastRestZone != null)
+        {
+            gameObject.transform.position = GameData.lastRestZone.position;
+        }
+        else
+        {
+            SceneManager.LoadScene("Main Menu");
+        }
     }
 
     public void onMovement(InputAction.CallbackContext value)
@@ -264,7 +319,10 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            usingBlade = true;
+            if(slashLocked == false)
+            {
+                usingBlade = true;
+            }
         }
     }
 
@@ -272,7 +330,11 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            usingHammer = true;
+            if(pumLocked == false)
+            {
+                usingHammer = true;
+            }
+            
         }
     }
 
@@ -280,8 +342,22 @@ public class PlayerController : MonoBehaviour
     {
         if (value.started)
         {
-            healing = true;
+            //Revive
+            if (reviveAbble)
+            {
+                StartCoroutine(Revive());
+            }
+            else
+            {
+                if(phiuLocked == false)
+                {
+                    healing = true;
+                }
+                
+            }
+            
         }
+        
     }
 
     public void onJump(InputAction.CallbackContext value)
@@ -293,7 +369,11 @@ public class PlayerController : MonoBehaviour
         }
         else if(value.started && !isGrounded() && doubleJumpAbble)
         {
-            doubleJumping = true;
+            if(hopLocked == false)
+            {
+                doubleJumping = true;
+            }
+            
         }
     }
 
@@ -353,7 +433,16 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        playerHealth.DecreaseHealth(damageAmount);
+        if(invulneravility == false)
+        {
+            playerHealth.DecreaseHealth(damageAmount);
+            playerAnimator.StartHurtingAnimation(this);
+            if (playerHealth.CurrentHealth == 0)
+            {
+                playerAnimator.StartDyingAnimation(this);
+            }
+            invulneravility = true;
+        }
     }
 
     public void Rest()
@@ -361,6 +450,7 @@ public class PlayerController : MonoBehaviour
         playerHealth.ResetHealth();
         heal.resetHealings();
         resting = true;
+        playerAnimator.StartRestingAnimation(this);
     }
 
     public float LookingAtDirection()

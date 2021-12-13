@@ -7,6 +7,8 @@ public class BasicAttack : MonoBehaviour
     public PlayerController player;
     private IAction attack;
     private Grap grap;
+    private IAction slash = new Slash();
+    private IAction pum = new Pum();
 
     private Collider2D attackCollider;
     private const float ATTACK_COLLIDER_OFFSET = 0.055f;
@@ -26,6 +28,14 @@ public class BasicAttack : MonoBehaviour
     //Throw
     public float throwDuration = 0.5f;
     private float throwElapsed = 0f;
+
+    //Slash
+    public float slashDuration = 0.5f;
+    private float slashElapsed = 0f;
+
+    //Pum
+    public float pumDuration = 0.5f;
+    private float pumElapsed = 0f;
 
     private void Awake()
     {
@@ -51,6 +61,12 @@ public class BasicAttack : MonoBehaviour
             else if (player.Throwing)
             {
                 PerformThrow();
+            }else if (player.UsingBlade)
+            {
+                PerformSlash();
+            }else if (player.UsingHammer)
+            {
+                PerformPum();
             }
             else
             {
@@ -59,6 +75,72 @@ public class BasicAttack : MonoBehaviour
 
             ManageCombos();            
         }
+    }
+
+    private void PerformPum()
+    {
+        if (pumElapsed == 0)
+        {
+            StartPum();
+        }
+        else if (pumElapsed < pumDuration)
+        {
+            pumElapsed += Time.fixedDeltaTime;
+        }
+        else
+        {
+            FinishPum();
+        }
+    }
+
+    private void FinishPum()
+    {
+        attackCollider.enabled = false;
+        player.UsingHammer = false;
+        pum.ExecuteAction(player);
+        gameObject.tag = "Untagged";
+        pumElapsed = 0;
+    }
+
+    private void StartPum()
+    {
+        attackCollider.enabled = true;
+        pumElapsed += Time.fixedDeltaTime;
+        player.playerAnimator.StartUsingHammerAnimation(player);
+        gameObject.tag = "Hammer";
+    }
+
+    private void PerformSlash()
+    {
+        if (slashElapsed == 0)
+        {
+            StartSlash();
+        }
+        else if (slashElapsed < slashDuration)
+        {
+            slashElapsed += Time.fixedDeltaTime;
+        }
+        else
+        {
+            FinishSlash();
+        }
+    }
+
+    private void FinishSlash()
+    {
+        attackCollider.enabled = false;
+        player.UsingBlade = false;
+        slash.ExecuteAction(player);
+        gameObject.tag = "Untagged";
+        slashElapsed = 0;
+    }
+
+    private void StartSlash()
+    {
+        attackCollider.enabled = true;
+        slashElapsed += Time.fixedDeltaTime;
+        player.playerAnimator.StartUsingBladeAnimation(player);
+        gameObject.tag = "Blade";
     }
 
     private void PerformThrow()
@@ -80,7 +162,8 @@ public class BasicAttack : MonoBehaviour
     private void StartThrow()
     {
         grap.ExecuteAction(player);
-        throwElapsed += Time.fixedDeltaTime;
+        throwElapsed += Time.fixedDeltaTime; 
+        player.playerAnimator.StartGrappingAnimation(player);
     }
     private void FinishThrow()
     {
@@ -108,6 +191,7 @@ public class BasicAttack : MonoBehaviour
     {
         attackCollider.enabled = true;
         grapElapsed += Time.fixedDeltaTime;
+        player.playerAnimator.StartGrappingAnimation(player);
     }
     private void FinisGrap()
     {
@@ -146,26 +230,40 @@ public class BasicAttack : MonoBehaviour
     {
         Vector2 newOffset = new Vector2(0, 0);
 
-        if (player.MovingDirectionY != 0)
+        if (player.MovingDirectionY > 0)
         {
-            if (player.MovingDirectionY < 0)
-            {
-                newOffset.y -= 1;
-            }
-            else
-            {
-                newOffset.y += 1;
-            }
+            newOffset.y += 1;
         }
         else
         {
-            if (player.MovingDirectionX < 0)
+            if (player.isGrounded())
             {
-                newOffset.x -= 1;
+                if (player.MovingDirectionX < 0)
+                {
+                    newOffset.x -= 1;
+                }
+                else
+                {
+                    newOffset.x += 1;
+                }
             }
             else
             {
-                newOffset.x += 1;
+                if (player.MovingDirectionY < 0)
+                {
+                    newOffset.y -= 1;
+                }
+                else
+                {
+                    if (player.MovingDirectionX < 0)
+                    {
+                        newOffset.x -= 1;
+                    }
+                    else
+                    {
+                        newOffset.x += 1;
+                    }
+                }
             }
         }
 
@@ -178,37 +276,84 @@ public class BasicAttack : MonoBehaviour
         attackElapsed += Time.fixedDeltaTime;
         ++numAttacksInCurrentCombo;
         timeElapsedBetweenAttacks = 0;
-        player.playerAnimator.StartPunchingAnimation(player);
         gameObject.tag = "Punch";
+
+        AnimatePunch();
+    }
+
+    private void AnimatePunch()
+    {
+        if (player.MovingDirectionY > 0)
+        {
+            player.playerAnimator.StartPunchingUpAnimation(player);
+        }
+        else
+        {
+            if (player.isGrounded())
+            {
+                player.playerAnimator.StartPunchingAnimation(player);
+            }
+            else
+            {
+                if (player.MovingDirectionY < 0)
+                {
+                    player.playerAnimator.StartPunchingDownAnimation(player);
+                }
+                else
+                {
+                    player.playerAnimator.StartPunchingAnimation(player);
+                }
+            }
+        }
     }
 
     private void FinishAttack()
     {
         attackElapsed = 0;
         player.Attacking = false;
-        if (numAttacksInCurrentCombo == MAX_ATTACK_COMBO)
+        if (numAttacksInCurrentCombo == MAX_ATTACK_COMBO && player.punchLocked == false)
         {
-            print("3 ataque");
             attack.ExecuteAction(player);
             numAttacksInCurrentCombo = 0;
         }
         attackCollider.enabled = false;
         gameObject.tag = "Untagged";
-
-        player.playerAnimator.EndPunchingAnimation(player);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         GameObject collidedObject = collision.gameObject;
 
-        if (player.MovingDirectionY < 0 && collidedObject.tag == "Enemy" && player.Attacking)
+        if(collidedObject.tag == "Enemy")
         {
-            player.rebound.ExecuteAction(player);
-        }else if(player.Grapping && collidedObject.tag == "Onomatopeya" && player.Grapping)
+            if (player.MovingDirectionY < 0 && player.Attacking)
+            {
+                player.rebound.ExecuteAction(player);
+            }
+
+            BasicEnemy enemy = collidedObject.GetComponent<BasicEnemy>();
+            MakeDamage(enemy);
+
+        }
+        else if (player.Grapping && collidedObject.tag == "Onomatopeya" && player.Grapping)
         {
             grap.SetGrappedOno(collidedObject);
             grap.ExecuteAction(player);
+        }
+    }
+
+    private void MakeDamage(BasicEnemy enemy)
+    {
+        if (gameObject.tag == "Punch")
+        {
+            enemy.TakeDamage(player.attackPower, player.gameObject);
+        }
+        else if (gameObject.tag == "Blade")
+        {
+            enemy.TakeDamage(player.bladePower, player.gameObject);
+        }else if (gameObject.tag == "Hammer")
+        {
+            enemy.TakeDamage(player.hammerPower, player.gameObject);
         }
     }
 }

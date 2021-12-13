@@ -11,7 +11,7 @@ public class BasicEnemy : MonoBehaviour
     private Health enemyHealth;
 
     //Movement
-    private Vector2 initialPostion = new Vector2(0f, 0f);
+    private Vector2 initialPostion = Vector2.zero;
     public float movingDirectionX = 1f;
     public float distance = 0f;
     public float speed = 3f;
@@ -25,11 +25,13 @@ public class BasicEnemy : MonoBehaviour
     public PlayerController player;
     [SerializeField] EnemyDetection enemyDetection;
     private BoxCollider2D boxCollider;
+    private Animator anim;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
         initialPostion = transform.position;
     }
 
@@ -47,7 +49,6 @@ public class BasicEnemy : MonoBehaviour
                 if (TouchingPlayer())
                 {
                     player.TakeDamage(1);
-                    player.playerAnimator.StartHurtingAnimation(player);
                 }
             }
 
@@ -143,6 +144,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        anim.SetTrigger("Dead");
+        Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
     }
 }

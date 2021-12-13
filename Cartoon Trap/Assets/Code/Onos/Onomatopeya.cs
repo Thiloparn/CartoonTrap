@@ -7,16 +7,19 @@ using UnityEngine;
 public class Onomatopeya : MonoBehaviour
 {
     private bool active;
-    public int damage;
+    private bool throwed;
     public Vector2 aparitionPositionOffset;
     protected OnomaopeyaEffect effect;
     public GameObject onoAreaEffect;
+    public GameObject negativeOnoAreaEffect;
 
     public bool Active { get => active; set => active = value; }
+    public bool Throwed { get => throwed;}
 
     protected virtual void Awake()
     {
         Active = false;
+        throwed = false;
         effect = GetComponent<OnomaopeyaEffect>();
     }
 
@@ -38,10 +41,11 @@ public class Onomatopeya : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ExitPocket(float direction, Vector3 position)
+    public virtual void ExitPocket(float direction, Vector3 position)
     {
         ThrowedOno throwedOno = gameObject.AddComponent<ThrowedOno>();
         throwedOno.direction = direction;
+        throwed = true;
         gameObject.transform.position = position;
         gameObject.SetActive(true);
     }
@@ -50,9 +54,7 @@ public class Onomatopeya : MonoBehaviour
     {
         Destroy(GetComponent<OnomatopeyaCollider>());
         gameObject.AddComponent<NegativeOnomatopeyaCollider>();
-
-        onoAreaEffect.GetComponent<EffectAreaCollider>().enabled = false;
-        onoAreaEffect.AddComponent<NegativeEffectAreaCollider>();
+        onoAreaEffect = negativeOnoAreaEffect;
     }
 
 }

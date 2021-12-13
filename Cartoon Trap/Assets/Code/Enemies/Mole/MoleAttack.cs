@@ -64,8 +64,18 @@ public class MoleAttack : MonoBehaviour
 
     private void DoAttack()
     {
-        Projectil proj = Instantiate(projectil, transform.position, Quaternion.identity);
-        proj.createProjectile(mole.transform.localScale.x, projectilSpeed, projectilRange, projectilDamage);
+        Projectil proj;
+
+        if (mole.transform.localScale.x == 1f)
+        {
+            proj = Instantiate(projectil, transform.position, Quaternion.identity);
+        }
+        else
+        {
+            proj = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 180));
+        }
+
+        proj.createProjectile(new Vector2(mole.transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage, mole.gameObject);
     }
 
     private void FinishAttack()

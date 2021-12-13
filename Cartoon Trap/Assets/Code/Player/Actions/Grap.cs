@@ -16,17 +16,13 @@ public class Grap : IAction
 
         if (player.pocket.IsEmpty())
         {
-            MonoBehaviour.print("Grap");
             player.pocket.SafeInPocket(grappedOno);
         }
         else
         {
-            MonoBehaviour.print("Throw");
             player.pocket.TakeOutOfPocket();
             grappedOno = null;
         }
-
-        grappedOno.GetComponent<Onomatopeya>().TransformToBadOno();
     }
 
     public void SetGrappedOno(GameObject grappedOno)

@@ -7,9 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 902902076, guid: 2f6b64e4369f9434083cf9fa7206103d, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 902902076, guid: 2f6b64e4369f9434083cf9fa7206103d, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 902902078, guid: 2f6b64e4369f9434083cf9fa7206103d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1942334017485514513, guid: fab814214a025d74cb4ed015fd5657cd, type: 3}
     - target: {fileID: 3370997669876972707, guid: 2f6b64e4369f9434083cf9fa7206103d, type: 3}
       propertyPath: m_Name
-      value: BasicProjectil
+      value: HedgehogProjectil
       objectReference: {fileID: 0}
     - target: {fileID: 4138881070655028192, guid: 2f6b64e4369f9434083cf9fa7206103d, type: 3}
       propertyPath: m_RootOrder

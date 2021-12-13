@@ -8,6 +8,5 @@ public class Slash : IAction
     {
         InstantiateOnomatopeya(player.slashOnomatpeya, player);
         onoInstanciated.GetComponent<SlashOnomatopeya>().slashDirection = player.MovingDirectionX;
-        player.playerAnimator.StartUsingBladeAnimation(player);
     }
 }

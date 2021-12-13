@@ -10,6 +10,11 @@ public class PlayerAnimator
         player.GetComponent<Animator>().SetBool(var, value);
     }
 
+    private void PlayerAnimatorSetFloat(PlayerController player, string var, float value)
+    {
+        player.GetComponent<Animator>().SetFloat(var, value);
+    }
+
     public void UpdateLookingDirection(PlayerController player)
     {
         if (player.MovingDirectionX < 0)
@@ -50,6 +55,26 @@ public class PlayerAnimator
     public void EndPunchingAnimation(PlayerController player)
     {
         PlayerAnimatorSetBool(player, "Punching", false);
+    }
+
+    public void StartPunchingUpAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "PunchingUp", true);
+    }
+
+    public void EndPunchingUpAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "PunchingUp", false);
+    }
+
+    public void StartPunchingDownAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "PunchingDown", true);
+    }
+
+    public void EndPunchingDownAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "PunchingDown", false);
     }
 
     public void StartHealingAnimation(PlayerController player)
@@ -110,5 +135,50 @@ public class PlayerAnimator
     public void EndHurtingAnimation(PlayerController player)
     {
         PlayerAnimatorSetBool(player, "Hurting", false);
+    }
+
+    public void StartDyingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Dead", true);
+    }
+
+    public void EndDyingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Dead", false);
+    }
+
+    public void StartGrappingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Grapping", true);
+    }
+
+    public void EndGrappingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Grapping", false);
+    }
+
+    public void StartJumpingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Jumping", true);
+    }
+
+    public void EndJumpingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "Jumping", false);
+    }
+
+    public void StartDoubleJumpingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "DoubleJumping", true);
+    }
+
+    public void EndDoubleJumpingAnimation(PlayerController player)
+    {
+        PlayerAnimatorSetBool(player, "DoubleJumping", false);
+    }
+
+    public void UpdateVelocityY(PlayerController player)
+    {
+        PlayerAnimatorSetFloat(player, "VelocityY", player.RigidBody.velocity.y);
     }
 }

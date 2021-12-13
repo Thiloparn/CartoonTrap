@@ -29,11 +29,13 @@ public class Soldier : MonoBehaviour
     public PlayerController player;
     [SerializeField] SoldierDetection soldierDetection;
     private BoxCollider2D boxCollider;
+    private Animator anim;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
         initialPostion = transform.position;
     }
 
@@ -74,7 +76,6 @@ public class Soldier : MonoBehaviour
             if (TouchingPlayer())
             {
                 player.TakeDamage(1);
-                player.playerAnimator.StartHurtingAnimation(player);
             }
         }
     }
@@ -164,13 +165,20 @@ public class Soldier : MonoBehaviour
 
         if (b && shielded)
         {
-            enemyHealth.DecreaseHealth(Mathf.FloorToInt(damage / damageReduction));
-            stunTimer = 0f;
-            moves = false;
+            
 
             if (gameObject.tag == "SlashEffectArea")
             {
                 shielded = false;
+                Die();
+            }
+            else
+            {
+                anim.SetTrigger("Defend");
+                stunTimer = 0f;
+                moves = false;
+
+                enemyHealth.DecreaseHealth(Mathf.FloorToInt(damage / damageReduction));
             }
         }
         else
@@ -182,6 +190,7 @@ public class Soldier : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        anim.SetTrigger("Dead");
+        Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
     }
 }

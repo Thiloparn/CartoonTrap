@@ -52,6 +52,7 @@ MonoBehaviour:
   damage: 0
   aparitionPositionOffset: {x: 0, y: 0}
   onoAreaEffect: {fileID: 0}
+  negativeOnoAreaEffect: {fileID: 0}
 --- !u!212 &1230027375091196130
 SpriteRenderer:
   m_ObjectHideFlags: 0

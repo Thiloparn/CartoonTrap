@@ -33,7 +33,10 @@ public class PauseMenu : MonoBehaviour
             }
             else
             {
-                Pausar();
+                if (Time.timeScale.Equals(1f))
+                {
+                    Pausar();
+                }
             }
         }
     }
