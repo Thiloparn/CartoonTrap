@@ -97,7 +97,6 @@ public class BushProjectil : MonoBehaviour
     private void DamagePlayer()
     {
         player.TakeDamage(damage);
-        player.playerAnimator.StartHurtingAnimation(player);
         Destroy(this.gameObject);
     }
 

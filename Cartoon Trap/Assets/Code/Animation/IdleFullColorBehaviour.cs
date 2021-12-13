@@ -12,10 +12,7 @@ public class IdleFullColorBehaviour : StateMachineBehaviour
         player.playerAnimator.EndUsingHammerAnimation(player);
         player.playerAnimator.EndUsingBladeAnimation(player);
         player.playerAnimator.EndDashingAnimation(player);
-        player.playerAnimator.EndHurtingAnimation(player);
         player.playerAnimator.EndGrappingAnimation(player);
-        player.playerAnimator.EndPunchingUpAnimation(player);
-        player.playerAnimator.EndPunchingDownAnimation(player);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
