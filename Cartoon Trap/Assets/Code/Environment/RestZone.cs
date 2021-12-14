@@ -11,7 +11,7 @@ public class RestZone : MonoBehaviour
         if (player != null)
         {
             player.Rest();
-            GameData.lastRestZone = gameObject.transform;
+            GameData.lastRestZone = gameObject.transform.position;
         }
     }
 }
