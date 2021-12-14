@@ -414,7 +414,6 @@ GameObject:
   - component: {fileID: 5865478903588460304}
   - component: {fileID: 3862231640987445958}
   - component: {fileID: 386234894422521500}
-  - component: {fileID: 4353769014367737987}
   - component: {fileID: 1008157692}
   - component: {fileID: 3787674686720869322}
   - component: {fileID: 1405597225}
@@ -534,32 +533,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4353769014367737987
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3677637967611149993}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.027695417, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.44, y: 1.61}
-    newSize: {x: 0.12, y: 0.17}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1446092, y: 1.7}
-  m_EdgeRadius: 0
 --- !u!114 &1008157692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1105,19 +1078,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd25ec70fa8bc7449be951abee68e422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialCurrentHealth: -1
+  initialCurrentHealth: 2
   numberOfHealings: 3
   invulneravility: 0
   maxTimeInvulneravility: 1
-  speed: 5
-  jumpForce: 5
-  reboundForce: 2
-  doubleJumpForce: 2
-  dashDuration: 0
-  dashSpeed: 0
-  attackPower: 0
-  hammerPower: 0
-  bladePower: 0
+  speed: 4
+  jumpForce: 8.5
+  reboundForce: 4
+  doubleJumpForce: 4
+  dashDuration: 0.8
+  dashSpeed: 4.25
+  attackPower: 10
+  hammerPower: 10
+  bladePower: 10
   grapping: 0
   throwing: 0
   resting: 0
