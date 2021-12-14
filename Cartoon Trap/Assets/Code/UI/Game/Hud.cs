@@ -50,12 +50,9 @@ public class Hud : MonoBehaviour
         {
             case 3:
                 StatusVida3.enabled = true;
-                StatusVida2.enabled = true;
-                StatusVida.enabled = true;
                 break;
             case 2:
                 StatusVida2.enabled = true;
-                StatusVida.enabled = true;
                 break;
             case 1:
                 StatusVida.enabled = true;
