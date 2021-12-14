@@ -42,6 +42,7 @@ public class DialogueController : MonoBehaviour
         if (dialogueQueue.Count == 0)
         {
             screenText.text = "";
+            active = false;
             anim.SetBool("Bocadillo", false);
             return;
         }
@@ -64,14 +65,12 @@ public class DialogueController : MonoBehaviour
     {
         dialogueGUI.SetActive(false);
     }
-    private void Update()
+    public void onJumpOrAttack()
     {
-        if (active)
-        {
-            if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.KeypadEnter) | Input.GetKeyDown(KeyCode.Space))
-            {
-                NextDialogue();
-            }
-        }
+        NextDialogue();
+    }
+    public bool isDIalogueActive()
+    {
+        return active;
     }
 }

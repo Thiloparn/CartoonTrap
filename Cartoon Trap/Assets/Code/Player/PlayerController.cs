@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private float restingTime = 2f;
     private float standingUpTime = 0.5f;
     private float restingTimeElapsed = 0;
+    public DialogueController dialogueController;
 
     //Combat
     public int attackPower = 0;
@@ -129,6 +130,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        print(dialogueController.isDIalogueActive());
         activeActionMap = playerInput.currentActionMap.name;
 
         UpdateInvulneravility();
@@ -155,7 +157,7 @@ public class PlayerController : MonoBehaviour
                 jumpAbble = false;
             }
 
-            if (!resting)
+            if (!resting && !dialogueController.isDIalogueActive())
             {
                 ExecuteActions();
             }
