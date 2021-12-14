@@ -550,8 +550,6 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateAnimationColor()
     {
-        print(animationColorChanger);
-
         if (!r && !g && !b)
         {
             animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_ByN);
