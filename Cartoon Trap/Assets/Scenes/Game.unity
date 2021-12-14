@@ -353,6 +353,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bats
       objectReference: {fileID: 0}
+    - target: {fileID: 3666259758205727526, guid: a6c9c04d3a2ebd14f8c67a3188827a83, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4153054881283154326, guid: a6c9c04d3a2ebd14f8c67a3188827a83, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -396,6 +400,10 @@ PrefabInstance:
     - target: {fileID: 4153054881283154326, guid: a6c9c04d3a2ebd14f8c67a3188827a83, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6524552455466646998, guid: a6c9c04d3a2ebd14f8c67a3188827a83, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6524552455466646998, guid: a6c9c04d3a2ebd14f8c67a3188827a83, type: 3}
       propertyPath: maxHealth
