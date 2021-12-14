@@ -85,14 +85,14 @@ public class SavesSystem : MonoBehaviour
 
         //Boolean
         GameData.finalDoorOpen = StringToBool(data["finalDoorOpen"]);
-        GameData.finalDoorOpen = StringToBool(data["r"]);
-        GameData.finalDoorOpen = StringToBool(data["g"]);
-        GameData.finalDoorOpen = StringToBool(data["b"]);
-        GameData.finalDoorOpen = StringToBool(data["punchLocked"]);
-        GameData.finalDoorOpen = StringToBool(data["slashLocked"]);
-        GameData.finalDoorOpen = StringToBool(data["pumLocked "]);
-        GameData.finalDoorOpen = StringToBool(data["phiuLocked"]);
-        GameData.finalDoorOpen = StringToBool(data["hopLocked "]);
+        GameData.r = StringToBool(data["r"]);
+        GameData.g = StringToBool(data["g"]);
+        GameData.b = StringToBool(data["b"]);
+        GameData.punchLocked = StringToBool(data["punchLocked"]);
+        GameData.slashLocked = StringToBool(data["slashLocked"]);
+        GameData.pumLocked = StringToBool(data["pumLocked "]);
+        GameData.phiuLocked = StringToBool(data["phiuLocked"]);
+        GameData.hopLocked = StringToBool(data["hopLocked "]);
 
         //Integer
         GameData.maxPlayerHealt = StringToInt(data["maxPlayerHealt"]);
