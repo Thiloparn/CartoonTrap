@@ -12,6 +12,7 @@ public class SceneTransitor : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            GameData.playerAparitionPosition = aparitionPosition;
             SceneManager.LoadScene(sceneName);
         }
     }
