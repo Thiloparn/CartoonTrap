@@ -8,7 +8,7 @@ public class IceHittablePlatform : MonoBehaviour
     bool isFalling = false;
     bool isStopped = false;
 
-    //public bool pruebaFall = false;    // DESCOMENTAR SI SE QUIERE PROBAR
+    public bool pruebaFall = false;    // DESCOMENTAR SI SE QUIERE PROBAR
 
     void Start()
     {
@@ -17,12 +17,12 @@ public class IceHittablePlatform : MonoBehaviour
 
     private void Update()
     {
-        /*if (pruebaFall)
+        if (pruebaFall)
         {
             UnFreezeRigibody();          // DESCOMENTAR SI SE QUIERE PROBAR
             pruebaFall = false;
         }
-        print(isFalling); */
+        print(isFalling); 
     }
 
     // Comparamos con que colisiona el objeto
