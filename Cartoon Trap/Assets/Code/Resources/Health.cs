@@ -8,6 +8,7 @@ public class Health
     private int currentHealth;
 
     public int CurrentHealth { get => currentHealth;}
+    public int MaxHealth { get => maxHealth;}
 
     public Health(int maxHealth, int currentHealth = -1)
     {
