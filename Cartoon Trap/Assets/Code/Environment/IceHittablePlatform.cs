@@ -5,7 +5,6 @@ using UnityEngine;
 public class IceHittablePlatform : MonoBehaviour
 {
     Rigidbody2D myRb;
-    bool isFalling = false;
     bool isStopped = false;
 
     public bool pruebaFall = false;    // DESCOMENTAR SI SE QUIERE PROBAR
@@ -22,7 +21,6 @@ public class IceHittablePlatform : MonoBehaviour
             UnFreezeRigibody();          // DESCOMENTAR SI SE QUIERE PROBAR
             pruebaFall = false;
         }
-        print(isFalling); 
     }
 
     // Comparamos con que colisiona el objeto
@@ -38,6 +36,10 @@ public class IceHittablePlatform : MonoBehaviour
     // Comparacion objetos falseados
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("PunchEffectArea"))
+        {
+            UnFreezeRigibody();
+        }
         if (collision.gameObject.CompareTag("Ice_Floor_Platform")) // Cuando colisiona con lo que desamos, ya sea floor como alguna cosa en concreto, se para
         {
             FreezeRigidBody();
@@ -48,7 +50,7 @@ public class IceHittablePlatform : MonoBehaviour
     public void FreezeRigidBody()
     {
         myRb.constraints = RigidbodyConstraints2D.FreezeAll; // Bloquea todos los axis del rigidbody includo rotación
-        isFalling = false;
+
     }
 
     // Metodo para que se pueda mover
@@ -58,7 +60,6 @@ public class IceHittablePlatform : MonoBehaviour
         {
             myRb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation; // Bloqueamos todos los axis excepto Y
             myRb.AddForce(transform.up * -0.1f, ForceMode2D.Impulse); // Le damos un impulso minimo porque de por si no se mueve tras desbloquearlo
-            isFalling = true;
             isStopped = true;
         }
     }
