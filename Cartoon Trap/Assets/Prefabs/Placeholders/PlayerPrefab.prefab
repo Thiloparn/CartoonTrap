@@ -411,10 +411,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3677637967611149995}
-  - component: {fileID: 3677637967611149992}
   - component: {fileID: 5865478903588460304}
   - component: {fileID: 3862231640987445958}
   - component: {fileID: 386234894422521500}
+  - component: {fileID: 3677637967611149992}
   - component: {fileID: 4353769014367737987}
   - component: {fileID: 1008157692}
   - component: {fileID: 3787674686720869322}
@@ -441,42 +441,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3677637967611149992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3677637967611149993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd25ec70fa8bc7449be951abee68e422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  initialCurrentHealth: 2
-  numberOfHealings: 3
-  maxTimeInvulneravility: 1
-  speed: 10
-  jumpForce: 10
-  reboundForce: 5
-  doubleJumpForce: 10
-  dashDuration: 0.8
-  dashSpeed: 4.25
-  attackPower: 10
-  hammerPower: 10
-  bladePower: 10
-  grapping: 0
-  throwing: 0
-  resting: 0
-  attackOnomatopeya: {fileID: 5678207302567928215, guid: 9553c53b97eb1144196f7ac3a27cfb6b, type: 3}
-  phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
-  pumOnomatopeya: {fileID: 5896842734998594493, guid: 7c3819faf1d521b44bc578efa9a1b1e2, type: 3}
-  slashOnomatpeya: {fileID: 7491151816777940469, guid: caa8cebcb78c34b46ab8752ff1c49570, type: 3}
-  hopOnomatopeya: {fileID: 3881120773100089795, guid: e867ea78db8a01d42aea1f4f8baa2ee5, type: 3}
-  playerInput: {fileID: 1008157692}
-  activeActionMap: 
-  deathCanvas: {fileID: 1189042012}
 --- !u!114 &5865478903588460304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +533,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &3677637967611149992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677637967611149993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd25ec70fa8bc7449be951abee68e422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  initialCurrentHealth: 2
+  numberOfHealings: 3
+  invulneravility: 0
+  maxTimeInvulneravility: 1
+  speed: 10
+  jumpForce: 10
+  reboundForce: 5
+  doubleJumpForce: 10
+  dashDuration: 0.8
+  dashSpeed: 4.25
+  attackPower: 10
+  hammerPower: 10
+  bladePower: 10
+  grapping: 0
+  throwing: 0
+  resting: 0
+  punchLocked: 1
+  slashLocked: 1
+  pumLocked: 1
+  phiuLocked: 1
+  hopLocked: 1
+  r: 0
+  g: 0
+  b: 0
+  attackOnomatopeya: {fileID: 5678207302567928215, guid: 9553c53b97eb1144196f7ac3a27cfb6b, type: 3}
+  phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
+  pumOnomatopeya: {fileID: 5896842734998594493, guid: 7c3819faf1d521b44bc578efa9a1b1e2, type: 3}
+  slashOnomatpeya: {fileID: 7491151816777940469, guid: caa8cebcb78c34b46ab8752ff1c49570, type: 3}
+  hopOnomatopeya: {fileID: 3881120773100089795, guid: e867ea78db8a01d42aea1f4f8baa2ee5, type: 3}
+  playerInput: {fileID: 1008157692}
+  activeActionMap: 
+  deathCanvas: {fileID: 1189042012}
 --- !u!61 &4353769014367737987
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -67,6 +67,11 @@ public class PlayerController : MonoBehaviour
     public bool phiuLocked = true;
     public bool hopLocked = true;
 
+    //Animation Flags
+    public bool r = false;
+    public bool g = false;
+    public bool b = false;
+
     //Actions
     private Dash dash = new Dash(0);
     private IAction jump = new Jump();
@@ -88,6 +93,7 @@ public class PlayerController : MonoBehaviour
     public string activeActionMap;
     public PlayerPocket pocket;
     public GameObject deathCanvas;
+    private AnimationColorChanger animationColorChanger;
 
     public bool Attacking { get => attacking; set => attacking = value; }
     public bool Grapping { get => grapping; set => grapping = value; }
@@ -105,11 +111,19 @@ public class PlayerController : MonoBehaviour
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        animationColorChanger = GetComponent<AnimationColorChanger>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
         pocket = new PlayerPocket(this);
         lookingDirection = 1f;
         invulneravility = false;
+    }
+
+    private void Start()
+    {
+        //Si se pone este metodo en el Awake puede k animationColorChanger no haya sido inicializado todavia.
+        //Con Start te aseguras k no sea así
+        UpdateAnimationColor();
     }
 
     private void Update()
@@ -471,21 +485,25 @@ public class PlayerController : MonoBehaviour
     public void LockSlash()
     {
         slashLocked = true;
+        g = false;
     }
 
     public void UnlockSlash()
     {
         slashLocked = false;
+        g = true;
     }
 
     public void LockPum()
     {
         pumLocked = true;
+        b = false;
     }
 
     public void UnlockPum()
     {
         pumLocked = false;
+        b = true;
     }
 
     public void LockPhiu()
@@ -501,10 +519,46 @@ public class PlayerController : MonoBehaviour
     public void LockHop()
     {
         hopLocked = true;
+        r = false;
     }
 
     public void UnlockHop()
     {
         hopLocked = false;
+        r = true;
+    }
+
+    public void UpdateAnimationColor()
+    {
+        print(animationColorChanger);
+
+        if (!r && !g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_ByN);
+        }else if (!r && !g && b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_Blue);
+        }else if (!r && g && b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_GB);
+        }else if (!r && g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_Green);
+        }else if (r && g && b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_FullColor);
+        }else if (r && !g && b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_BR);
+        }else if (r && !g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_Red);
+        }else if (!r && g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_Green);
+        }else if (r && g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_RG);
+        }
     }
 }
