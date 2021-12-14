@@ -10,7 +10,7 @@ public static class GameData
 
     //Player
     public static PlayerController player = null;
-    public static Vector3 playerAparitionPosition = Vector3.zero; //Va a haber momentos en los k la posicion del Player no coincida con este valor
+    public static Vector3 playerAparitionPosition = Vector3.zero;
     public static bool punchLocked = true;
     public static bool slashLocked = true;
     public static bool pumLocked = true;

@@ -106,6 +106,8 @@ public class PlayerController : MonoBehaviour
     public bool Throwing { get => throwing; set => throwing = value; }
     public bool UsingBlade { get => usingBlade; set => usingBlade = value; }
     public bool UsingHammer { get => usingHammer; set => usingHammer = value; }
+    public Health PlayerHealth { get => playerHealth;}
+    public int Coins { get => coins;}
 
     private void Awake()
     {
@@ -309,7 +311,7 @@ public class PlayerController : MonoBehaviour
 
     private void SetRevivePosition()
     {
-        if (GameData.lastRestZone != GameData.NO_REST_ZONE)
+        if (GameData.lastRestZone.Equals(GameData.NO_REST_ZONE) == false)
         {
             gameObject.transform.position = GameData.lastRestZone;
         }
