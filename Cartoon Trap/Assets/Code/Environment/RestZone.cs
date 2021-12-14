@@ -5,14 +5,27 @@ using UnityEngine;
 
 public class RestZone : MonoBehaviour
 {
+    private PlayerController player = null;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+        player = collision.gameObject.GetComponent<PlayerController>();
+    }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        player = null;
+    }
+
+    private void Update()
+    {
         if (player != null)
         {
-            player.Rest();
-            UpdateGameData(player);
+            if (player.MovingDirectionY > 0)
+            {
+                player.Rest();
+                UpdateGameData(player);
+            }
         }
     }
 
@@ -30,8 +43,9 @@ public class RestZone : MonoBehaviour
         GameData.r = player.r;
         GameData.g = player.g;
         GameData.b = player.b;
-        GameData.maxPlayerHealt = player.PlayerHealth.MaxHealth;
+        GameData.maxPlayerHealth = player.PlayerHealth.MaxHealth;
         GameData.currentPlayerHealth = player.PlayerHealth.CurrentHealth;
+        GameData.numberOfHealings = player.numberOfHealings;
         GameData.attackPower = player.attackPower;
         GameData.coins = player.Coins;
     }
