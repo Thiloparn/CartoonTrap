@@ -27,8 +27,9 @@ public class SavesSystem : MonoBehaviour
         data.Add("hopLocked", GameData.hopLocked.ToString());
 
         //Integers
-        data.Add("maxPlayerHealt", GameData.maxPlayerHealt.ToString());
+        data.Add("maxPlayerHealt", GameData.maxPlayerHealth.ToString());
         data.Add("currentPlayerHealth", GameData.currentPlayerHealth.ToString());
+        data.Add("numberOfHealings", GameData.numberOfHealings.ToString());
         data.Add("coins", GameData.coins.ToString());
         data.Add("attackPower", GameData.attackPower.ToString());
 
@@ -95,8 +96,9 @@ public class SavesSystem : MonoBehaviour
         GameData.hopLocked = StringToBool(data["hopLocked "]);
 
         //Integer
-        GameData.maxPlayerHealt = StringToInt(data["maxPlayerHealt"]);
+        GameData.maxPlayerHealth = StringToInt(data["maxPlayerHealt"]);
         GameData.currentPlayerHealth = StringToInt(data["currentPlayerHealth"]);
+        GameData.numberOfHealings = StringToInt(data["numberOfHealings"]);
         GameData.coins = StringToInt(data["coins"]);
         GameData.attackPower = StringToInt(data["attackPower"]);
 
