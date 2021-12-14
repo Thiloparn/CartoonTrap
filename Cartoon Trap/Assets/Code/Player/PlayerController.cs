@@ -457,4 +457,54 @@ public class PlayerController : MonoBehaviour
     {
         return lookingDirection;
     }
+
+    public void LockPunch()
+    {
+        punchLocked = true;
+    }
+
+    public void UnlockPunch()
+    {
+        punchLocked = false;
+    }
+
+    public void LockSlash()
+    {
+        slashLocked = true;
+    }
+
+    public void UnlockSlash()
+    {
+        slashLocked = false;
+    }
+
+    public void LockPum()
+    {
+        pumLocked = true;
+    }
+
+    public void UnlockPum()
+    {
+        pumLocked = false;
+    }
+
+    public void LockPhiu()
+    {
+        phiuLocked = true;
+    }
+
+    public void UnlockPhiu()
+    {
+        phiuLocked = false;
+    }
+
+    public void LockHop()
+    {
+        hopLocked = true;
+    }
+
+    public void UnlockHop()
+    {
+        hopLocked = false;
+    }
 }
