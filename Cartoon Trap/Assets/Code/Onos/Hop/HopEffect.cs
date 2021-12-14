@@ -6,8 +6,6 @@ public class HopEffect : OnomaopeyaEffect
 {
     public override void ExecuteEffect()
     {
-        Vector3 hopPosition = gameObject.transform.position;
-        Vector3 playerPosition = GameData.player.transform.position;
         HopOnomatopeya hopOno = GetComponent<HopOnomatopeya>();
         Rigidbody2D playerRigidbody = GameData.player.GetComponent<Rigidbody2D>();
 

@@ -22,10 +22,12 @@ public class DialogueController : MonoBehaviour
     public void ActivateDialogue(Texts textsObject, Sprite image)
     {
         active = true;
+        Time.timeScale = 0f;
         dialogueGUI.SetActive(true);
         anim.SetBool("Bocadillo", true);
         texts = textsObject;
         imageField.sprite = image;
+        ActivateText();
     }
 
     public void ActivateText()
@@ -62,16 +64,7 @@ public class DialogueController : MonoBehaviour
 
     void CloseDialogue()
     {
+        Time.timeScale = 1f;
         dialogueGUI.SetActive(false);
-    }
-    private void Update()
-    {
-        if (active)
-        {
-            if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.KeypadEnter) | Input.GetKeyDown(KeyCode.Space))
-            {
-                NextDialogue();
-            }
-        }
     }
 }

@@ -89,7 +89,8 @@ public class PlayerController : MonoBehaviour
 
     public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
-    private BoxCollider2D boxCollider;
+    private DialogueController dialogueController;
+    private CapsuleCollider2D capsuleCollider;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
     public PlayerPocket pocket;
@@ -102,7 +103,7 @@ public class PlayerController : MonoBehaviour
     public float MovingDirectionY { get => movingDirectionY;}
     public Rigidbody2D RigidBody { get => rigidBody;}
 
-    public BoxCollider2D BoxCollider { get => boxCollider; }
+    public CapsuleCollider2D CapsuleCollider { get => capsuleCollider; }
     public bool Throwing { get => throwing; set => throwing = value; }
     public bool UsingBlade { get => usingBlade; set => usingBlade = value; }
     public bool UsingHammer { get => usingHammer; set => usingHammer = value; }
@@ -115,8 +116,8 @@ public class PlayerController : MonoBehaviour
         InitializePlayer();
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
         animationColorChanger = GetComponent<AnimationColorChanger>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
         pocket = new PlayerPocket(this);
@@ -191,7 +192,7 @@ public class PlayerController : MonoBehaviour
                 jumpAbble = false;
             }
 
-            if (!resting)
+            if (!resting && Time.timeScale == 1f)
             {
                 ExecuteActions();
             }
@@ -323,15 +324,25 @@ public class PlayerController : MonoBehaviour
 
     public void onMovement(InputAction.CallbackContext value)
     {
-        movingDirectionX = value.ReadValue<Vector2>().x;
-        movingDirectionY = value.ReadValue<Vector2>().y;
+        if(Time.timeScale == 1f)
+        {
+            movingDirectionX = value.ReadValue<Vector2>().x;
+            movingDirectionY = value.ReadValue<Vector2>().y;
+        }
     }
 
     public void onPunch(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (Time.timeScale == 1f)
         {
-            Attacking = true;
+            if (value.started)
+            {
+                Attacking = true;
+            }
+        }
+        else
+        {
+            dialogueController.NextDialogue();
         }
     }
 

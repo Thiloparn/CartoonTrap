@@ -418,6 +418,7 @@ GameObject:
   - component: {fileID: 4353769014367737987}
   - component: {fileID: 1008157692}
   - component: {fileID: 3787674686720869322}
+  - component: {fileID: 1405597225}
   m_Layer: 6
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -533,7 +534,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3677637967611149992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1121,3 +1121,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1405597225
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677637967611149993}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.01241827, y: -0.09446955}
+  m_Size: {x: 0.91520596, y: 1.421061}
+  m_Direction: 0
