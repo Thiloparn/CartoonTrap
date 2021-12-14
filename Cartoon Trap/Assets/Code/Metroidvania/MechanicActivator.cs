@@ -10,6 +10,7 @@ public class MechanicActivator : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             ActivateMechanic(collision.gameObject.GetComponent<PlayerController>());
+            Destroy(gameObject);
         }
     }
 
