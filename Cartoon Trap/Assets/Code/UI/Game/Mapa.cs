@@ -37,7 +37,7 @@ public class Mapa : MonoBehaviour
             hideMap();
         }
     }
-    public void onMenu(InputAction.CallbackContext value)
+    public void onMap(InputAction.CallbackContext value)
     {
         if (mapisShown)
         {

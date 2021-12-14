@@ -144,7 +144,7 @@ public class Spider : MonoBehaviour
 
     private bool TouchingPlayer()
     {
-        return boxCollider.IsTouching(player.BoxCollider);
+        return boxCollider.IsTouching(player.CapsuleCollider);
     }
 
     public void TakeDamage(int damage, GameObject gameObject)
