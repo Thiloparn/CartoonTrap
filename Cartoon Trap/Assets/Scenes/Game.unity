@@ -309,7 +309,7 @@ MonoBehaviour:
     - Texto2
     - Texto3
   image: {fileID: 3427114271967980436, guid: 71bd94be502a4c34c8ee39fc38cd52f4, type: 3}
-  dialogueCotroller: {fileID: 0}
+  dialogueController: {fileID: 0}
 --- !u!4 &1296556574
 Transform:
   m_ObjectHideFlags: 0
