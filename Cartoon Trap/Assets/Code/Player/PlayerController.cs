@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
     private DialogueController dialogueController;
-    private BoxCollider2D boxCollider;
+    private CapsuleCollider2D capsuleCollider;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
     public PlayerPocket pocket;
@@ -82,14 +82,14 @@ public class PlayerController : MonoBehaviour
     public float MovingDirectionY { get => movingDirectionY;}
     public Rigidbody2D RigidBody { get => rigidBody;}
 
-    public BoxCollider2D BoxCollider { get => boxCollider; }
+    public CapsuleCollider2D CapsuleCollider { get => capsuleCollider; }
     public bool Throwing { get => throwing; set => throwing = value; }
 
     private void Awake()
     {
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
         pocket = new PlayerPocket(this);

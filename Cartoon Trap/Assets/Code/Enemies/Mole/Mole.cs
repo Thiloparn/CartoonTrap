@@ -151,7 +151,7 @@ public class Mole : MonoBehaviour
 
     private bool TouchingPlayer()
     {
-        return boxCollider.IsTouching(player.BoxCollider);
+        return boxCollider.IsTouching(player.CapsuleCollider);
     }
 
     private void Hide()
