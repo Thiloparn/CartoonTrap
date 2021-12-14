@@ -76,19 +76,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8867750755915686930, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
   m_PrefabInstance: {fileID: 868654568732893275}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4969590259508651941
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8583439699955565641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03eb4554da626b64484a999a34fc186f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lifeTime: 10
 --- !u!114 &4126724919745777056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,3 +88,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b67683d88bab3a4590f229f0693b564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4969590259508651941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8583439699955565641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03eb4554da626b64484a999a34fc186f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  aparitionPositionOffset: {x: 1.5, y: 0}
+  onoAreaEffect: {fileID: 0}

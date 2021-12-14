@@ -6,7 +6,6 @@ public class Pum : IAction
 {
     public override void ExecuteAction(PlayerController player)
     {
-        positionOfInstanciation = player.transform.position;
-        InstantiateOnomatopeya(player.pumOnomatopeya);
+        InstantiateOnomatopeya(player.pumOnomatopeya, player);
     }
 }

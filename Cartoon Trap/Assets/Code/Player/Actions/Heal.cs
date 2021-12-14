@@ -17,10 +17,11 @@ public class Heal : IAction
     {
         if (currentHealings > 0)
         {
-            positionOfInstanciation = player.transform.position;
-            InstantiateOnomatopeya(player.phiuOnomatopeya);
+            InstantiateOnomatopeya(player.phiuOnomatopeya, player);
             --currentHealings;
         }
+
+        player.playerAnimator.StartHealingAnimation(player);
     }
 
     public void resetHealings()

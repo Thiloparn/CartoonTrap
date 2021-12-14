@@ -7,7 +7,6 @@ public class Attack : IAction
 
     public override void ExecuteAction(PlayerController player)
     {
-        positionOfInstanciation = player.transform.position;
-        InstantiateOnomatopeya(player.attackOnomatopeya);
+        InstantiateOnomatopeya(player.attackOnomatopeya, player);
     }
 }

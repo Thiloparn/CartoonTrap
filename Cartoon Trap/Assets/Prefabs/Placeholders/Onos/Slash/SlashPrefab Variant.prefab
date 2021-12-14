@@ -88,6 +88,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397b43fd7059f684f8f406ee9462cb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  aparitionPositionOffset: {x: 1.5, y: 0}
+  onoAreaEffect: {fileID: 6623326605416247072, guid: 4bb1f20812144cd4f962ceaa3505e770, type: 3}
+  negativeOnoAreaEffect: {fileID: 6158782044760921888, guid: ead0b3648387cff4a8ccb1eda2fbbf60, type: 3}
+  slashDirection: 1
 --- !u!114 &1474159398534851335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,4 +105,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c837c39a8e3aba44892d3afdd772e460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slashAreaEffect: {fileID: 520656009410953333, guid: 1f1150d55b82bcf4fb9d4d38b2b37d68, type: 3}

@@ -76,7 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c3a455b8267294e9dca14f8bc43a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  punchAreaEffect: {fileID: 2411661419069465169, guid: 0f139d5631896f149ab98e7713695ab7, type: 3}
 --- !u!114 &7682156707653850302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,3 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97fb9f9c16f8fc5449e6dd746b015db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  aparitionPositionOffset: {x: 1.5, y: 0}
+  onoAreaEffect: {fileID: 5557654813489046911, guid: 9be6b91081444cb4099e80963302e095, type: 3}
+  negativeOnoAreaEffect: {fileID: 8359134164667535915, guid: ef67c29272fed354496a38267fa02d18, type: 3}

@@ -4,9 +4,23 @@ using UnityEngine;
 
 public class OnomaopeyaEffect : MonoBehaviour
 {
+    protected Onomatopeya ono;
+
+    private void Awake()
+    {
+        ono = GetComponent<Onomatopeya>();
+    }
+
     public virtual void ExecuteEffect()
     {
-        print("Efect");
-        GetComponent<Onomatopeya>().DestroyOnomatopeya();
+        if (ono.onoAreaEffect != null)
+        {
+            InstantiateAreaEffect();
+        }
+        ono.DestroyOnomatopeya();
+    }
+
+    public virtual void InstantiateAreaEffect()
+    {
     }
 }

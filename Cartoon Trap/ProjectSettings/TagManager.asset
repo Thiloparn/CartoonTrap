@@ -9,6 +9,13 @@ TagManager:
   - Floor
   - PumEffectArea
   - Enemy
+  - NegativeOnomatopeya
+  - PunchEffectArea
+  - SlashEffectArea
+  - Ice_Floor_Platform
+  - FireWall
+  - Blade
+  - Hammer
   layers:
   - Default
   - TransparentFX
@@ -16,7 +23,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Floor
+  - InGame
   - 
   - 
   - 
