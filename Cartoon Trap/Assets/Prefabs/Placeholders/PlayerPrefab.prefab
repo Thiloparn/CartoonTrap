@@ -1094,11 +1094,11 @@ MonoBehaviour:
   grapping: 0
   throwing: 0
   resting: 0
-  punchLocked: 1
-  slashLocked: 1
-  pumLocked: 1
-  phiuLocked: 1
-  hopLocked: 1
+  punchLocked: 0
+  slashLocked: 0
+  pumLocked: 0
+  phiuLocked: 0
+  hopLocked: 0
   r: 0
   g: 0
   b: 0
