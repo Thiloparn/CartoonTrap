@@ -11,7 +11,8 @@ public class DialogueController : MonoBehaviour
     [SerializeField] Text screenText;
     [SerializeField] Image imageField;
     [SerializeField] GameObject dialogueGUI;
-    private bool active = false;
+    private bool wait = false;
+    private bool textWaiting = false;
 
     void Awake()
     {
@@ -21,11 +22,12 @@ public class DialogueController : MonoBehaviour
     }
     public void ActivateDialogue(Texts textsObject, Sprite image)
     {
-        active = true;
-        dialogueGUI.SetActive(true);
+        textWaiting = true;
+        //dialogueGUI.SetActive(true);
         anim.SetBool("Bocadillo", true);
         texts = textsObject;
         imageField.sprite = image;
+       
     }
 
     public void ActivateText()
@@ -41,9 +43,7 @@ public class DialogueController : MonoBehaviour
     {
         if (dialogueQueue.Count == 0)
         {
-            screenText.text = "";
-            active = false;
-            anim.SetBool("Bocadillo", false);
+            textWaiting = false;
             return;
         }
         string dialogue = dialogueQueue.Dequeue();
@@ -60,17 +60,32 @@ public class DialogueController : MonoBehaviour
             yield return new WaitForSeconds(0.02f);
         }
     }
-
-    void CloseDialogue()
+    IEnumerator CountDown(float RestartAfter)
     {
-        dialogueGUI.SetActive(false);
+        wait = true;
+        yield return new WaitForSeconds(RestartAfter);
+        wait = false;
+    }
+
+        public void CloseDialogue()
+    {       
+        anim.SetBool("Bocadillo", false);
+        screenText.text = "";
     }
     public void onJumpOrAttack()
     {
-        NextDialogue();
+        if (!wait && isDIalogueActive())
+        {
+            StartCoroutine(CountDown(0.5f));
+            NextDialogue();
+        }      
     }
     public bool isDIalogueActive()
     {
-        return active;
+        return dialogueGUI.gameObject.activeInHierarchy;
+    }
+    public bool isTextWaiting()
+    {
+        return textWaiting;
     }
 }

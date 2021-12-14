@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
     private float restingTime = 2f;
     private float standingUpTime = 0.5f;
     private float restingTimeElapsed = 0;
-    public DialogueController dialogueController;
 
     //Combat
     public int attackPower = 0;
@@ -89,6 +88,7 @@ public class PlayerController : MonoBehaviour
     public string activeActionMap;
     public PlayerPocket pocket;
     public GameObject deathCanvas;
+    public DialogueController dialogueController;
 
     public bool Attacking { get => attacking; set => attacking = value; }
     public bool Grapping { get => grapping; set => grapping = value; }
@@ -130,7 +130,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        print(dialogueController.isDIalogueActive());
         activeActionMap = playerInput.currentActionMap.name;
 
         UpdateInvulneravility();
@@ -182,13 +181,16 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateLookingDirection()
     {
-        if (movingDirectionX < -0.01f)
+        if(Time.timeScale == 1f)
         {
-            lookingDirection = -1f;
-        }
-        else if (movingDirectionX > 0.01f)
-        {
-            lookingDirection = 1f;
+            if (movingDirectionX < -0.01f)
+            {
+                lookingDirection = -1f;
+            }
+            else if (movingDirectionX > 0.01f)
+            {
+                lookingDirection = 1f;
+            }
         }
     }
 
@@ -364,19 +366,22 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext value)
     {
-        if (value.started && jumpAbble)
+        if (!dialogueController.isDIalogueActive())
         {
-            jumping = true;
-            doubleJumpAbble = true;
-        }
-        else if(value.started && !isGrounded() && doubleJumpAbble)
-        {
-            if(hopLocked == false)
+            if (value.started && jumpAbble)
             {
-                doubleJumping = true;
+                jumping = true;
+                doubleJumpAbble = true;
             }
-            
-        }
+            else if (value.started && !isGrounded() && doubleJumpAbble)
+            {
+                if (hopLocked == false)
+                {
+                    doubleJumping = true;
+                }
+
+            }
+        }       
     }
 
     public void onDash(InputAction.CallbackContext value)
