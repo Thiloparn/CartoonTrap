@@ -1,0 +1,21 @@
+variables a guardar
+
+Player
+Posicion player
+lastRestZone -
+maxPlayerHealt -
+currentPlayerHealth -
+attackPower -
+punchLocked -
+slashLocked -
+pumLocked -
+phiuLocked -
+hopLocked -
+R -
+G -
+B -
+coins -
+
+GameData
+lastRestZone -
+finalDoorOpen -

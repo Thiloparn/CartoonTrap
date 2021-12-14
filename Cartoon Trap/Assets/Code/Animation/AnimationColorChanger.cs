@@ -18,7 +18,7 @@ public class AnimationColorChanger : MonoBehaviour
     Animator playerOverride_Animator;
     #endregion
 
-    void Start()
+    void Awake()
     {
         playerOverride_Animator = GetComponent<Animator>();
     }
