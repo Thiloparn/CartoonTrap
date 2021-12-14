@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     private bool usingHammer = false;
     public bool resting = false;
     private bool dead = false;
+    private bool sliding = false;
 
     //Metroidvania Flags
     public bool punchLocked = true;
@@ -107,6 +108,8 @@ public class PlayerController : MonoBehaviour
     public bool Throwing { get => throwing; set => throwing = value; }
     public bool UsingBlade { get => usingBlade; set => usingBlade = value; }
     public bool UsingHammer { get => usingHammer; set => usingHammer = value; }
+
+    public bool Sliding { get => sliding; set => sliding = value; }
     public Health PlayerHealth { get => playerHealth;}
     public int Coins { get => coins;}
 
@@ -135,7 +138,7 @@ public class PlayerController : MonoBehaviour
         r = GameData.r;
         g = GameData.g;
         b = GameData.b;
-        maxHealth = GameData.maxPlayerHealt;
+        maxHealth = GameData.maxPlayerHealth;
         initialCurrentHealth = GameData.currentPlayerHealth;
         attackPower = GameData.attackPower;
         coins = GameData.coins;
