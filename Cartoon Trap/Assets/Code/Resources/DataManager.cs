@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public PlayerController player;
+    public GameObject playerprefab;
+    
 
     private void Awake()
     {
-        GameData.player = player;
+        Instantiate(playerprefab);
     }
+    
+
 }

@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
 {
 
     //Health
-    public int maxHealth = 0;
-    public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
+    private int maxHealth = 0;
+    public int initialCurrentHealth = -1;
     private Health playerHealth;
     public int numberOfHealings = 3;
     public bool invulneravility = false;
@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     public bool pumLocked = true;
     public bool phiuLocked = true;
     public bool hopLocked = true;
+    private int coins = 0;
 
     //Animation Flags
     public bool r = false;
@@ -108,6 +109,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+
+        InitializePlayer();
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -117,6 +120,23 @@ public class PlayerController : MonoBehaviour
         pocket = new PlayerPocket(this);
         lookingDirection = 1f;
         invulneravility = false;
+    }
+
+    private void InitializePlayer()
+    {
+        punchLocked = GameData.punchLocked;
+        slashLocked = GameData.slashLocked;
+        pumLocked = GameData.pumLocked;
+        phiuLocked = GameData.phiuLocked;
+        hopLocked = GameData.hopLocked;
+        r = GameData.r;
+        g = GameData.g;
+        b = GameData.b;
+        maxHealth = GameData.maxPlayerHealt;
+        initialCurrentHealth = GameData.currentPlayerHealth;
+        attackPower = GameData.attackPower;
+        coins = GameData.coins;
+        GameData.player = this;
     }
 
     private void Start()
@@ -289,9 +309,9 @@ public class PlayerController : MonoBehaviour
 
     private void SetRevivePosition()
     {
-        if (GameData.lastRestZone != null)
+        if (GameData.lastRestZone != GameData.NO_REST_ZONE)
         {
-            gameObject.transform.position = GameData.lastRestZone.position;
+            gameObject.transform.position = GameData.lastRestZone;
         }
         else
         {
