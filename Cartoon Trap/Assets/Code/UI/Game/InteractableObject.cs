@@ -6,11 +6,11 @@ public class InteractableObject : MonoBehaviour
 {
     public Texts texts;
     public Sprite image;
-    public GameObject dialogueCotroller;
+    public GameObject dialogueController;
 
     public void CallDialogue()
     {
-        dialogueCotroller.SetActive(true);
+        dialogueController.SetActive(true);
         FindObjectOfType<DialogueController>().ActivateDialogue(texts, image);
     }
 }
