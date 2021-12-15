@@ -699,7 +699,7 @@ TextureImporter:
         serializedVersion: 2
         x: 240
         y: 400
-        width: 80
+        width: 240
         height: 80
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -710,48 +710,6 @@ TextureImporter:
       bones: []
       spriteID: 51c611f2ddc4f9860800000000000000
       internalID: 7538828814102653973
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tilemap_Hielo_29
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 400
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dd203e2cc3091bf20800000000000000
-      internalID: 3436686581302493917
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tilemap_Hielo_30
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 400
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 328c5f8ff3e9c3290800000000000000
-      internalID: -7909272847972448221
       vertices: []
       indices: 
       edges: []

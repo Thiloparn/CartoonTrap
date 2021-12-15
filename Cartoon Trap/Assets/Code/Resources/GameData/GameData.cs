@@ -11,7 +11,7 @@ public static class GameData
     //Player
     public static PlayerController player = null;
     public static Vector3 playerAparitionPosition = Vector3.zero;
-    public static bool punchLocked = true;
+    public static bool punchLocked = false; // lo ponemos en false para poder tener el punch en todos los niveles a falta de arreglar la gestion de datos
     public static bool slashLocked = true;
     public static bool pumLocked = true;
     public static bool phiuLocked = true;

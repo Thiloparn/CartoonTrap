@@ -12,12 +12,30 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: 9df0e909b033f374f8a00694775e26c3
   - enabled: 1
-    path: Assets/Scenes/ZonaFuego.unity
+    path: Assets/Scenes/ZonaInicial.unity
+    guid: 27f1f596e3ddc4346b7a613b1c93b980
+  - enabled: 1
+    path: Assets/Scenes/ZonaFuego/ZonaFuego.unity
     guid: 7db89d8f8e83004439083adcb201a434
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/ZonaHielo.unity
-    guid: d64cad4f1dce40a4a891c80bf3b95a0f
-  - enabled: 1
-    path: Assets/Scenes/ZonaPlanta.unity
+    path: Assets/Scenes/ZonaPlanta/ZonaPlanta.unity
     guid: 8d96d5a6812636440beace3f96efce99
+  - enabled: 1
+    path: Assets/Scenes/ZonaHielo/ZonaHielo1.unity
+    guid: 54f93baddd4f4eb42a43be20f15ee1e7
+  - enabled: 1
+    path: Assets/Scenes/ZonaHielo/ZonaHielo2.unity
+    guid: 983e0e44210286f4d83036b73a1d1127
+  - enabled: 1
+    path: Assets/Scenes/ZonaHielo/ZonaHielo3.unity
+    guid: 380793368b722494bbdbd2223adf8418
+  - enabled: 1
+    path: Assets/Scenes/ZonaHielo/ZonaHielo4.unity
+    guid: 4714bac02add5dc4e91749de4a6b5c3e
+  - enabled: 1
+    path: Assets/Scenes/ZonaHielo/ZonaHielo5.unity
+    guid: ec2dd67a27671ea4a956d1435ff1aeea
   m_configObjects: {}
