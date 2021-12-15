@@ -8,5 +8,6 @@ public class Jump : IAction
     {
         player.GetComponent<Rigidbody2D>().AddForce(Vector2.up * player.jumpForce, ForceMode2D.Impulse);
         player.playerAnimator.StartJumpingAnimation(player);
+        player.PlayPlayerAudio(player.hopSound);
     }
 }
