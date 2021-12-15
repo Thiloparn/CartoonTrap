@@ -9,8 +9,6 @@ public class IdleFullColorBehaviour : StateMachineBehaviour
     {
         PlayerController player = animator.GetComponent<PlayerController>();
         player.playerAnimator.EndHealingAnimation(player);
-        player.playerAnimator.EndUsingHammerAnimation(player);
-        player.playerAnimator.EndUsingBladeAnimation(player);
         player.playerAnimator.EndDashingAnimation(player);
         player.playerAnimator.EndGrappingAnimation(player);
     }
