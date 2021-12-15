@@ -11,7 +11,9 @@ public class Boss : MonoBehaviour
     public float speed = 3f;
     public float speedIncrementPerState = 1f;
 
-    private float stunDuration = 1f;
+    public float brokenDuration = 1f;
+    public float tiredDuration = 10f;
+    private float stunDuration = 0f;
     private float stunTimer = 0f;
 
     //Flags
@@ -32,12 +34,15 @@ public class Boss : MonoBehaviour
     public PlayerController player;
     private BoxCollider2D boxCollider;
     [SerializeField] BossAttack bossAttack;
-    //public Animator anim;
+    public Animator anim;
+    private new Rigidbody2D rigidbody;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
 
         SpriteDirection(movingDirectionX);
 
@@ -100,13 +105,17 @@ public class Boss : MonoBehaviour
 
     private void Move()
     {
+        rigidbody.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
+        anim.SetBool("Walking", true);
         transform.position += Vector3.right * movingDirectionX * speed * Time.fixedDeltaTime;
-
+        
         if (movingDirectionX == 1f)
         {
             if(Vector2.Distance(transform.position, rightPostion) <= 1f)
             {
                 moves = false;
+                anim.SetBool("Walking", false);
+                rigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
                 SpriteDirection(-movingDirectionX);
             }
         }
@@ -115,6 +124,8 @@ public class Boss : MonoBehaviour
             if (Vector2.Distance(transform.position, leftPostion) <= 1f)
             {
                 moves = false;
+                anim.SetBool("Walking", false);
+                rigidbody.constraints = RigidbodyConstraints2D.FreezePositionX;
                 SpriteDirection(-movingDirectionX);
             }
         }
@@ -122,6 +133,7 @@ public class Boss : MonoBehaviour
 
     public void BeginStun(float duration)
     {
+        anim.SetBool("Tired", true);
         stunned = true;
         attackPlayer = false;
 
@@ -131,6 +143,7 @@ public class Boss : MonoBehaviour
 
     public void EndStun()
     {
+        anim.SetBool("Tired", false);
         stunned = false;
         attackPlayer = true;
 
@@ -139,8 +152,7 @@ public class Boss : MonoBehaviour
 
     public void Tired()
     {
-        //la anim que toca
-        BeginStun(10);
+        BeginStun(tiredDuration);
     }
 
     private bool TouchingPlayer()
@@ -160,8 +172,7 @@ public class Boss : MonoBehaviour
             {
                 NextState();
                 ChangePosition();
-
-                BeginStun(1);
+                BeginStun(brokenDuration);
             }
         }
     }
