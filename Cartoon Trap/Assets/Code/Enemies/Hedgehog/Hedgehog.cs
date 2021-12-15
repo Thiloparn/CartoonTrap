@@ -28,11 +28,14 @@ public class Hedgehog : MonoBehaviour
     public PlayerController player;
     [SerializeField] HedgehogDetection hedgehogDetection;
     private BoxCollider2D boxCollider;
+    private Animator anim;
+    [SerializeField] AnimationClip deathAnimation;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
         initialPostion = transform.position;
     }
 
@@ -84,7 +87,7 @@ public class Hedgehog : MonoBehaviour
     private void SpriteDirection(float direction)
     {
         Vector3 scale = transform.localScale;
-        scale.x = direction;
+        scale.x = direction * Mathf.Abs(scale.x);
         transform.localScale = scale;
     }
 
@@ -162,13 +165,13 @@ public class Hedgehog : MonoBehaviour
     {
         bool b = false;
 
-        if (transform.localScale.x == 1)
+        if (transform.localScale.x > 0)
         {
-            b = gameObject.transform.position.x <= transform.position.x - boxCollider.size.x / 2; 
+            b = gameObject.transform.position.x <= transform.position.x - (boxCollider.size.x * transform.localScale.x) / 2;
         }
         else
         {
-            b = gameObject.transform.position.x >= transform.position.x + boxCollider.size.x / 2;
+            b = gameObject.transform.position.x >= transform.position.x + (boxCollider.size.x * transform.localScale.x) / 2;
         }
 
         if (b && !vulnerable)
@@ -179,7 +182,7 @@ public class Hedgehog : MonoBehaviour
 
             if (gameObject.tag == "PumEffectArea")
             {
-                vulnerable = true;
+                Die();
             }
             else
             {
@@ -195,6 +198,8 @@ public class Hedgehog : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        anim.SetBool("Defend", false);
+        anim.SetTrigger("Dead");
+        Destroy(this.gameObject, deathAnimation.length);
     }
 }
