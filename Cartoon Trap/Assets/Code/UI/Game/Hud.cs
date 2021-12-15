@@ -9,44 +9,30 @@ public class Hud : MonoBehaviour
     public Image StatusVida2;
     public Image StatusVida3;
 
-    public PlayerController player;
-    public Health playerHealth;
+    private PlayerController player;
 
     // Start is called before the first frame update
     void Start()
     {
-        StatusVida.enabled = false;
-        StatusVida2.enabled = false;
-        StatusVida3.enabled = false;
-        //playerHealth = GameObject.FindGameObjectWithTag("PlayerPrefab").GetComponent<Health>();
-        switch (player.playerHealth.CurrentHealth)
-        {
-            case 3:
-                StatusVida3.enabled = true;
-                StatusVida2.enabled = true;
-                StatusVida.enabled = true;
-                break;
-            case 2:
-                StatusVida2.enabled = true;
-                StatusVida.enabled = true;
-                break;
-            case 1:
-                StatusVida.enabled = true;
-                break;
-            case 0:
-                break;
-
-        }
+        player = GameData.player;
+        UpdateLife();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateLife();
+    }
+
+    private void UpdateLife()
+    {
         StatusVida.enabled = false;
         StatusVida2.enabled = false;
         StatusVida3.enabled = false;
-        //playerHealth = GameObject.FindGameObjectWithTag("PlayerPrefab").GetComponent<Health>();
-        switch (player.playerHealth.CurrentHealth)
+
+        //print(player.PlayerHealth.CurrentHealth);
+
+        switch (player.PlayerHealth.CurrentHealth)
         {
             case 3:
                 StatusVida3.enabled = true;
