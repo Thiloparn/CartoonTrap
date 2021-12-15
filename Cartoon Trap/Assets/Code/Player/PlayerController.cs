@@ -427,7 +427,7 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext value)
     {
-        if (!dialogueController.isDIalogueActive())
+        if (/*!dialogueController.isDIalogueActive()*/ true)
         {
             if (value.started && jumpAbble)
             {
