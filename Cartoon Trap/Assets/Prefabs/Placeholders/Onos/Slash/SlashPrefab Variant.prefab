@@ -24,6 +24,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -91,7 +99,6 @@ MonoBehaviour:
   aparitionPositionOffset: {x: 1.5, y: 0}
   onoAreaEffect: {fileID: 6623326605416247072, guid: 4bb1f20812144cd4f962ceaa3505e770, type: 3}
   negativeOnoAreaEffect: {fileID: 6158782044760921888, guid: ead0b3648387cff4a8ccb1eda2fbbf60, type: 3}
-  onoAparitionSound: {fileID: 8300000, guid: 490fe88ab39302b49ad749d39cb385d7, type: 3}
   slashDirection: 1
 --- !u!114 &1474159398534851335
 MonoBehaviour:

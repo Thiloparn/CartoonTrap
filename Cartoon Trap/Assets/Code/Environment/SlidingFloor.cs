@@ -15,8 +15,9 @@ public class SlidingFloor : MonoBehaviour
         if(collision.tag == "Player")
         {
             player = collision.gameObject.GetComponent<PlayerController>();
-            direction = player.MovingDirectionX;
+            direction = player.MovingDirectionX != 0 ? player.MovingDirectionX: direction;
             player.Sliding = true;
+            player.JumpAbble = false;
         }
     }
 
@@ -24,20 +25,49 @@ public class SlidingFloor : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            player = collision.gameObject.GetComponent<PlayerController>();
             player.Sliding = false;
+            player.JumpAbble = true;
+            player = null;
+
         }
     }
 
-    private void FixedUpdate()
+    private void OnTriggerStay2D(Collider2D collision)//FixedUpdate()
     {
-        if (player != null)
+        if (player != null && collision.tag == "Player")
         {
-            if (player.Sliding)
-            {
-                player.transform.position += Vector3.right * direction * slidingSpeed * Time.fixedDeltaTime;
-            }
+            
+                if (!CheckObstacle() /*&& player.MovingDirectionX != 0*/)
+                {
+                    player.Sliding = true;
+                    player.transform.position += Vector3.right * direction * slidingSpeed * Time.fixedDeltaTime;
+                }
+                else
+                {
+                    player.Sliding = false;
+                    player.JumpAbble = true;
+                }
+            
 
         }
+    }
+
+    private bool CheckObstacle()
+    {
+        bool res = false;
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(player.transform.position, transform.TransformDirection(new Vector2(direction, 0)), 0.5f, LayerMask.GetMask("InGame"));
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider.gameObject.tag != "Player" /* !hit.collider.gameObject.Equals(this.gameObject)*/ && !hit.collider.isTrigger)
+            {
+                res = true;
+                break;
+            }
+        }
+
+
+        return res;
     }
 }
