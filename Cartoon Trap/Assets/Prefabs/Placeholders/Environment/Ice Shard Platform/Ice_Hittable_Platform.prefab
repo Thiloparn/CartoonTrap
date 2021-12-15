@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3959864041493414825}
   - component: {fileID: 3959864041493417044}
   - component: {fileID: 3959864041493414827}
-  - component: {fileID: 112958911955991571}
+  - component: {fileID: 8056772698641920135}
   m_Layer: 6
   m_Name: Ice_Hittable_Platform
   m_TagString: Floor
@@ -119,8 +119,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!68 &112958911955991571
-EdgeCollider2D:
+--- !u!60 &8056772698641920135
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -133,13 +133,17 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.25, y: 0.165}
+    oldSize: {x: 2, y: 3}
+    newSize: {x: 2, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: 1.4835668, y: 2.5078447}
-  - {x: -0.480021, y: 2.509369}
-  - {x: 0.5080633, y: -0.50358963}
-  - {x: 1.4840002, y: 2.5073478}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+    m_Paths:
+    - - {x: -0.46413523, y: 2.4983416}
+      - {x: 0.5034688, y: -0.4841753}
+      - {x: 1.4516749, y: 2.4910455}

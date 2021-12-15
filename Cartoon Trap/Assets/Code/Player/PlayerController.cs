@@ -120,6 +120,7 @@ public class PlayerController : MonoBehaviour
     public bool UsingHammer { get => usingHammer; set => usingHammer = value; }
 
     public bool Sliding { get => sliding; set => sliding = value; }
+    public bool JumpAbble { get => jumpAbble; set => jumpAbble = value; }
     public Health PlayerHealth { get => playerHealth;}
     public int Coins { get => coins;}
     public AudioSource PlayerAudioSource { get => playerAudioSource;}
