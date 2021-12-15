@@ -35,7 +35,7 @@ public class RestZone : MonoBehaviour
         GameData.lastRestZone = GameData.lastRestZone = gameObject.transform.position;;
 
         //Player
-        GameData.punchLocked = true;
+        GameData.punchLocked = false; // si descansamos cambiabamos el locked al true
         GameData.slashLocked = true;
         GameData.pumLocked = true;
         GameData.phiuLocked = true;
