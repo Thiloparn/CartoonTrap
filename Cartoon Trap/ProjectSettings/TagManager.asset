@@ -3,7 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Punch
+  - Onomatopeya
+  - Floor
+  - PumEffectArea
+  - Enemy
+  - NegativeOnomatopeya
+  - PunchEffectArea
+  - SlashEffectArea
+  - Ice_Floor_Platform
+  - FireWall
+  - Blade
+  - Hammer
+>>>>>>> develop
   layers:
   - Default
   - TransparentFX
@@ -11,7 +27,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - InGame
   - 
   - 
   - 

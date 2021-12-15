@@ -1,0 +1,1332 @@
+fileFormatVersion: 2
+guid: bb41257c8864a24409972788ee188929
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -643594058677816480
+    second: Tilemap_Fuego_0
+  - first:
+      213: -8770611888067961786
+    second: Tilemap_Fuego_1
+  - first:
+      213: -7232931275439577052
+    second: Tilemap_Fuego_2
+  - first:
+      213: 7523711563373008571
+    second: Tilemap_Fuego_3
+  - first:
+      213: -1034475860704858410
+    second: Tilemap_Fuego_4
+  - first:
+      213: 9143165313999572515
+    second: Tilemap_Fuego_5
+  - first:
+      213: 5281606541900318596
+    second: Tilemap_Fuego_9
+  - first:
+      213: 8278129797314714221
+    second: Tilemap_Fuego_10
+  - first:
+      213: 7903220000741528266
+    second: Tilemap_Fuego_13
+  - first:
+      213: 124082436270910124
+    second: Tilemap_Fuego_14
+  - first:
+      213: -3018198393572280279
+    second: Tilemap_Fuego_15
+  - first:
+      213: 9199352046190550451
+    second: Tilemap_Fuego_17
+  - first:
+      213: 8579349955940106341
+    second: Tilemap_Fuego_18
+  - first:
+      213: -6305098047151952391
+    second: Tilemap_Fuego_19
+  - first:
+      213: -1714297556100760069
+    second: Tilemap_Fuego_20
+  - first:
+      213: 5985339092389573979
+    second: Tilemap_Fuego_21
+  - first:
+      213: -5779693256238645942
+    second: Tilemap_Fuego_22
+  - first:
+      213: 6962682287309045984
+    second: Tilemap_Fuego_23
+  - first:
+      213: 3315986802927114804
+    second: Tilemap_Fuego_24
+  - first:
+      213: 6099441589628107715
+    second: Tilemap_Fuego_26
+  - first:
+      213: 7707441455878333471
+    second: Tilemap_Fuego_27
+  - first:
+      213: 1243488382619195178
+    second: Tilemap_Fuego_29
+  - first:
+      213: -8676960240194912476
+    second: Tilemap_Fuego_30
+  - first:
+      213: 3390014021698361125
+    second: Tilemap_Fuego_31
+  - first:
+      213: -3859424111049799326
+    second: Tilemap_Fuego_32
+  - first:
+      213: -3606494844255734995
+    second: Tilemap_Fuego_33
+  - first:
+      213: -6800278296133334354
+    second: Tilemap_Fuego_34
+  - first:
+      213: 8043256102160795871
+    second: Tilemap_Fuego_35
+  - first:
+      213: 6366224845205156496
+    second: Tilemap_Fuego_36
+  - first:
+      213: -1482675183233735374
+    second: Tilemap_Fuego_37
+  - first:
+      213: -2056686371784677150
+    second: Tilemap_Fuego_40
+  - first:
+      213: -3426898395283446951
+    second: Tilemap_Fuego_41
+  - first:
+      213: -6943321257066988680
+    second: Tilemap_Fuego_42
+  - first:
+      213: -2667518659464542502
+    second: Tilemap_Fuego_43
+  - first:
+      213: 6276336581638822823
+    second: Tilemap_Fuego_44
+  - first:
+      213: -946430190557091609
+    second: Tilemap_Fuego_45
+  - first:
+      213: -6580387622822827632
+    second: Tilemap_Fuego_46
+  - first:
+      213: 7473376262855987090
+    second: Tilemap_Fuego_47
+  - first:
+      213: 6842444234888412799
+    second: Tilemap_Fuego_48
+  - first:
+      213: -7618000664259067008
+    second: Tilemap_Fuego_49
+  - first:
+      213: 8303821415840708278
+    second: Tilemap_Fuego_50
+  - first:
+      213: 1286502197269990532
+    second: Tilemap_Fuego_51
+  - first:
+      213: 1529830759144092358
+    second: Tilemap_Fuego_52
+  - first:
+      213: -7892647230825314887
+    second: Tilemap_Fuego_53
+  - first:
+      213: -8274978030513697408
+    second: Tilemap_Fuego_54
+  - first:
+      213: 1712620283584332317
+    second: Tilemap_Fuego_58
+  - first:
+      213: 9030310495163754759
+    second: Tilemap_Fuego_59
+  - first:
+      213: -5958715041720265716
+    second: Tilemap_Fuego_60
+  - first:
+      213: -2408564475512477933
+    second: Tilemap_Fuego_61
+  - first:
+      213: -2182532797223797130
+    second: Tilemap_Fuego_62
+  - first:
+      213: -4001443557698233028
+    second: Tilemap_Fuego_6
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 80
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tilemap_Fuego_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 442
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 063f4f01d9e7117f0800000000000000
+      internalID: -643594058677816480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_1
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 442
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64c14ecd4f6884680800000000000000
+      internalID: -8770611888067961786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 442
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4286c92a3577f9b90800000000000000
+      internalID: -7232931275439577052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_3
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 442
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb6d857fdc7996860800000000000000
+      internalID: 7523711563373008571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_4
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 282
+        width: 163
+        height: 247
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de68f18fadc4a1f0800000000000000
+      internalID: -1034475860704858410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_5
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 434
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32e0e97196c03ee70800000000000000
+      internalID: 9143165313999572515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_9
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 442
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 487095daa290c4940800000000000000
+      internalID: 5281606541900318596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_10
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 442
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6a1585f033d1e270800000000000000
+      internalID: 8278129797314714221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_13
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 442
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac216f5b7b0edad60800000000000000
+      internalID: 7903220000741528266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_14
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 434
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caaeac08154d8b100800000000000000
+      internalID: 124082436270910124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_15
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 442
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92838795d843d16d0800000000000000
+      internalID: -3018198393572280279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_17
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 353
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bd53fc12f9aaaf70800000000000000
+      internalID: 9199352046190550451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_18
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 353
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 560c29f5459ff0770800000000000000
+      internalID: 8579349955940106341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_19
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 353
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fdaf716bbacf78a0800000000000000
+      internalID: -6305098047151952391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_20
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 353
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd3b4994779538e0800000000000000
+      internalID: -1714297556100760069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_21
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 348
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b55b32e5132301350800000000000000
+      internalID: 5985339092389573979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_22
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 353
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4dbc270b976acfa0800000000000000
+      internalID: -5779693256238645942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_23
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 353
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e0c5f286aa60a060800000000000000
+      internalID: 6962682287309045984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_24
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 353
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a9a5cad60c40e20800000000000000
+      internalID: 3315986802927114804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_26
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 353
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cbf60e3fc195a450800000000000000
+      internalID: 6099441589628107715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_27
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 348
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f146fb81b2556fa60800000000000000
+      internalID: 7707441455878333471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_29
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 263
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2797508812c14110800000000000000
+      internalID: 1243488382619195178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_30
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 263
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42f7ef052ae359780800000000000000
+      internalID: -8676960240194912476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_31
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 263
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5279ceaaacfbb0f20800000000000000
+      internalID: 3390014021698361125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_32
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 263
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2698c471832907ac0800000000000000
+      internalID: -3859424111049799326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_33
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 262
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23fbd31c0823fdc0800000000000000
+      internalID: -3606494844255734995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_34
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 263
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaa8c294bee80a1a0800000000000000
+      internalID: -6800278296133334354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_35
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 263
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd889c65fc26f9f60800000000000000
+      internalID: 8043256102160795871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_36
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 263
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09238ba54cf595850800000000000000
+      internalID: 6366224845205156496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_37
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 263
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 235e012c6ca7c6be0800000000000000
+      internalID: -1482675183233735374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_40
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 262
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e8236344ae2573e0800000000000000
+      internalID: -2056686371784677150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_41
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 170
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95326c3e0163170d0800000000000000
+      internalID: -3426898395283446951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_42
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 170
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b7a1f9a1e54af90800000000000000
+      internalID: -6943321257066988680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_43
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 170
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6c3ee89e11bfad0800000000000000
+      internalID: -2667518659464542502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_44
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 170
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ab1f571ed60a1750800000000000000
+      internalID: 6276336581638822823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_45
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 34
+        width: 83
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8a32f81ca9dd2f0800000000000000
+      internalID: -946430190557091609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_46
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 34
+        width: 83
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099a4494254cda4a0800000000000000
+      internalID: -6580387622822827632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_47
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 174
+        width: 54
+        height: 74
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29f0e5c8d14c6b760800000000000000
+      internalID: 7473376262855987090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_48
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 174
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7e71ff57ce35fe50800000000000000
+      internalID: 6842444234888412799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_49
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 170
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 083062cf1cc674690800000000000000
+      internalID: -7618000664259067008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_50
+      rect:
+        serializedVersion: 2
+        x: 1095
+        y: 170
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b6777905991d3370800000000000000
+      internalID: 8303821415840708278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_51
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 170
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48c8907aee29ad110800000000000000
+      internalID: 1286502197269990532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_52
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 170
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2ff3558fc0b3510800000000000000
+      internalID: 1529830759144092358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_53
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 174
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b5cf2d192fa77290800000000000000
+      internalID: -7892647230825314887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_54
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 38
+        width: 248
+        height: 83
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08dc11fe25f592d80800000000000000
+      internalID: -8274978030513697408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_58
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 46
+        width: 240
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d124c26f21374c710800000000000000
+      internalID: 1712620283584332317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_59
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 42
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 709a7bbfc8b125d70800000000000000
+      internalID: 9030310495163754759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_60
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 42
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c049c7c7d346e4da0800000000000000
+      internalID: -5958715041720265716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_61
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 42
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3172472ee5f039ed0800000000000000
+      internalID: -2408564475512477933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_62
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 42
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67ef5d60cf516b1e0800000000000000
+      internalID: -2182532797223797130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Fuego_6
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 282
+        width: 162
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d1f9ae8440878c0800000000000000
+      internalID: -4001443557698233028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3881433419247863173
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.994624
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1187606
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8867750755915686930, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_Name
+      value: PunchPrefab Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 411800942469361142, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+    - {fileID: 571440097534206886, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+--- !u!1 &5678207302567928215 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8867750755915686930, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+  m_PrefabInstance: {fileID: 3881433419247863173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3351189181149831160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678207302567928215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c3a455b8267294e9dca14f8bc43a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7682156707653850302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678207302567928215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97fb9f9c16f8fc5449e6dd746b015db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aparitionPositionOffset: {x: 1.5, y: 0}
+  onoAreaEffect: {fileID: 5557654813489046911, guid: 9be6b91081444cb4099e80963302e095, type: 3}
+  negativeOnoAreaEffect: {fileID: 8359134164667535915, guid: ef67c29272fed354496a38267fa02d18, type: 3}
