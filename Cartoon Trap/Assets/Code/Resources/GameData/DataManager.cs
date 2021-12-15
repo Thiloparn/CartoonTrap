@@ -12,10 +12,17 @@ public class DataManager : MonoBehaviour
     private void Awake()
     {
         GameObject player = Instantiate(playerprefab);
+        GameData.player = player.GetComponent<PlayerController>();
+        print(GameData.player);
         mainCamera.Follow = player.transform;
         player.transform.position = spawn;
         //player.transform.position = GameData.playerAparitionPosition;
     }
-    
+
+    private void Update()
+    {
+        print(GameData.player);
+    }
+
 
 }

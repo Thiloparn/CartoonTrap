@@ -19,9 +19,9 @@ public static class GameData
     public static bool r = false;
     public static bool g = false;
     public static bool b = false;
-    public static int maxPlayerHealth = 10;
+    public static int maxPlayerHealth = 3;
     public static int numberOfHealings = 3;
-    public static int currentPlayerHealth = 10;
+    public static int currentPlayerHealth = maxPlayerHealth;
     public static int attackPower = 10;
     public static int coins = 0;
 
