@@ -24,18 +24,24 @@ public class Hedgehog : MonoBehaviour
     public bool followPlayer = false;
     public bool attackPlayer = false;
     private bool vulnerable = false;
+    private bool deathAudioPlayed = false;
+
+    //Audio
+    public AudioClip deathAudio;
 
     public PlayerController player;
     [SerializeField] HedgehogDetection hedgehogDetection;
     private BoxCollider2D boxCollider;
     private Animator anim;
     [SerializeField] AnimationClip deathAnimation;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         initialPostion = transform.position;
     }
 
@@ -200,6 +206,17 @@ public class Hedgehog : MonoBehaviour
     {
         anim.SetBool("Defend", false);
         anim.SetTrigger("Dead");
+        if (!deathAudioPlayed)
+        {
+            PlayAudio(deathAudio);
+            deathAudioPlayed = true;
+        }
         Destroy(this.gameObject, deathAnimation.length);
+    }
+
+    public void PlayAudio(AudioClip audio)
+    {
+        audioSource.clip = audio;
+        audioSource.Play();
     }
 }
