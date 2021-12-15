@@ -107,7 +107,6 @@ public class PlayerController : MonoBehaviour
     public GameObject deathCanvas;
     private AnimationColorChanger animationColorChanger;
     private AudioSource playerAudioSource;
-    public DialogueController dialogueController;
 
     public bool Attacking { get => attacking; set => attacking = value; }
     public bool Grapping { get => grapping; set => grapping = value; }
