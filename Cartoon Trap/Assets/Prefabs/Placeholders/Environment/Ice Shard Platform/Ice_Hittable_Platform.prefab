@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3959864041493414826}
   - component: {fileID: 3959864041493414825}
-  - component: {fileID: 3959864041493414824}
   - component: {fileID: 3959864041493417044}
   - component: {fileID: 3959864041493414827}
+  - component: {fileID: 112958911955991571}
   m_Layer: 6
   m_Name: Ice_Hittable_Platform
   m_TagString: Floor
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1321089309346105245, guid: 6a7c9b85a4f34de4dafde91ff7b6fd11, type: 3}
+  m_Sprite: {fileID: 7857648411278090789, guid: 6a7c9b85a4f34de4dafde91ff7b6fd11, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,32 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3959864041493414824
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3959864041493414831}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 3}
-    newSize: {x: 2, y: 3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 3}
-  m_EdgeRadius: 0
 --- !u!114 &3959864041493417044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde1d65360d97224794b18d242389103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pruebaFall: 0
 --- !u!50 &3959864041493414827
 Rigidbody2D:
   serializedVersion: 4
@@ -144,3 +119,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!68 &112958911955991571
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959864041493414831}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 1.4835668, y: 2.5078447}
+  - {x: -0.480021, y: 2.509369}
+  - {x: 0.5080633, y: -0.50358963}
+  - {x: 1.4840002, y: 2.5073478}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

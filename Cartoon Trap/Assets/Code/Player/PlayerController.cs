@@ -11,9 +11,9 @@ public class PlayerController : MonoBehaviour
 {
 
     //Health
-    public int maxHealth = 0;
-    public int initialCurrentHealth = -1; //Variable temporal para poder probar la clase Health de manera comoda
-    public Health playerHealth;
+    private int maxHealth = 0;
+    public int initialCurrentHealth = -1;
+    private Health playerHealth;
     public int numberOfHealings = 3;
     public bool invulneravility = false;
     public float maxTimeInvulneravility = 1f;
@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     private bool usingHammer = false;
     public bool resting = false;
     private bool dead = false;
+    private bool sliding = false;
 
     //Metroidvania Flags
     public bool punchLocked = true;
@@ -66,6 +67,12 @@ public class PlayerController : MonoBehaviour
     public bool pumLocked = true;
     public bool phiuLocked = true;
     public bool hopLocked = true;
+    private int coins = 0;
+
+    //Animation Flags
+    public bool r = false;
+    public bool g = false;
+    public bool b = false;
 
     //Actions
     private Dash dash = new Dash(0);
@@ -81,13 +88,25 @@ public class PlayerController : MonoBehaviour
     public GameObject slashOnomatpeya;
     public GameObject hopOnomatopeya;
 
+    //Sonidos
+    public AudioClip pumSound;
+    public AudioClip phiuSound;
+    public AudioClip slashSound;
+    public AudioClip hopSound;
+    public AudioClip punchSound;
+    public AudioClip hurtedSound;
+    public AudioClip deathSound;
+
     public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
-    private BoxCollider2D boxCollider;
+    private DialogueController dialogueController;
+    private CapsuleCollider2D capsuleCollider;
     [SerializeField] PlayerInput playerInput;
     public string activeActionMap;
     public PlayerPocket pocket;
     public GameObject deathCanvas;
+    private AnimationColorChanger animationColorChanger;
+    private AudioSource playerAudioSource;
 
     public bool Attacking { get => attacking; set => attacking = value; }
     public bool Grapping { get => grapping; set => grapping = value; }
@@ -95,21 +114,54 @@ public class PlayerController : MonoBehaviour
     public float MovingDirectionY { get => movingDirectionY;}
     public Rigidbody2D RigidBody { get => rigidBody;}
 
-    public BoxCollider2D BoxCollider { get => boxCollider; }
+    public CapsuleCollider2D CapsuleCollider { get => capsuleCollider; }
     public bool Throwing { get => throwing; set => throwing = value; }
     public bool UsingBlade { get => usingBlade; set => usingBlade = value; }
     public bool UsingHammer { get => usingHammer; set => usingHammer = value; }
 
+    public bool Sliding { get => sliding; set => sliding = value; }
+    public Health PlayerHealth { get => playerHealth;}
+    public int Coins { get => coins;}
+    public AudioSource PlayerAudioSource { get => playerAudioSource;}
+
     private void Awake()
     {
+
+        InitializePlayer();
         playerHealth = new Health(maxHealth, initialCurrentHealth);
         rigidBody = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        animationColorChanger = GetComponent<AnimationColorChanger>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        playerAudioSource = GetComponent<AudioSource>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
         pocket = new PlayerPocket(this);
         lookingDirection = 1f;
         invulneravility = false;
+    }
+
+    private void InitializePlayer()
+    {
+        punchLocked = GameData.punchLocked;
+        slashLocked = GameData.slashLocked;
+        pumLocked = GameData.pumLocked;
+        phiuLocked = GameData.phiuLocked;
+        hopLocked = GameData.hopLocked;
+        r = GameData.r;
+        g = GameData.g;
+        b = GameData.b;
+        maxHealth = GameData.maxPlayerHealth;
+        initialCurrentHealth = GameData.currentPlayerHealth;
+        attackPower = GameData.attackPower;
+        coins = GameData.coins;
+        GameData.player = this;
+    }
+
+    private void Start()
+    {
+        //Si se pone este metodo en el Awake puede k animationColorChanger no haya sido inicializado todavia.
+        //Con Start te aseguras k no sea así
+        UpdateAnimationColor();
     }
 
     private void Update()
@@ -155,7 +207,7 @@ public class PlayerController : MonoBehaviour
                 jumpAbble = false;
             }
 
-            if (!resting)
+            if (!resting && !sliding && Time.timeScale == 1f /*&& !dialogueController.isDIalogueActive()*/)
             {
                 ExecuteActions();
             }
@@ -180,13 +232,16 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateLookingDirection()
     {
-        if (movingDirectionX < -0.01f)
+        if(Time.timeScale == 1f)
         {
-            lookingDirection = -1f;
-        }
-        else if (movingDirectionX > 0.01f)
-        {
-            lookingDirection = 1f;
+            if (movingDirectionX < -0.01f)
+            {
+                lookingDirection = -1f;
+            }
+            else if (movingDirectionX > 0.01f)
+            {
+                lookingDirection = 1f;
+            }
         }
     }
 
@@ -275,9 +330,9 @@ public class PlayerController : MonoBehaviour
 
     private void SetRevivePosition()
     {
-        if (GameData.lastRestZone != null)
+        if (GameData.lastRestZone.Equals(GameData.NO_REST_ZONE) == false)
         {
-            gameObject.transform.position = GameData.lastRestZone.position;
+            gameObject.transform.position = GameData.lastRestZone;
         }
         else
         {
@@ -287,15 +342,25 @@ public class PlayerController : MonoBehaviour
 
     public void onMovement(InputAction.CallbackContext value)
     {
-        movingDirectionX = value.ReadValue<Vector2>().x;
-        movingDirectionY = value.ReadValue<Vector2>().y;
+        if(Time.timeScale == 1f)
+        {
+            movingDirectionX = value.ReadValue<Vector2>().x;
+            movingDirectionY = value.ReadValue<Vector2>().y;
+        }
     }
 
     public void onPunch(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (Time.timeScale == 1f)
         {
-            Attacking = true;
+            if (value.started)
+            {
+                Attacking = true;
+            }
+        }
+        else
+        {
+            dialogueController.NextDialogue();
         }
     }
 
@@ -362,19 +427,22 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext value)
     {
-        if (value.started && jumpAbble)
+        if (/*!dialogueController.isDIalogueActive()*/ true)
         {
-            jumping = true;
-            doubleJumpAbble = true;
-        }
-        else if(value.started && !isGrounded() && doubleJumpAbble)
-        {
-            if(hopLocked == false)
+            if (value.started && jumpAbble)
             {
-                doubleJumping = true;
+                jumping = true;
+                doubleJumpAbble = true;
             }
-            
-        }
+            else if (value.started && !isGrounded() && doubleJumpAbble)
+            {
+                if (hopLocked == false)
+                {
+                    doubleJumping = true;
+                }
+
+            }
+        }       
     }
 
     public void onDash(InputAction.CallbackContext value)
@@ -437,9 +505,14 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth.DecreaseHealth(damageAmount);
             playerAnimator.StartHurtingAnimation(this);
+            playerAudioSource.clip = hurtedSound;
+            playerAudioSource.Play();
+
             if (playerHealth.CurrentHealth == 0)
             {
                 playerAnimator.StartDyingAnimation(this);
+                playerAudioSource.clip = deathSound;
+                playerAudioSource.Play();
             }
             invulneravility = true;
         }
@@ -471,21 +544,25 @@ public class PlayerController : MonoBehaviour
     public void LockSlash()
     {
         slashLocked = true;
+        g = false;
     }
 
     public void UnlockSlash()
     {
         slashLocked = false;
+        g = true;
     }
 
     public void LockPum()
     {
         pumLocked = true;
+        b = false;
     }
 
     public void UnlockPum()
     {
         pumLocked = false;
+        b = true;
     }
 
     public void LockPhiu()
@@ -501,10 +578,50 @@ public class PlayerController : MonoBehaviour
     public void LockHop()
     {
         hopLocked = true;
+        r = false;
     }
 
     public void UnlockHop()
     {
         hopLocked = false;
+        r = true;
+    }
+
+    public void UpdateAnimationColor()
+    {
+        if (!r && !g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_ByN);
+        }else if (!r && !g && b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_Blue);
+        }else if (!r && g && b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_GB);
+        }else if (!r && g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_Green);
+        }else if (r && g && b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_FullColor);
+        }else if (r && !g && b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_BR);
+        }else if (r && !g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_Red);
+        }else if (!r && g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_Green);
+        }else if (r && g && !b)
+        {
+            animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_RG);
+        }
+    }
+
+    public void PlayPlayerAudio(AudioClip audio)
+    {
+        playerAudioSource.clip = audio;
+        playerAudioSource.Play();
     }
 }

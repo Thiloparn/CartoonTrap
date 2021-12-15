@@ -50,6 +50,99 @@ TextureImporter:
   - first:
       213: 7249476363196623864
     second: Tilemap_Hielo_15
+  - first:
+      213: -4815397068303395361
+    second: Tilemap_Hielo_16
+  - first:
+      213: -6376026650134894957
+    second: Tilemap_Hielo_17
+  - first:
+      213: 3757852888107759
+    second: Tilemap_Hielo_18
+  - first:
+      213: -1913149103425076128
+    second: Tilemap_Hielo_19
+  - first:
+      213: -3225985126795112868
+    second: Tilemap_Hielo_20
+  - first:
+      213: -6969382069735196320
+    second: Tilemap_Hielo_21
+  - first:
+      213: 7352294810022047273
+    second: Tilemap_Hielo_22
+  - first:
+      213: -1478117052087289321
+    second: Tilemap_Hielo_23
+  - first:
+      213: 6153090452652979817
+    second: Tilemap_Hielo_24
+  - first:
+      213: 7871331534049886531
+    second: Tilemap_Hielo_25
+  - first:
+      213: 6723829369256865236
+    second: Tilemap_Hielo_26
+  - first:
+      213: 3394339010090815481
+    second: Tilemap_Hielo_27
+  - first:
+      213: 7538828814102653973
+    second: Tilemap_Hielo_28
+  - first:
+      213: 3436686581302493917
+    second: Tilemap_Hielo_29
+  - first:
+      213: -7909272847972448221
+    second: Tilemap_Hielo_30
+  - first:
+      213: -6233180296149066824
+    second: Tilemap_Hielo_31
+  - first:
+      213: -125987352754882738
+    second: Tilemap_Hielo_32
+  - first:
+      213: 7857648411278090789
+    second: Tilemap_Hielo_33
+  - first:
+      213: 1678122599431928893
+    second: Tilemap_Hielo_34
+  - first:
+      213: -2062659477220570628
+    second: Tilemap_Hielo_35
+  - first:
+      213: -8167283996560733263
+    second: Tilemap_Hielo_36
+  - first:
+      213: 7641656132636896936
+    second: Tilemap_Hielo_37
+  - first:
+      213: 2836968095961053185
+    second: Tilemap_Hielo_38
+  - first:
+      213: 6219656230053064945
+    second: Tilemap_Hielo_39
+  - first:
+      213: -213158025039699988
+    second: Tilemap_Hielo_40
+  - first:
+      213: -8511453995835980058
+    second: Tilemap_Hielo_41
+  - first:
+      213: -1033758676765211982
+    second: Tilemap_Hielo_42
+  - first:
+      213: -5185438843025112196
+    second: Tilemap_Hielo_43
+  - first:
+      213: -160282770582199178
+    second: Tilemap_Hielo_44
+  - first:
+      213: -2530712046292084908
+    second: Tilemap_Hielo_45
+  - first:
+      213: 1415930979000824077
+    second: Tilemap_Hielo_46
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -144,10 +237,10 @@ TextureImporter:
         serializedVersion: 2
         x: 240
         y: 960
-        width: 160
+        width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -163,12 +256,12 @@ TextureImporter:
       name: Tilemap_Hielo_1
       rect:
         serializedVersion: 2
-        x: 80
-        y: 640
+        x: 320
+        y: 960
         width: 80
-        height: 320
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,12 +277,12 @@ TextureImporter:
       name: Tilemap_Hielo_2
       rect:
         serializedVersion: 2
-        x: 480
-        y: 640
+        x: 80
+        y: 880
         width: 80
-        height: 320
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,12 +298,12 @@ TextureImporter:
       name: Tilemap_Hielo_3
       rect:
         serializedVersion: 2
-        x: 813
-        y: 883
-        width: 54
-        height: 74
+        x: 480
+        y: 880
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,12 +319,12 @@ TextureImporter:
       name: Tilemap_Hielo_4
       rect:
         serializedVersion: 2
-        x: 240
-        y: 720
-        width: 160
-        height: 160
+        x: 800
+        y: 880
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,12 +340,12 @@ TextureImporter:
       name: Tilemap_Hielo_5
       rect:
         serializedVersion: 2
-        x: 640
-        y: 640
+        x: 80
+        y: 800
         width: 80
-        height: 240
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,12 +361,12 @@ TextureImporter:
       name: Tilemap_Hielo_6
       rect:
         serializedVersion: 2
-        x: 800
-        y: 640
+        x: 240
+        y: 800
         width: 80
-        height: 160
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,12 +382,12 @@ TextureImporter:
       name: Tilemap_Hielo_7
       rect:
         serializedVersion: 2
-        x: 960
-        y: 720
+        x: 320
+        y: 800
         width: 80
-        height: 160
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,12 +403,12 @@ TextureImporter:
       name: Tilemap_Hielo_8
       rect:
         serializedVersion: 2
-        x: 240
-        y: 560
-        width: 160
+        x: 480
+        y: 800
+        width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -332,11 +425,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 320
-        width: 160
-        height: 240
+        y: 800
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -349,36 +442,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tilemap_Hielo_10
-      rect:
-        serializedVersion: 2
-        x: 880
-        y: 480
-        width: 160
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 807e5909c8ae10ec0800000000000000
-      internalID: -3602340337477622008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Tilemap_Hielo_11
       rect:
         serializedVersion: 2
-        x: 240
-        y: 400
-        width: 240
+        x: 80
+        y: 720
+        width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -394,12 +466,12 @@ TextureImporter:
       name: Tilemap_Hielo_12
       rect:
         serializedVersion: 2
-        x: 880
-        y: 320
-        width: 160
+        x: 240
+        y: 720
+        width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -415,12 +487,12 @@ TextureImporter:
       name: Tilemap_Hielo_13
       rect:
         serializedVersion: 2
-        x: 240
-        y: 240
-        width: 320
+        x: 320
+        y: 720
+        width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -436,12 +508,12 @@ TextureImporter:
       name: Tilemap_Hielo_14
       rect:
         serializedVersion: 2
-        x: 640
-        y: 160
-        width: 240
+        x: 480
+        y: 720
+        width: 80
         height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -457,12 +529,12 @@ TextureImporter:
       name: Tilemap_Hielo_15
       rect:
         serializedVersion: 2
-        x: 321
-        y: 80
-        width: 238
-        height: 79
+        x: 640
+        y: 720
+        width: 80
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -470,6 +542,329 @@ TextureImporter:
       bones: []
       spriteID: 8fbecebc7505b9460800000000000000
       internalID: 7249476363196623864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_18
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 640
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fea838e4fb95d0000800000000000000
+      internalID: 3757852888107759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_19
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 640
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 064cdf7d6012375e0800000000000000
+      internalID: -1913149103425076128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_20
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e0fa28e9ffa33d0800000000000000
+      internalID: -3225985126795112868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_22
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 560
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92eef43fc29980660800000000000000
+      internalID: 7352294810022047273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_23
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 560
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71ab3ed5f5cac7be0800000000000000
+      internalID: -1478117052087289321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_25
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 320
+        width: 160
+        height: 160
+      alignment: 9
+      pivot: {x: 0.25, y: 0.25}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 341cf5c73569c3d60800000000000000
+      internalID: 7871331534049886531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_26
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 480
+        width: 160
+        height: 80
+      alignment: 9
+      pivot: {x: 0.25, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dde4ecdf27df4d50800000000000000
+      internalID: 6723829369256865236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_28
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 400
+        width: 240
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51c611f2ddc4f9860800000000000000
+      internalID: 7538828814102653973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_33
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 320
+        width: 160
+        height: 240
+      alignment: 9
+      pivot: {x: 0.25, y: 0.165}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522a4243999fb0d60800000000000000
+      internalID: 7857648411278090789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_37
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 240
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aee181f3cd9c0a60800000000000000
+      internalID: 7641656132636896936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_38
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 240
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 108ffdec37fee5720800000000000000
+      internalID: 2836968095961053185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_39
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 240
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0bb595368a05650800000000000000
+      internalID: 6219656230053064945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_40
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 240
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef1c74d7e5ba0df0800000000000000
+      internalID: -213158025039699988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_41
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 160
+        width: 240
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e60e18bfad31e980800000000000000
+      internalID: -8511453995835980058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tilemap_Hielo_44
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 80
+        width: 240
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 35, y: 0, z: 29, w: 19}
+      outline: []
+      physicsShape:
+      - - {x: 90, y: 12}
+        - {x: 81, y: 21}
+        - {x: -75, y: 21}
+        - {x: -84, y: 4}
+        - {x: -82, y: -30}
+        - {x: -71, y: -40}
+        - {x: 79, y: -40}
+        - {x: 89, y: -33}
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67425db5baf86cdf0800000000000000
+      internalID: -160282770582199178
       vertices: []
       indices: 
       edges: []

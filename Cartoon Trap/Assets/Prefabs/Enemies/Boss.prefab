@@ -8,12 +8,40 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Size.x
+      value: 2.9229484
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_Size.y
-      value: 1.4008917
+      value: 4.6630087
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.33310294
       objectReference: {fileID: 0}
     - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_Offset.y
-      value: 0.000000059604645
+      value: 0.43648052
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 126891394990168544, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895898827879803602, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895898827879803602, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 79302f20b2943364fa6174576e27b897, type: 3}
+    - target: {fileID: 6458569578347845818, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
+      propertyPath: m_Constraints
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_RootOrder
@@ -21,19 +49,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5
+      value: 5.26
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: -2.7
       objectReference: {fileID: 0}
     - target: {fileID: 7096459489784038815, guid: fc9c2b802e9897a478f91b0fd983890e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -121,6 +149,8 @@ MonoBehaviour:
   movingDirectionX: -1
   speed: 3
   speedIncrementPerState: 1
+  brokenDuration: 1
+  tiredDuration: 10
   moves: 0
   playerDetected: 0
   attackPlayer: 0
@@ -130,6 +160,26 @@ MonoBehaviour:
   attackIncrementPerState: 2
   player: {fileID: 0}
   bossAttack: {fileID: 1283209479}
+  anim: {fileID: 0}
+--- !u!95 &1246181416
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671985627086928286}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 895098971ce392b4caaf1b449eb9e0bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1283209479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,13 +195,16 @@ MonoBehaviour:
   resetTimer: 3
   resetTimerIncrementPerState: 1
   timeElapsed: 0
-  attackOnFrame: 1
+  attackOnFrame: 30
   projectilDamage: 1
   projectilSpeed: 6
   projectilSpeedIncrementPerState: 2
   attacksHeight:
-  - -1
+  - -1.5
   - 0
-  - 1
+  - 1.5
   boss: {fileID: 1283209477}
-  projectil: {fileID: 787887872736552075, guid: a45654d77c0a1cc4ca0d1dba620932b8, type: 3}
+  projectils:
+  - {fileID: 787887872736552075, guid: a45654d77c0a1cc4ca0d1dba620932b8, type: 3}
+  - {fileID: 3919253900247647585, guid: a69867a44f2d5574b9868c5dacb9347e, type: 3}
+  anim: {fileID: 1246181416}

@@ -15,6 +15,9 @@ public class Turtle : MonoBehaviour
     public float distance = 0f;
     public float speed = 3f;
 
+    private float stunDuration = 0f;
+    private float stunTimer = 0f;
+
     //Flags
     public bool moves = false;
     public bool followPlayer = false;
@@ -25,12 +28,17 @@ public class Turtle : MonoBehaviour
     public PlayerController player;
     [SerializeField] TurtleDetection turtleDetection;
     private BoxCollider2D boxCollider;
+    private Animator anim;
+    [SerializeField] AnimationClip vulnerableAnimation;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         boxCollider = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
         initialPostion = transform.position;
+
+        stunDuration = vulnerableAnimation.length;
     }
 
     private void FixedUpdate()
@@ -81,6 +89,16 @@ public class Turtle : MonoBehaviour
                     Move();
                 }
             }
+            else
+            {
+                stunTimer += Time.fixedDeltaTime;
+
+                if (stunTimer >= stunDuration)
+                {
+                    stunTimer = 0f;
+                    moves = true;
+                }
+            }
         }
     }
 
@@ -123,6 +141,8 @@ public class Turtle : MonoBehaviour
 
     private void FleeFromPlayer()
     {
+        anim.SetTrigger("Flee");
+
         float fleeDirection = player.transform.position.x > transform.position.x ? -1f : 1f;
 
         transform.position += Vector3.right * fleeDirection * speed * Time.fixedDeltaTime;
@@ -151,17 +171,19 @@ public class Turtle : MonoBehaviour
 
     private bool TouchingPlayer()
     {
-        return boxCollider.IsTouching(player.BoxCollider);
+        return boxCollider.IsTouching(player.CapsuleCollider);
     }
 
     private void Hide()
     {
         hidden = true;
+        anim.SetBool("Hide", true);
     }
 
     private void UnHide()
     {
         hidden = false;
+        anim.SetBool("Hide", false);
     }
 
     public void TakeDamage(int damage, GameObject gameObject)
@@ -171,7 +193,10 @@ public class Turtle : MonoBehaviour
             if (gameObject.tag == "PumEffectArea")
             {
                 hidden = false;
+                anim.SetBool("Hide", false);
                 vulnerable = true;
+                anim.SetTrigger("Vulnerable");
+                moves = false;
             }
             else
             {
@@ -186,6 +211,7 @@ public class Turtle : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this.gameObject);
+        anim.SetTrigger("Dead");
+        Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
     }
 }

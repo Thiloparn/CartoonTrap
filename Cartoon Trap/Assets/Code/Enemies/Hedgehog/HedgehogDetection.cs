@@ -10,6 +10,7 @@ public class HedgehogDetection : MonoBehaviour
 
     [SerializeField] Hedgehog hedgehog;
     private CircleCollider2D detectionCollider;
+    [SerializeField] Animator anim;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class HedgehogDetection : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerDetected = true;
+            anim.SetBool("Defend", true);
             hedgehog.player = GameObject.FindObjectOfType<PlayerController>();
         }
     }
@@ -43,6 +45,7 @@ public class HedgehogDetection : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerDetected = false;
+            anim.SetBool("Defend", false);
             hedgehog.player = null;
         }
     }

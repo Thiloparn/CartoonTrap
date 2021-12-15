@@ -11,21 +11,29 @@ public class DialogueController : MonoBehaviour
     [SerializeField] Text screenText;
     [SerializeField] Image imageField;
     [SerializeField] GameObject dialogueGUI;
-    private bool active = false;
+    private bool wait = false;
+    private bool textWaiting = false;
+    private bool first = true;
 
     void Awake()
     {
+        first = true;
         anim = GetComponent<Animator>();
         dialogueGUI.SetActive(false);
         dialogueQueue = new Queue<string>();
     }
     public void ActivateDialogue(Texts textsObject, Sprite image)
     {
-        active = true;
-        dialogueGUI.SetActive(true);
-        anim.SetBool("Bocadillo", true);
+        if (first)
+        {
+            anim.SetBool("Bocadillo", true);
+        }
+        first = false;
+        textWaiting = true;
         texts = textsObject;
         imageField.sprite = image;
+        ActivateText();
+       
     }
 
     public void ActivateText()
@@ -39,10 +47,10 @@ public class DialogueController : MonoBehaviour
     }
     public void NextDialogue()
     {
+        wait = true;
         if (dialogueQueue.Count == 0)
         {
-            screenText.text = "";
-            anim.SetBool("Bocadillo", false);
+            textWaiting = false;           
             return;
         }
         string dialogue = dialogueQueue.Dequeue();
@@ -58,20 +66,38 @@ public class DialogueController : MonoBehaviour
             screenText.text += character;
             yield return new WaitForSeconds(0.02f);
         }
+        wait = false;
+    }
+    IEnumerator CountDown(float RestartAfter)
+    {
+        wait = true;
+        yield return new WaitForSeconds(RestartAfter);
+        wait = false;
     }
 
-    void CloseDialogue()
+    public void CloseDialogue()
     {
+        anim.SetBool("Bocadillo", false);
+    }
+
+    public void DeactivateDialogue()
+    {
+        screenText.text = "";
         dialogueGUI.SetActive(false);
     }
-    private void Update()
+    public void onJumpOrAttack()
     {
-        if (active)
+        if (!wait && isDIalogueActive())
         {
-            if (Input.GetKeyDown(KeyCode.A) | Input.GetKeyDown(KeyCode.KeypadEnter) | Input.GetKeyDown(KeyCode.Space))
-            {
-                NextDialogue();
-            }
-        }
+            NextDialogue();
+        }      
+    }
+    public bool isDIalogueActive()
+    {
+        return dialogueGUI.gameObject.activeInHierarchy;
+    }
+    public bool isTextWaiting()
+    {
+        return textWaiting;
     }
 }

@@ -6,7 +6,8 @@ public class HedgehogAttack : MonoBehaviour
 {
     public float resetTimer = 0.5f;
     public float timeElapsed = 0f;
-    public float attackOn = 0.25f;
+    private float attackOn = 0.25f;
+    public int attackOnFrame = 1;
 
     public float projectilRange = 5f;
     public int projectilDamage = 1;
@@ -19,10 +20,12 @@ public class HedgehogAttack : MonoBehaviour
     private CircleCollider2D attackCollider;
     [SerializeField] Hedgehog hedgehog;
     [SerializeField] Projectil projectil;
+    [SerializeField] Animator anim;
 
     private void Awake()
     {
         attackCollider = GetComponent<CircleCollider2D>();
+        attackOn = attackOnFrame / 60f;
     }
 
     private void FixedUpdate()
@@ -31,18 +34,18 @@ public class HedgehogAttack : MonoBehaviour
         {
             StartAttack();
         }
-        else if (timeElapsed > 0 && (hedgehog.attackPlayer || onRange))
+        else if (timeElapsed > 0)
         {
-            if (timeElapsed < resetTimer)
+            timeElapsed += Time.fixedDeltaTime;
+            if (timeElapsed < resetTimer && (hedgehog.attackPlayer || onRange))
             {
                 if (timeElapsed >= attackOn && !attackDone)
                 {
                     attackDone = true;
                     DoAttack();
                 }
-                timeElapsed += Time.fixedDeltaTime;
             }
-            else
+            else if (timeElapsed > resetTimer)
             {
                 FinishAttack();
             }
@@ -51,23 +54,29 @@ public class HedgehogAttack : MonoBehaviour
 
     private void StartAttack()
     {
+        anim.SetBool("Defend", false);
+        anim.SetTrigger("Attack");
         timeElapsed += Time.fixedDeltaTime;
     }
 
     private void DoAttack()
     {
         Projectil proj;
+        float direction;
 
-        if(hedgehog.transform.localScale.x == -1f)
+        if(hedgehog.transform.localScale.x < 0)
         {
             proj = Instantiate(projectil, transform.position, Quaternion.identity);
+            direction = 1f;
         }
         else
         {
             proj = Instantiate(projectil, transform.position, Quaternion.Euler(0, 0, 180));
+            direction = -1f;
         }
 
-        proj.createProjectile(new Vector2(-hedgehog.transform.localScale.x, 0), projectilSpeed, projectilRange, projectilDamage, hedgehog.gameObject);
+        proj.createProjectile(new Vector2(direction, 0), projectilSpeed, projectilRange, projectilDamage, hedgehog.gameObject);
+        anim.SetBool("Defend", true);
     }
 
     private void FinishAttack()

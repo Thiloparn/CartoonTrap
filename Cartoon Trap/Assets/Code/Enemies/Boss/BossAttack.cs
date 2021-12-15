@@ -19,8 +19,8 @@ public class BossAttack : MonoBehaviour
     private bool attackDone = false;
 
     [SerializeField] Boss boss;
-    [SerializeField] BossProjectil projectil;
-    //[SerializeField] Animator anim;
+    [SerializeField] List<BossProjectil> projectils = new List<BossProjectil>();
+    [SerializeField] Animator anim;
 
     private void Awake()
     {
@@ -58,7 +58,7 @@ public class BossAttack : MonoBehaviour
 
     private void StartAttack()
     {
-        //anim.SetTrigger("Attack");
+        anim.SetBool("Attack", true);
         numAttacksDone++;
         timeElapsed += Time.fixedDeltaTime;
     }
@@ -67,9 +67,11 @@ public class BossAttack : MonoBehaviour
     {
         BossProjectil proj;
 
-        int rand = Random.Range(0, attacksHeight.Count);
+        int rand1 = Random.Range(0, attacksHeight.Count);
+        Vector3 initialPosition = new Vector3(boss.transform.position.x, boss.transform.position.y + attacksHeight[rand1], 0);
 
-        Vector3 initialPosition = new Vector3(boss.transform.position.x, boss.transform.position.y + attacksHeight[rand], 0);
+        int rand2 = Random.Range(0, projectils.Count);
+        BossProjectil projectil = projectils[rand2];
 
         if (boss.transform.localScale.x > 0)
         {
@@ -81,6 +83,7 @@ public class BossAttack : MonoBehaviour
         }
 
         proj.createProjectile(boss.transform.localScale.x/Mathf.Abs(boss.transform.localScale.x), projectilSpeed, projectilDamage, boss.gameObject);
+        anim.SetBool("Attack", false);
     }
 
     private void FinishAttack()

@@ -7,6 +7,7 @@ public class TurtleAttack : MonoBehaviour
     public float resetTimer = 0.5f;
     public float timeElapsed = 0f;
     public float attackOn = 0.25f;
+    public int attackOnFrame = 1;
 
     public float projectilRange = 5f;
     public int projectilDamage = 1;
@@ -18,10 +19,12 @@ public class TurtleAttack : MonoBehaviour
     private CircleCollider2D attackCollider;
     [SerializeField] Turtle turtle;
     [SerializeField] Projectil projectil;
+    [SerializeField] Animator anim;
 
     private void Awake()
     {
         attackCollider = GetComponent<CircleCollider2D>();
+        attackOn = attackOnFrame / 60f;
     }
 
     private void FixedUpdate()
@@ -50,6 +53,7 @@ public class TurtleAttack : MonoBehaviour
 
     private void StartAttack()
     {
+        anim.SetTrigger("Attack");
         timeElapsed += Time.fixedDeltaTime;
     }
 

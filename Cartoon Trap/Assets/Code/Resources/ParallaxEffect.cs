@@ -33,7 +33,7 @@ public class ParallaxEffect : MonoBehaviour
         }
         else if (moveAmount < startPosition - spriteWidth)
         {
-            print(spriteWidth);
+            //print(spriteWidth);
             transform.Translate(new Vector3(-spriteWidth, 0, 0));
             startPosition = transform.position.x;
         }

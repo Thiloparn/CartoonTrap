@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024645d3d31b0cf4e91ce1c475a47124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3677637967611149992}
+  player: {fileID: 5198206726129935145}
   attackDuration: 0.5
   maxTimeBetweenAttacks: 0.4
   grapDuration: 0.5
@@ -411,13 +411,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3677637967611149995}
-  - component: {fileID: 3677637967611149992}
   - component: {fileID: 5865478903588460304}
   - component: {fileID: 3862231640987445958}
   - component: {fileID: 386234894422521500}
-  - component: {fileID: 4353769014367737987}
   - component: {fileID: 1008157692}
   - component: {fileID: 3787674686720869322}
+  - component: {fileID: 1405597225}
+  - component: {fileID: 5198206726129935145}
+  - component: {fileID: 6289309985915504083}
   m_Layer: 6
   m_Name: PlayerPrefab
   m_TagString: Player
@@ -441,42 +442,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3677637967611149992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3677637967611149993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd25ec70fa8bc7449be951abee68e422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 10
-  initialCurrentHealth: 2
-  numberOfHealings: 3
-  maxTimeInvulneravility: 1
-  speed: 10
-  jumpForce: 10
-  reboundForce: 5
-  doubleJumpForce: 10
-  dashDuration: 0.8
-  dashSpeed: 4.25
-  attackPower: 10
-  hammerPower: 10
-  bladePower: 10
-  grapping: 0
-  throwing: 0
-  resting: 0
-  attackOnomatopeya: {fileID: 5678207302567928215, guid: 9553c53b97eb1144196f7ac3a27cfb6b, type: 3}
-  phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
-  pumOnomatopeya: {fileID: 5896842734998594493, guid: 7c3819faf1d521b44bc578efa9a1b1e2, type: 3}
-  slashOnomatpeya: {fileID: 7491151816777940469, guid: caa8cebcb78c34b46ab8752ff1c49570, type: 3}
-  hopOnomatopeya: {fileID: 3881120773100089795, guid: e867ea78db8a01d42aea1f4f8baa2ee5, type: 3}
-  playerInput: {fileID: 1008157692}
-  activeActionMap: 
-  deathCanvas: {fileID: 1189042012}
 --- !u!114 &5865478903588460304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,32 +534,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &4353769014367737987
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3677637967611149993}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.027695417, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.44, y: 1.61}
-    newSize: {x: 0.12, y: 0.17}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.1446092, y: 1.7}
-  m_EdgeRadius: 0
 --- !u!114 &1008157692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,7 +561,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onMovement
         m_Mode: 0
@@ -638,7 +577,7 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/w,/Keyboard/s,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onPunch
         m_Mode: 0
@@ -654,7 +593,7 @@ MonoBehaviour:
     m_ActionName: Player/Punch[/Keyboard/u]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onGrap
         m_Mode: 0
@@ -670,7 +609,7 @@ MonoBehaviour:
     m_ActionName: Player/Grap[/Keyboard/i]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onSlash
         m_Mode: 0
@@ -686,7 +625,7 @@ MonoBehaviour:
     m_ActionName: Player/Slash[/Keyboard/o]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onPum
         m_Mode: 0
@@ -702,7 +641,7 @@ MonoBehaviour:
     m_ActionName: Player/Pum[/Keyboard/p]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onHeal
         m_Mode: 0
@@ -718,7 +657,7 @@ MonoBehaviour:
     m_ActionName: Player/Heal[/Keyboard/j]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onJump
         m_Mode: 0
@@ -734,7 +673,7 @@ MonoBehaviour:
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onDash
         m_Mode: 0
@@ -762,7 +701,7 @@ MonoBehaviour:
     m_ActionName: Player/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onMovement
         m_Mode: 0
@@ -778,7 +717,7 @@ MonoBehaviour:
     m_ActionName: Arrows/Movement[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/leftStick/up,/DualShock4GamepadHID/leftStick/up,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/DualShock4GamepadHID/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/DualShock4GamepadHID/leftStick/left,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/DualShock4GamepadHID/leftStick/right,/XInputControllerWindows/leftStick/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onPunch
         m_Mode: 0
@@ -794,7 +733,7 @@ MonoBehaviour:
     m_ActionName: Arrows/Punch[/Keyboard/u,/XInputControllerWindows/buttonWest,/DualShock4GamepadHID/buttonWest,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onGrap
         m_Mode: 0
@@ -810,7 +749,7 @@ MonoBehaviour:
     m_ActionName: Arrows/Grap[/Keyboard/i,/XInputControllerWindows/rightTrigger,/DualShock4GamepadHID/rightTrigger,/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onSlash
         m_Mode: 0
@@ -826,7 +765,7 @@ MonoBehaviour:
     m_ActionName: Arrows/Slash[/Keyboard/o,/XInputControllerWindows/buttonNorth,/DualShock4GamepadHID/buttonNorth,/XInputControllerWindows/buttonNorth]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onPum
         m_Mode: 0
@@ -842,7 +781,7 @@ MonoBehaviour:
     m_ActionName: Arrows/Pum[/Keyboard/p,/XInputControllerWindows/buttonEast,/DualShock4GamepadHID/buttonEast,/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onHeal
         m_Mode: 0
@@ -858,7 +797,7 @@ MonoBehaviour:
     m_ActionName: Arrows/Heal[/Keyboard/j,/XInputControllerWindows/rightShoulder,/DualShock4GamepadHID/rightShoulder,/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onJump
         m_Mode: 0
@@ -874,7 +813,7 @@ MonoBehaviour:
     m_ActionName: Arrows/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onDash
         m_Mode: 0
@@ -902,7 +841,7 @@ MonoBehaviour:
     m_ActionName: Arrows/Pause[/Keyboard/escape,/XInputControllerWindows/start,/DualShock4GamepadHID/start,/XInputControllerWindows/start]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onChangeInputs
         m_Mode: 0
@@ -918,7 +857,7 @@ MonoBehaviour:
     m_ActionName: WASD without Mouse/ChangeInputs[/Keyboard/alt]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onChangeInputs
         m_Mode: 0
@@ -934,7 +873,7 @@ MonoBehaviour:
     m_ActionName: Arrows/ChangeInputs[/Keyboard/alt]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onMovement
         m_Mode: 0
@@ -950,7 +889,7 @@ MonoBehaviour:
     m_ActionName: WASD with Mouse/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick/up,/DualShock4GamepadHID/leftStick/up,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/DualShock4GamepadHID/leftStick/down,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/DualShock4GamepadHID/leftStick/left,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/DualShock4GamepadHID/leftStick/right,/XInputControllerWindows/leftStick/right]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onPunch
         m_Mode: 0
@@ -966,7 +905,7 @@ MonoBehaviour:
     m_ActionName: WASD with Mouse/Punch[/Mouse/leftButton,/XInputControllerWindows/buttonWest,/DualShock4GamepadHID/buttonWest,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onGrap
         m_Mode: 0
@@ -982,7 +921,7 @@ MonoBehaviour:
     m_ActionName: WASD with Mouse/Grap[/Mouse/rightButton,/XInputControllerWindows/rightTrigger,/DualShock4GamepadHID/rightTrigger,/XInputControllerWindows/rightTrigger]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onSlash
         m_Mode: 0
@@ -998,7 +937,7 @@ MonoBehaviour:
     m_ActionName: WASD with Mouse/Slash[/Keyboard/q,/XInputControllerWindows/buttonNorth,/DualShock4GamepadHID/buttonNorth,/XInputControllerWindows/buttonNorth]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onPum
         m_Mode: 0
@@ -1014,7 +953,7 @@ MonoBehaviour:
     m_ActionName: WASD with Mouse/Pum[/Keyboard/e,/XInputControllerWindows/buttonEast,/DualShock4GamepadHID/buttonEast,/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onHeal
         m_Mode: 0
@@ -1030,7 +969,7 @@ MonoBehaviour:
     m_ActionName: WASD with Mouse/Heal[/Mouse/middleButton,/XInputControllerWindows/rightShoulder,/DualShock4GamepadHID/rightShoulder,/XInputControllerWindows/rightShoulder]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onJump
         m_Mode: 0
@@ -1046,7 +985,7 @@ MonoBehaviour:
     m_ActionName: WASD with Mouse/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth,/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onDash
         m_Mode: 0
@@ -1074,7 +1013,7 @@ MonoBehaviour:
     m_ActionName: WASD with Mouse/Pause[/Keyboard/escape,/XInputControllerWindows/start,/DualShock4GamepadHID/start,/XInputControllerWindows/start]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677637967611149992}
+      - m_Target: {fileID: 5198206726129935145}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: onChangeInputs
         m_Mode: 0
@@ -1112,3 +1051,166 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &1405597225
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677637967611149993}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.01241827, y: -0.09446955}
+  m_Size: {x: 0.91520596, y: 1.421061}
+  m_Direction: 0
+--- !u!114 &5198206726129935145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677637967611149993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd25ec70fa8bc7449be951abee68e422, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialCurrentHealth: 2
+  numberOfHealings: 3
+  invulneravility: 0
+  maxTimeInvulneravility: 1
+  speed: 4
+  jumpForce: 8.5
+  reboundForce: 4
+  doubleJumpForce: 4
+  dashDuration: 0.8
+  dashSpeed: 4.25
+  attackPower: 10
+  hammerPower: 10
+  bladePower: 10
+  grapping: 0
+  throwing: 0
+  resting: 0
+  punchLocked: 0
+  slashLocked: 0
+  pumLocked: 0
+  phiuLocked: 0
+  hopLocked: 0
+  r: 0
+  g: 0
+  b: 0
+  attackOnomatopeya: {fileID: 5678207302567928215, guid: 9553c53b97eb1144196f7ac3a27cfb6b, type: 3}
+  phiuOnomatopeya: {fileID: 8583439699955565641, guid: 63a4c3b7a8931e940a2212b6f7b6ff88, type: 3}
+  pumOnomatopeya: {fileID: 5896842734998594493, guid: 7c3819faf1d521b44bc578efa9a1b1e2, type: 3}
+  slashOnomatpeya: {fileID: 7491151816777940469, guid: caa8cebcb78c34b46ab8752ff1c49570, type: 3}
+  hopOnomatopeya: {fileID: 3881120773100089795, guid: e867ea78db8a01d42aea1f4f8baa2ee5, type: 3}
+  pumSound: {fileID: 8300000, guid: 865983d684e59d24f847713889bf24b4, type: 3}
+  phiuSound: {fileID: 0}
+  slashSound: {fileID: 8300000, guid: 490fe88ab39302b49ad749d39cb385d7, type: 3}
+  hopSound: {fileID: 8300000, guid: 6c5998b0f9239b643a59c1b9f8d9fa4b, type: 3}
+  punchSound: {fileID: 8300000, guid: 05133f845cab9774ba00809af9da1af9, type: 3}
+  hurtedSound: {fileID: 8300000, guid: 780ffa543869dd44e8abd2991697e1ba, type: 3}
+  deathSound: {fileID: 8300000, guid: 4df7d6dc68182414e80fcc3fee981cb0, type: 3}
+  playerInput: {fileID: 1008157692}
+  activeActionMap: 
+  deathCanvas: {fileID: 1189042012}
+--- !u!82 &6289309985915504083
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677637967611149993}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
