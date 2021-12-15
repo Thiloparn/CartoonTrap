@@ -24,18 +24,24 @@ public class Turtle : MonoBehaviour
     public bool attackPlayer = false;
     private bool vulnerable = false;
     public bool hidden = false;
+    private bool deathAudioPlayed = false;
+
+    //Audio
+    public AudioClip deathAudio;
 
     public PlayerController player;
     [SerializeField] TurtleDetection turtleDetection;
     private BoxCollider2D boxCollider;
     private Animator anim;
     [SerializeField] AnimationClip vulnerableAnimation;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         enemyHealth = new Health(maxHealth, initialCurrentHealth);
         boxCollider = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         initialPostion = transform.position;
 
         stunDuration = vulnerableAnimation.length;
@@ -212,6 +218,17 @@ public class Turtle : MonoBehaviour
     private void Die()
     {
         anim.SetTrigger("Dead");
+        if (!deathAudioPlayed)
+        {
+            PlayAudio(deathAudio);
+            deathAudioPlayed = true;
+        }
         Destroy(this.gameObject, anim.GetCurrentAnimatorStateInfo(0).length);
+    }
+
+    public void PlayAudio(AudioClip audio)
+    {
+        audioSource.clip = audio;
+        audioSource.Play();
     }
 }

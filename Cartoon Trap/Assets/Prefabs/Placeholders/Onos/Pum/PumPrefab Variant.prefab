@@ -24,6 +24,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7001124780604895449, guid: b6525922c4b3bbb40a9b61f761b519ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.065579
       objectReference: {fileID: 0}
@@ -88,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f432ccec7ed97e49b3fb31a456df962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
   aparitionPositionOffset: {x: 1.5, y: 0}
   onoAreaEffect: {fileID: 6437878032877002795, guid: 5bc98a993018bfb4c99aad846eaba08b, type: 3}
   negativeOnoAreaEffect: {fileID: 8075503125616521370, guid: acea6e389b74f934cad1b16d5357b9f3, type: 3}
