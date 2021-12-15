@@ -88,6 +88,15 @@ public class PlayerController : MonoBehaviour
     public GameObject slashOnomatpeya;
     public GameObject hopOnomatopeya;
 
+    //Sonidos
+    public AudioClip pumSound;
+    public AudioClip phiuSound;
+    public AudioClip slashSound;
+    public AudioClip hopSound;
+    public AudioClip punchSound;
+    public AudioClip hurtedSound;
+    public AudioClip deathSound;
+
     public PlayerAnimator playerAnimator;
     private Rigidbody2D rigidBody;
     private DialogueController dialogueController;
@@ -97,6 +106,7 @@ public class PlayerController : MonoBehaviour
     public PlayerPocket pocket;
     public GameObject deathCanvas;
     private AnimationColorChanger animationColorChanger;
+    private AudioSource playerAudioSource;
 
     public bool Attacking { get => attacking; set => attacking = value; }
     public bool Grapping { get => grapping; set => grapping = value; }
@@ -112,6 +122,7 @@ public class PlayerController : MonoBehaviour
     public bool Sliding { get => sliding; set => sliding = value; }
     public Health PlayerHealth { get => playerHealth;}
     public int Coins { get => coins;}
+    public AudioSource PlayerAudioSource { get => playerAudioSource;}
 
     private void Awake()
     {
@@ -121,6 +132,7 @@ public class PlayerController : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         animationColorChanger = GetComponent<AnimationColorChanger>();
         capsuleCollider = GetComponent<CapsuleCollider2D>();
+        playerAudioSource = GetComponent<AudioSource>();
         heal = new Heal(numberOfHealings);
         playerAnimator = new PlayerAnimator();
         pocket = new PlayerPocket(this);
@@ -195,7 +207,7 @@ public class PlayerController : MonoBehaviour
                 jumpAbble = false;
             }
 
-            if (!resting && Time.timeScale == 1f)
+            if (!resting && Time.timeScale == 1f && !dialogueController.isDIalogueActive())
             {
                 ExecuteActions();
             }
@@ -220,13 +232,16 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateLookingDirection()
     {
-        if (movingDirectionX < -0.01f)
+        if(Time.timeScale == 1f)
         {
-            lookingDirection = -1f;
-        }
-        else if (movingDirectionX > 0.01f)
-        {
-            lookingDirection = 1f;
+            if (movingDirectionX < -0.01f)
+            {
+                lookingDirection = -1f;
+            }
+            else if (movingDirectionX > 0.01f)
+            {
+                lookingDirection = 1f;
+            }
         }
     }
 
@@ -412,19 +427,22 @@ public class PlayerController : MonoBehaviour
 
     public void onJump(InputAction.CallbackContext value)
     {
-        if (value.started && jumpAbble)
+        if (!dialogueController.isDIalogueActive())
         {
-            jumping = true;
-            doubleJumpAbble = true;
-        }
-        else if(value.started && !isGrounded() && doubleJumpAbble)
-        {
-            if(hopLocked == false)
+            if (value.started && jumpAbble)
             {
-                doubleJumping = true;
+                jumping = true;
+                doubleJumpAbble = true;
             }
-            
-        }
+            else if (value.started && !isGrounded() && doubleJumpAbble)
+            {
+                if (hopLocked == false)
+                {
+                    doubleJumping = true;
+                }
+
+            }
+        }       
     }
 
     public void onDash(InputAction.CallbackContext value)
@@ -487,9 +505,14 @@ public class PlayerController : MonoBehaviour
         {
             playerHealth.DecreaseHealth(damageAmount);
             playerAnimator.StartHurtingAnimation(this);
+            playerAudioSource.clip = hurtedSound;
+            playerAudioSource.Play();
+
             if (playerHealth.CurrentHealth == 0)
             {
                 playerAnimator.StartDyingAnimation(this);
+                playerAudioSource.clip = deathSound;
+                playerAudioSource.Play();
             }
             invulneravility = true;
         }
@@ -594,5 +617,11 @@ public class PlayerController : MonoBehaviour
         {
             animationColorChanger.Player_ChangeAnimationColor(animationColorChanger.playerOverride_RG);
         }
+    }
+
+    public void PlayPlayerAudio(AudioClip audio)
+    {
+        playerAudioSource.clip = audio;
+        playerAudioSource.Play();
     }
 }

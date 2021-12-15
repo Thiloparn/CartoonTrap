@@ -107,6 +107,7 @@ public class BasicAttack : MonoBehaviour
         attackCollider.enabled = true;
         pumElapsed += Time.fixedDeltaTime;
         player.playerAnimator.StartUsingHammerAnimation(player);
+        player.PlayPlayerAudio(player.pumSound);
         gameObject.tag = "Hammer";
     }
 
@@ -140,6 +141,7 @@ public class BasicAttack : MonoBehaviour
         attackCollider.enabled = true;
         slashElapsed += Time.fixedDeltaTime;
         player.playerAnimator.StartUsingBladeAnimation(player);
+        player.PlayPlayerAudio(player.slashSound);
         gameObject.tag = "Blade";
     }
 
@@ -279,6 +281,8 @@ public class BasicAttack : MonoBehaviour
         gameObject.tag = "Punch";
 
         AnimatePunch();
+        player.PlayPlayerAudio(player.punchSound);
+
     }
 
     private void AnimatePunch()
