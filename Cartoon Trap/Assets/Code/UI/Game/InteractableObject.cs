@@ -12,7 +12,7 @@ public class InteractableObject : MonoBehaviour
     public GameObject dialogueUI;
     private Queue<CharacterDialogue> dialogueQueue;
     private bool activeUpdate = false;
-    public  BoxCollider2D collider;
+    public new BoxCollider2D collider;
     private bool wait = false;
 
     void Awake()

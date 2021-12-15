@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
                 jumpAbble = false;
             }
 
-            if (!resting && Time.timeScale == 1f && !dialogueController.isDIalogueActive())
+            if (!resting && !sliding && Time.timeScale == 1f /*&& !dialogueController.isDIalogueActive()*/)
             {
                 ExecuteActions();
             }
